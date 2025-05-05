@@ -1,0 +1,11 @@
+.nav{
+    height: 17vh;
+    width: 100%;
+    padding: 1% 4%;
+    border-bottom: 3px solid #000;
+    display: flex;
+    align-items: center;
+}
+.nav .logo{
+    width: 10%;
+}
