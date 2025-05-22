@@ -5,6 +5,7 @@ import StudentDashboard from './Pages/dashboards/studentDashboard/studentDashboa
 import FacultyDashboard from './Pages/dashboards/facultyDashboard/facultyDashboard';
 import AdminDashboard from './Pages/dashboards/adminDashboard/adminDashboard';
 import PrivateRoute from './Component/PrivateRoute.jsx'; // Create this file
+import ResetPassword from './Pages/loginMenu/ResetPassword/resetPassword';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
           </PrivateRoute>
         }
       />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
     </Routes>
   );
 };

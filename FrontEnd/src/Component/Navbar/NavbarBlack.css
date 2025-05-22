@@ -1,0 +1,31 @@
+.nav-black{
+    height: 10vh;
+    width: 100%;
+    padding: 2% 1.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+}
+.nav-black .logo{
+    width: 12%;
+}
+.leftBar{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+    height: 100%;
+}
+.nav-black .streakIcon{
+    width: 6%;
+    margin-right: 2%;
+}
+.nav-black .profileIcon{
+    width: 8%;
+    margin-right: 2%;
+}
+.nav-black .bellIcon{
+    width: 6%;
+    margin-right: 2%;
+}
