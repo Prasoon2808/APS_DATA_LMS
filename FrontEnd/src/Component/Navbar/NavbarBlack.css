@@ -1,5 +1,5 @@
 .nav-black{
-    height: 10vh;
+    height: 8vh;
     width: 100%;
     padding: 2% 1.5%;
     display: flex;
@@ -8,7 +8,7 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
 }
 .nav-black .logo{
-    width: 12%;
+    width: 8%;
 }
 .leftBar{
     display: flex;
@@ -18,14 +18,14 @@
     height: 100%;
 }
 .nav-black .streakIcon{
-    width: 6%;
+    width: 4%;
     margin-right: 2%;
 }
 .nav-black .profileIcon{
-    width: 8%;
+    width: 5%;
     margin-right: 2%;
 }
 .nav-black .bellIcon{
-    width: 6%;
+    width: 3.5%;
     margin-right: 2%;
 }
