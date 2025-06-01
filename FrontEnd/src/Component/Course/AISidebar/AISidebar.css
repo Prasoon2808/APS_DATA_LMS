@@ -1,0 +1,9 @@
+.ai-sidebar{
+    width: 25%;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 8vh;
+    
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

@@ -1,14 +1,24 @@
-import React from 'react'
-import LogoutButton from '../../../Component/logoutbtn'
-import NavbarBlack from '../../../Component/Navbar/NavbarBlack'
+// studentDashboard.jsx
+import React, { useState } from 'react';
+import NavbarBlack from '../../../Component/Navbar/NavbarBlack';
+import SideBar from '../../../Component/SideBar/sideBar';
+import { Outlet } from 'react-router-dom';
+import './studentDashboard.css';
 
-const studentDashboard = () => {
+const StudentDashboard = () => {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
   return (
-    <div>
+    <div className='studentDashboard'>
       <NavbarBlack />
-      <LogoutButton />
+      <div className={`flex ${isSidebarCollapsed ? 'collapsed' : ''}`}>
+        <SideBar onToggle={setIsSidebarCollapsed} />
+        <div className="subPage">
+          <Outlet />
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default studentDashboard
+export default StudentDashboard;

@@ -1,0 +1,26 @@
+/* Make sure skip buttons are visible */
+.video-js .vjs-seek-button-forward,
+.video-js .vjs-seek-button-back {
+  display: inline-block !important;
+  opacity: 1 !important;
+  width: 40px !important;
+  height: 40px !important;
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+  margin: 0 4px;
+  font-size: 16px;
+}
+
+/* Optional: improve hover visibility */
+.video-js .vjs-seek-button-forward:hover,
+.video-js .vjs-seek-button-back:hover {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Optional: ensure icons inside buttons are centered */
+.video-js .vjs-control-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,31 @@
+.studentDashboard {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.subPage {
+    margin-left: 17%;
+    width: calc(100% - 17%);
+    height: 86vh;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.flex.collapsed .subPage {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+}
+
+/* Scrollbar Styling (optional) */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #a7cb3a;
+    border-radius: 10px;
+}

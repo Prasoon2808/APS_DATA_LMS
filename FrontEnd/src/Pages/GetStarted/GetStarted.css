@@ -1,0 +1,213 @@
+.loginPage{
+    height: 100vh;
+    overflow: hidden;
+}
+.main{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    top: -12vh;
+}
+.main img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.main .glass-container {
+    position: absolute;
+    right: 10%;
+    width: 540px;
+    height: 520px;
+    padding: 3rem;
+    background: linear-gradient(135deg, transparent  40%, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.35));
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /* for Safari */
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.642);
+    color: white;
+    text-align: center;
+}
+.main .glass-container h2{
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: #ffffff;
+}
+.main h1{
+    position: absolute;
+    left: 7%;
+    font-size: 5.5rem;
+    color: white;
+    width: 40%;
+    font-weight: 300;
+    line-height: 1;
+    
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.glass-container input{
+    width: 90%;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.869);
+    border-radius: 50px;
+    padding-left: 1.5rem;
+}
+.glass-container ::-webkit-input-placeholder {
+    color: white;
+}
+.glass-container input:focus{
+    outline-color: #a8cd3d;
+}
+.glass-container input:focus::placeholder {
+    color: transparent;
+}
+.loginForm img, .forgotForm img{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 83%;
+    top: 1.7rem;
+}
+.line{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.radioRole{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+}
+.glass-container input[type="radio"] {
+    accent-color: #ffffff; /* Modern browsers */
+    margin-right: 8px;
+    margin-top: 0;
+    cursor: pointer;
+    transform: scale(1.5);
+    
+}
+.glass-container input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: #ffffff;
+    margin-right: 8px;
+    margin-top: 0;
+    transform: scale(1.2);
+}
+.horzCont{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+.horzCont .rememberMe{
+    font-size: 0.8rem;
+    font-weight: 300;
+    width:fit-content;
+    white-space: nowrap;
+}
+.horzCont span{
+    font-size: 0.8rem;
+    font-weight: 300;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+}
+.horzCont span:hover{
+    text-decoration: underline;
+}
+.horzCont .check{
+    margin: 0;
+}
+.glass-container label {
+    display: flex;
+    position: relative;
+    align-items: center;
+    font-size: 1.1rem;
+    margin: 0 1.5rem;
+    font-weight: 300;
+}
+.loginBtn{
+    width: 90%;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    background-color: #a8cd3d;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.loginBtn:hover{
+    background-color: #88aa22;
+    color: white;
+}
+.forgetPass{
+    font-size: 0.9rem;
+    font-weight: 300;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+/* FLIP CONTAINER STYLES */
+/* Container with 3D perspective */
+.glass-container {
+    perspective: 1200px;
+}
+  
+  /* Inner wrapper for 3D flip logic */
+.glass-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease-out;
+    transform-style: preserve-3d;
+}
+  
+  /* Flip trigger */
+.glass-container.flip .glass-inner {
+    transform: rotateY(180deg);
+}
+  
+  /* Front and Back */
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+}
+  
+.front {
+    z-index: 2;
+}
+  
+.back {
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+.forgotForm a{
+    display: block;
+}
+  
