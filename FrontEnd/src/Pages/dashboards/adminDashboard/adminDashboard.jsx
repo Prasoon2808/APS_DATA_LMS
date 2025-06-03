@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
 import LogoutBtn from "../../../Component/logoutbtn"
+import './adminDashboard.css';
 
 const adminDashboard = () => {
   const [course, setCourse] = useState({

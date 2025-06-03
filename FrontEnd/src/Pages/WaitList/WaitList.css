@@ -2,7 +2,7 @@
     height: 100vh;
     overflow: hidden;
 }
-.getStarted{
+.waitList{
     position: relative;
     display: flex;
     justify-content: center;
@@ -10,7 +10,7 @@
     height: 100vh;
     top: -12vh;
 }
-.getStarted img{
+.waitList img{
     position: absolute;
     top: 0;
     left: 0;
@@ -19,12 +19,12 @@
     object-fit: cover;
     z-index: -1;
 }
-.getStarted .glass-container {
+.waitList .glass-container {
     position: absolute;
-    right: 10%;
-    width: 540px;
+    right: center;
+    width: 800px;
     height: 520px;
-    padding: 3rem;
+    padding: 2rem;
     background: linear-gradient(135deg, transparent  40%, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.35));
     border-radius: 20px;
     backdrop-filter: blur(5px);
@@ -34,50 +34,115 @@
     color: white;
     text-align: center;
 }
-.getStarted .glass-container h2{
+.waitList .glass-container h2{
     font-size: 2.8rem;
     font-weight: 600;
     margin-bottom: 2.5rem;
     color: #ffffff;
 }
-.getStarted h1{
+.waitList h1{
     position: absolute;
-    left: 7%;
-    font-size: 5.5rem;
+    left: center;
+    font-size: 2rem;
+    text-align: center;
+    top: 9%;
     color: white;
     width: 40%;
-    font-weight: 300;
+    font-weight: 400;
+    text-shadow: #88aa22 0px 0px 10px, #88aa22 0px 0px 20px, #88aa22 0px 0px 30px;
     line-height: 1;
     
 }
-.getStarted .loginForm{
+.waitList .loginForm{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
 }
-.getStarted .glass-container input{
-    width: 90%;
-    padding: 1rem;
+.waitList .glass-container input{
+    width: 100%;
+    font-size: 1.1rem;
+    background-color: transparent;
+    color: white;
+    border: none;
+
+}
+.waitList .glass-container input[type="text"]:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #1f2d1600 inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 9999s ease-in-out 0s !important;
+}
+.waitList .glass-container input[type="email"]:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #1f2d1600 inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 9999s ease-in-out 0s !important;
+}
+.waitList .glass-container .horzBlock{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+}
+.waitList .glass-container .horzBlock .innerBlock{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.waitList .glass-container input[type="number"]::-webkit-inner-spin-button,
+.waitList .glass-container input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.waitList .glass-container .gender{
+    width: 100%;
+    height: 65px;
+    padding: 0.5rem;
     margin-top: 1rem;
     font-size: 0.95rem;
     background-color: transparent;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.869);
-    border-radius: 50px;
-    padding-left: 1.5rem;
+    border-radius: 10px;
+    padding-left: 1rem;
 }
-.getStarted .glass-container ::-webkit-input-placeholder {
+.waitList .glass-container .gender label {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+
+}
+.waitList .glass-container .gender select {
+    width: 100%;
+    height: 25px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+}
+.waitList .glass-container .gender select:focus {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+.waitList .glass-container .gender select option{
+    color: rgb(0, 0, 0);
+    border: none;
+    font-size: 0.95rem;
+}
+.waitList .glass-container ::-webkit-input-placeholder {
     color: white;
 }
-.getStarted .glass-container input:focus{
-    outline-color: #a8cd3d;
+.waitList .glass-container input:focus{
+    outline: none;
+    border: none;
 }
-.getStarted .glass-container input:focus::placeholder {
+.waitList .glass-container input:focus::placeholder {
     color: transparent;
 }
-.getStarted .loginForm img, .forgotForm img{
+.loginForm img, .forgotForm img{
     width: 30px;
     height: 30px;
     position: absolute;
@@ -99,7 +164,7 @@
     margin: 0 auto;
     margin-bottom: 1.5rem;
 }
-.getStarted .glass-container input[type="radio"] {
+.waitList .glass-container input[type="radio"] {
     accent-color: #ffffff; /* Modern browsers */
     margin-right: 8px;
     margin-top: 0;
@@ -107,7 +172,7 @@
     transform: scale(1.5);
     
 }
-.getStarted .glass-container input[type="checkbox"] {
+.waitList .glass-container input[type="checkbox"] {
     cursor: pointer;
     accent-color: #ffffff;
     margin-right: 8px;
@@ -140,7 +205,7 @@
 .horzCont .check{
     margin: 0;
 }
-.getStarted .glass-container label {
+.waitList .glass-container label {
     display: flex;
     position: relative;
     align-items: center;
@@ -148,31 +213,18 @@
     margin: 0 1.5rem;
     font-weight: 300;
 }
-.getStarted .loginBtn{
-    width: 90%;
+
+.waitList .loginBtn{
+    width: 40%;
+    height: 65px;
     padding: 1rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     font-size: 1.1rem;
     background-color: #a8cd3d;
     color: white;
     border: none;
-    border-radius: 50px;
+    border-radius: 10px;
     cursor: pointer;
-}
-.waitlistBtn{
-    width: 90%;
-    padding: 1rem;
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    background-color: white;
-    color: #000000;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-}
-.getStarted .waitlistBtn:hover{
-    background-color: #e0eec5;
-    color: #000000
 }
 .loginBtn:hover{
     background-color: #88aa22;
@@ -186,21 +238,27 @@
 }
 /* FLIP CONTAINER STYLES */
 /* Container with 3D perspective */
-.getStarted .glass-container {
+.waitList .glass-container {
     perspective: 1200px;
+    overflow-y: auto;
+    max-height: 520px;
+    scrollbar-width: thin;
 }
   
   /* Inner wrapper for 3D flip logic */
-.getStarted .glass-inner {
+.waitList .glass-inner {
     position: relative;
     width: 100%;
     height: 100%;
     transition: transform 0.8s ease-out;
     transform-style: preserve-3d;
 }
+.waitList .referral-entry{
+    width: 100%;
+}
   
   /* Flip trigger */
-.getStarted .glass-container.flip .glass-inner {
+.waitList .glass-container.flip .glass-inner {
     transform: rotateY(180deg);
 }
   

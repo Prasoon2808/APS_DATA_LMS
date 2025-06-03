@@ -20,12 +20,16 @@ import LearningHistory from './Pages/dashboards/studentDashboard/SubPages/Course
 import { Navigate } from 'react-router-dom';
 import CourseLayout from './Pages/dashboards/studentDashboard/SubPages/Courses/CourseLayout/CourseLayout';
 import GetStarted from './Pages/GetStarted/GetStarted';
+import Waitlist from './Pages/WaitList/WaitList.jsx';
+import ReferralForm from './Pages/WaitList/Referral.jsx';
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<GetStarted />} />
       <Route path="/login" element={<LoginMenu />} />
+      <Route path='/waitlist' element={<Waitlist />} />
+      <Route path='/waitlist/refer' element={<ReferralForm />} />
       
       <Route
         path="/dashboard/student"

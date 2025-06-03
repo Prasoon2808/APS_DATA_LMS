@@ -12,7 +12,7 @@ const GetStarted = () => {
     <div className='loginPage'>
       <NavbarWhite />
 
-      <div className='main'>
+      <div className='getStarted'>
         <img src={assets.APSbg} alt="" />
         <h1>Parameters.<br />Algorithms.<br />Logics</h1>
         <div className="glass-container" >
@@ -21,14 +21,10 @@ const GetStarted = () => {
             <form className="loginForm front" >
               <h2>WELCOME</h2>
               <button className='loginBtn' type="button" onClick={()=> navigate('/login')}>Login</button>
-              <button className='loginBtn' type="button">Join The Waitlist</button>
-            
-
-              
+              <button className='waitlistBtn' type="button" onClick={()=> navigate('/waitlist')}>Join The Waitlist</button>
             </form>
           </div>
         </div>
-
       </div>
     </div>
   );

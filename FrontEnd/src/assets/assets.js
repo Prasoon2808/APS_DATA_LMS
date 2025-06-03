@@ -13,6 +13,8 @@ import assignmentIcon from './SideBar/assignmentIcon.png';
 import editIcon from './editIcon.png';
 import arrowIcon from './Sidebar/arrowIcon.png';
 import crossIcon from './Sidebar/crossIcon.png';
+import userIcon from './login/user.png';
+import phoneIcon from './login/phone-call.png';
 export const assets = {
     logo,
     logoWhite,
@@ -28,5 +30,7 @@ export const assets = {
     assignmentIcon,
     editIcon,
     arrowIcon,
-    crossIcon
+    crossIcon,
+    userIcon,
+    phoneIcon
 }
