@@ -19,7 +19,7 @@ const GetStarted = () => {
           <div className="glass-inner">
             {/* Front side: Login Form */}
             <form className="loginForm front" >
-              <h2>WELCOME</h2>
+              <h2>WELCOME TO THE FUTURE OF LEARNING</h2>
               <button className='loginBtn' type="button" onClick={()=> navigate('/login')}>Login</button>
               <button className='waitlistBtn' type="button" onClick={()=> navigate('/waitlist')}>Join The Waitlist</button>
             </form>
