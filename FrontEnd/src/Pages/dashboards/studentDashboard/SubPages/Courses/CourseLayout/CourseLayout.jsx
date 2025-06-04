@@ -15,7 +15,7 @@ export default function CourseLayout() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/courses/${id}`)
+    axios.get(`https://aps-data-lms-backend.onrender.com/api/courses/${id}`)
       .then(res => {
         setCourse(res.data);
         if (res.data.sections?.[0]?.chapters?.[0]) {

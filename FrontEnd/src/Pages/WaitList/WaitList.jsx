@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const Waitlist = () => {
   const [stage, setStage] = useState('waitlist');
-  const url = 'http://localhost:5000';
+  const url = 'https://aps-data-lms-backend.onrender.com';
   const [currentReferralIndex, setCurrentReferralIndex] = useState(0);
 
 

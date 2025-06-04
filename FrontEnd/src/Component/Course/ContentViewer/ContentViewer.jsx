@@ -1,6 +1,6 @@
 import React from 'react';
 import './ContentViewer.css'; // Assuming you have some styles for the content viewer
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://aps-data-lms-backend.onrender.com';
 
 export default function ContentViewer({ chapter }) {
   const content = chapter.content;

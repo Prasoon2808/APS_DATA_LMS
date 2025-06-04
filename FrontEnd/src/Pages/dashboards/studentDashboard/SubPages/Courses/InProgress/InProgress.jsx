@@ -7,7 +7,7 @@ const InProgress = () => {
   const [courses, setCourses] = useState([]);
  
   useEffect(() => {
-    axios.get('http://localhost:5000/api/courses')
+    axios.get('https://aps-data-lms-backend.onrender.com/api/courses')
       .then(res => setCourses(res.data))
       .catch(err => console.error(err));
   }, []);

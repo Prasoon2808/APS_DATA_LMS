@@ -2,7 +2,7 @@ import React from 'react';
 import './Details.css'; 
 
 export default function Details({ course, chapter }) {
-  const url = 'http://localhost:5000';
+  const url = 'https://aps-data-lms-backend.onrender.com';
   return (
     <div className='Details'>
       <div className="instructorContainer">

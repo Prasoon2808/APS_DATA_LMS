@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CourseCard = ({ course }) => {
   const navigate = useNavigate();
-  const url = 'http://localhost:5000';
+  const url = 'https://aps-data-lms-backend.onrender.com';
 
   return (
     <div className="course-card" onClick={() => navigate(`/dashboard/student/courses/${course._id}`)}>

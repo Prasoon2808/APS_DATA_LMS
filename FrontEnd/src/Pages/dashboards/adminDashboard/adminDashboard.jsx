@@ -127,7 +127,7 @@ const adminDashboard = () => {
     formData.append('course', JSON.stringify(courseCopy));
   
     try {
-      const res = await axios.post('http://localhost:5000/api/courses/create', formData);
+      const res = await axios.post('https://aps-data-lms-backend.onrender.com/api/courses/create', formData);
       alert('Course created!');
     } catch (error) {
       console.error(error);

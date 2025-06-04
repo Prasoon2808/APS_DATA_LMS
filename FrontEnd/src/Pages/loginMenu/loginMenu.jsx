@@ -18,6 +18,7 @@ const LoginMenu = () => {
 
   const navigate = useNavigate();
   const {  user, login } = useAuth();
+  const url = "https://aps-data-lms-backend.onrender.com"
   useEffect(() => {
     if (user) {
       navigate(`/dashboard/${user.role}`);
@@ -27,7 +28,7 @@ const LoginMenu = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${url}/api/auth/login`, {
         email,
         password,
         role: selectedOption,
@@ -45,7 +46,7 @@ const LoginMenu = () => {
   const handleForgotSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/forgot-password", {
+      const res = await axios.post(`${url}/api/auth/forgot-password`, {
         email: forgotEmail,
       });
   
