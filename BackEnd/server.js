@@ -18,7 +18,6 @@ app.use(cors({
     origin: 'https://edu-lab.in',
     credentials: true, // if you're sending cookies or auth headers
 }
-
 ));
 app.use(cors({
   origin: 'http://localhost:5173',

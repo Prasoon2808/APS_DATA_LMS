@@ -142,13 +142,6 @@
 .waitList .glass-container input:focus::placeholder {
     color: transparent;
 }
-.loginForm img, .forgotForm img{
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    left: 83%;
-    top: 1.7rem;
-}
 .line{
     width: 100%;
     position: relative;

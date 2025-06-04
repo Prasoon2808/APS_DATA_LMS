@@ -41,6 +41,9 @@ const LoginMenu = () => {
       alert("Login failed: " + (err.response?.data?.msg || "Server error"));
     }
   };
+  const handlecrossIconClick = () => {
+    navigate("/");
+  };
 
 
   const handleForgotSubmit = async (e) => {
@@ -64,14 +67,14 @@ const LoginMenu = () => {
       <NavbarWhite />
 
       <div className='main'>
-        <img src={assets.APSbg} alt="" />
+        <img className='coverImage' src={assets.APSbg} alt=""/>
         <h1>Parameters.<br />Algorithms.<br />Logics</h1>
         <div className={`glass-container ${showForgot ? 'flip' : ''}`}>
           <div className="glass-inner">
             {/* Front side: Login Form */}
             <form className="loginForm front" onSubmit={handleLogin}>
               <h2>Login</h2>
-
+              <img className='crossIcon' src={assets.crossIcon} alt="" onClick={handlecrossIconClick} />
               <div className="radioRole">
                 {['student', 'faculty', 'admin'].map((role) => (
                   <label key={role}>
@@ -89,12 +92,12 @@ const LoginMenu = () => {
 
               <div className="line">
                 <input type="email" placeholder='Email ID' value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <img src={assets.mailIcon} alt="mail" />
+                <img className='inputIcon' src={assets.mailIcon} alt="mail" />
               </div>
 
               <div className="line">
                 <input type={showPassword ? "text" : "password"} placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} required />
-                <img src={assets.lockIcon} alt="lock" />
+                <img className='inputIcon' src={assets.lockIcon} alt="lock" />
               </div>
 
               <div className="horzCont">
@@ -118,7 +121,7 @@ const LoginMenu = () => {
               <h2>Forgot Password</h2>
               <div className="line">
                 <input type="email" placeholder='Enter your registered email' value={forgotEmail} onChange={(e) => setForgotEmail(e.target.value)} required />
-                <img src={assets.mailIcon} alt="mail" />
+                <img className='inputIcon' src={assets.mailIcon} alt="mail" />
               </div>
               <button className='loginBtn' type="submit">Send Recovery Email</button>
               <a href="#" className='forgetPass' onClick={(e) => { e.preventDefault(); setShowForgot(false); }}>Back to Login</a>
