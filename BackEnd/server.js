@@ -14,7 +14,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'https://edu-lab.in',
+    credentials: true, // if you're sending cookies or auth headers
+}
+
+));
 app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true, // if you're sending cookies or auth headers
