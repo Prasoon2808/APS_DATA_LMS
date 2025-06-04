@@ -4,11 +4,12 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const cors = require("cors");
-const path = require('path');
+
 const courseRoutes = require('./routes/courseRoutes');
 const emailOtpRoutes = require('./routes/emailOtpRoutes');
 const waitlistRoutes = require('./routes/waitlistRoutes');
 const referralDemoRoute = require('./routes/referralDemoRoutes');
+const path = require('path');
 
 dotenv.config();
 connectDB();
@@ -38,15 +39,7 @@ app.use('/api/courses', courseRoutes);
 app.use('/api', emailOtpRoutes);
 app.use('/api', waitlistRoutes);
 app.use('/api', referralDemoRoute);
-const path = require('path');
 
-// Serve static files from React build folder
-app.use(express.static(path.join(__dirname, 'FrontEnd', 'dist')));
-
-// Catch-all route to serve React's index.html for any unknown route
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'FrontEnd', 'dist', 'index.html'));
-});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
