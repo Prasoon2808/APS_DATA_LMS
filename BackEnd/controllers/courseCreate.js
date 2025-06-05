@@ -5,26 +5,27 @@ exports.createCourse = async (req, res) => {
     // Parse the non-file part of the form
     const courseData = JSON.parse(req.body.course);
 
+    // Prepare files array (may be empty if no files uploaded)
+    const files = Array.isArray(req.files) ? req.files : [];
+
     // Attach images (cover, thumbnail, profile)
-    if (req.files && Array.isArray(req.files)) {
-      req.files.forEach(file => {
-        if (file.fieldname === 'coverImage') {
-          courseData.coverImage = `/uploads/images/${file.filename}`;
-        }
-        if (file.fieldname === 'defaultThumbnail') {
-          courseData.defaultThumbnail = `/uploads/images/${file.filename}`;
-        }
-        if (file.fieldname === 'profileImage') {
-          courseData.author.profileImage = `/uploads/images/${file.filename}`;
-        }
-      });
-    }
+    files.forEach(file => {
+      if (file.fieldname === 'coverImage') {
+        courseData.coverImage = `/uploads/images/${file.filename}`;
+      }
+      if (file.fieldname === 'defaultThumbnail') {
+        courseData.defaultThumbnail = `/uploads/images/${file.filename}`;
+      }
+      if (file.fieldname === 'profileImage') {
+        courseData.author.profileImage = `/uploads/images/${file.filename}`;
+      }
+    });
 
     // 🧪 Debug: Log file fields
-    console.log("📂 Uploaded Files:", req.files.map(f => f.fieldname));
+    console.log("📂 Uploaded Files:", files.map(f => f.fieldname));
 
     // Handle chapter-level file uploads
-    req.files.forEach(file => {
+    files.forEach(file => {
       const match = file.fieldname.match(/sections\[(\d+)\]\.chapters\[(\d+)\]\.(content|resources)/);
       if (match) {
         const sectionIdx = parseInt(match[1], 10);
