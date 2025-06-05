@@ -18,6 +18,12 @@ exports.login = async (req, res) => {
       { expiresIn: remember ? "30d" : "1h" }
     );
 
+    const today = new Date().toISOString().split('T')[0];
+    if (!user.streakDates.includes(today)) {
+      user.streakDates.push(today);
+      await user.save();
+    }
+
     res.json({
       token,
       user: { email: user.email, role: user.role }
@@ -27,3 +33,15 @@ exports.login = async (req, res) => {
     res.status(500).json({ msg: "Server error" });
   }
 };
+
+exports.getStreakDates = async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
+    res.json({ streakDates: user.streakDates });
+  } catch (err) {
+    res.status(401).json({ msg: "Unauthorized or Invalid Token" });
+  }
+};
+

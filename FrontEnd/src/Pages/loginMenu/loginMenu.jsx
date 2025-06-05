@@ -38,6 +38,7 @@ const LoginMenu = () => {
 
       login(res.data, isChecked); // pass remember flag
       navigate(`/dashboard/${res.data.user.role}`);
+
     } catch (err) {
       alert("Login failed: " + (err.response?.data?.msg || "Server error"));
     }

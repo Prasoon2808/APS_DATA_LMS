@@ -14,5 +14,8 @@ router.post("/add", addUser);
 router.put("/update/:id", updateUser);
 
 router.post("/login", login);
+const { getStreakDates } = require("../controllers/authController");
+router.get("/streak-dates", getStreakDates);
+
 
 module.exports = router;

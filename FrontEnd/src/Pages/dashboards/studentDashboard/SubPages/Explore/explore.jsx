@@ -2,6 +2,9 @@
 import React from 'react';
 import './explore.css';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import CustomCalendar from '../../../../../Component/CustomCalender/CustomCalender';
+import ProgressChart from '../../../../../Component/progressChart';
+import PerformanceGraph from '../../../../../Component/PerformanceGraph';
 
 const Explore = () => {
   const location = useLocation();
@@ -30,12 +33,14 @@ const Explore = () => {
         <div className="explore">
           <div className="col-right">
             <div className="col-up">
-              <Link to="attendence" className="attendance clickable-box">Attendance</Link>
+              <Link to="attendence" className="attendance clickable-box"><ProgressChart/></Link>
               <Link to="feedue" className="feeDue clickable-box">Fee Due</Link>
             </div>
-            <Link to="performance" className="performance clickable-box">Performance</Link>
+            <Link to="performance" className="performance clickable-box"><PerformanceGraph /></Link>
           </div>
-          <div className="calendar">Calendar Widget</div>
+        
+          <CustomCalendar />
+          
         </div>
       )}
 
