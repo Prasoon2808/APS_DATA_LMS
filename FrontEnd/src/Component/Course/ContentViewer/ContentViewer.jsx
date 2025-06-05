@@ -1,6 +1,6 @@
 import React from 'react';
 import './ContentViewer.css'; // Assuming you have some styles for the content viewer
-const BASE_URL = 'https://aps-data-lms-backend.onrender.com';
+import config from '../../../config/config';
 
 export default function ContentViewer({ chapter }) {
   const content = chapter.content;
@@ -9,7 +9,7 @@ export default function ContentViewer({ chapter }) {
     return <p>No content available.</p>;
   }
 
-  const fileUrl = `${BASE_URL}${content.fileUrl}`;
+  const fileUrl = `${config.backendUrl}${content.fileUrl}`;
 
   if (content.fileType.startsWith("video")) {
     return <div className="content"><video src={fileUrl} controls/></div> ;

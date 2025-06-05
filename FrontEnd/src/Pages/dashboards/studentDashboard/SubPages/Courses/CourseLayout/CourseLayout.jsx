@@ -6,6 +6,7 @@ import ContentViewer from '../../../../../../Component/Course/ContentViewer/Cont
 import Details from '../../../../../../Component/Course/Details/Details';
 import AISidebar from '../../../../../../Component/Course/AISidebar/AISidebar'
 import './CourseLayout.css';
+import config from '../../../../../../config/config';
 
 export default function CourseLayout() {
   const { id } = useParams();
@@ -15,7 +16,7 @@ export default function CourseLayout() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   useEffect(() => {
-    axios.get(`https://aps-data-lms-backend.onrender.com/api/courses/${id}`)
+    axios.get(`${config.backendUrl}/api/courses/${id}`)
       .then(res => {
         setCourse(res.data);
         if (res.data.sections?.[0]?.chapters?.[0]) {

@@ -20,6 +20,10 @@
 
 .form-group input[type="text"],
 .form-group input[type="file"],
+.section-block input[type="text"],
+.section-block input[type="file"],
+.chapter-block input[type="text"],
+.chapter-block input[type="file"],
 textarea {
   width: 100%;
   padding: 0.7rem;
@@ -29,7 +33,7 @@ textarea {
   font-size: 1rem;
 }
 
-.form-group textarea {
+textarea {
   min-height: 100px;
   resize: vertical;
 }

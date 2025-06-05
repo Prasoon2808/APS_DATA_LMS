@@ -2,10 +2,11 @@
 import React from 'react'
 import './CourseCard.css'
 import { useNavigate } from 'react-router-dom';
+import config from '../../config/config';
 
 const CourseCard = ({ course }) => {
   const navigate = useNavigate();
-  const url = 'https://aps-data-lms-backend.onrender.com';
+  const url = config.backendUrl;
 
   return (
     <div className="course-card" onClick={() => navigate(`/dashboard/student/courses/${course._id}`)}>

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import LogoutBtn from "../../../Component/logoutbtn"
 import './adminDashboard.css';
+import config from '../../../config/config';
 
 const adminDashboard = () => {
   const [course, setCourse] = useState({
@@ -84,56 +85,73 @@ const adminDashboard = () => {
   };
 
   const handleFileChange = (e, sectionIdx, chapterIdx, type) => {
-    const file = e.target.files[0];
-    const updatedSections = [...course.sections];
-    if (type === 'content') {
-      updatedSections[sectionIdx].chapters[chapterIdx].content = file;
-    } else {
-      updatedSections[sectionIdx].chapters[chapterIdx].resources.push(file);
-    }
-    setCourse({ ...course, sections: updatedSections });
-  };
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const updatedSections = [...course.sections];
+  if (type === 'content') {
+    updatedSections[sectionIdx].chapters[chapterIdx].content = file;
+  } else {
+    updatedSections[sectionIdx].chapters[chapterIdx].resources.push(file);
+  }
+  setCourse({ ...course, sections: updatedSections });
+};
+
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-  
-    formData.append('coverImage', course.coverImage);
-    formData.append('defaultThumbnail', course.defaultThumbnail);
-    formData.append('profileImage', course.author.profileImage);
-  
-    const courseCopy = { ...course };
-    courseCopy.coverImage = undefined;
-    courseCopy.defaultThumbnail = undefined;
-    courseCopy.author = { ...course.author, profileImage: undefined };
-  
-    courseCopy.sections.forEach((section, sIdx) => {
-      section.chapters.forEach((chapter, cIdx) => {
-        if (chapter.content) {
-          formData.append(`sections[${sIdx}].chapters[${cIdx}].content`, chapter.content);
-        }
-        chapter.resources.forEach(file => {
-          formData.append(`sections[${sIdx}].chapters[${cIdx}].resources`, file);
-        });
-        delete chapter.content;
-        delete chapter.resources;
-      });
-    });
-    courseCopy.skillsCovered = course.skillsCovered.filter(skill => skill.trim() !== '');
-    courseCopy.learningObjectives = course.learningObjectives.filter(obj => obj.trim() !== '');
+  e.preventDefault();
+  const formData = new FormData();
 
-    
-  
-    formData.append('course', JSON.stringify(courseCopy));
-  
-    try {
-      const res = await axios.post('https://aps-data-lms-backend.onrender.com/api/courses/create', formData);
-      alert('Course created!');
-    } catch (error) {
-      console.error(error);
-      alert('Failed to create course.');
-    }
-  };
+  formData.append('coverImage', course.coverImage);
+  formData.append('defaultThumbnail', course.defaultThumbnail);
+  formData.append('profileImage', course.author.profileImage);
+
+  const courseCopy = { ...course };
+  courseCopy.coverImage = undefined;
+  courseCopy.defaultThumbnail = undefined;
+  courseCopy.author = { ...course.author, profileImage: undefined };
+
+  courseCopy.sections.forEach((section, sIdx) => {
+    if (!Array.isArray(section.chapters)) return;
+
+    section.chapters.forEach((chapter, cIdx) => {
+      // ✅ Handle content file
+      if (chapter.content instanceof File) {
+        formData.append(`sections[${sIdx}].chapters[${cIdx}].content`, chapter.content);;
+      } else {
+        console.warn(`❌ No valid content for section[${sIdx}] chapter[${cIdx}]`);
+      }
+
+      // ✅ Handle resource files
+      if (Array.isArray(chapter.resources)) {
+        chapter.resources.forEach((file, rIdx) => {
+          if (file instanceof File) {
+            formData.append(`sections[${sIdx}].chapters[${cIdx}].resources`, file);
+           
+          }
+        });
+      }
+
+      delete chapter.content;
+      delete chapter.resources;
+    });
+  });
+
+  courseCopy.skillsCovered = course.skillsCovered.filter(skill => skill.trim() !== '');
+  courseCopy.learningObjectives = course.learningObjectives.filter(obj => obj.trim() !== '');
+
+  formData.append('course', JSON.stringify(courseCopy));
+
+  try {
+    const res = await axios.post(`${config.backendUrl}/api/courses/create`, formData);
+    alert('✅ Course created!');
+  } catch (error) {
+    console.error('❌ Course creation failed:', error.response?.data || error.message);
+    alert('❌ Failed to create course.');
+  }
+};
+
+
   
 
   return (
@@ -236,7 +254,12 @@ const adminDashboard = () => {
                 onChange={(e) => handleChapterChange(sIdx, cIdx, 'description', e.target.value)}></textarea>
 
               <label>Content File:
-                <input type="file" onChange={(e) => handleFileChange(e, sIdx, cIdx, 'content')} />
+                <input
+                  type="file"
+                  accept="video/*,image/*,application/pdf,audio/*,text/plain"
+                  onChange={(e) => handleFileChange(e, sIdx, cIdx, 'content')}
+                />
+
               </label>
 
               <label>Resource Files:

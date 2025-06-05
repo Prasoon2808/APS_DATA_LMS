@@ -1,8 +1,9 @@
 import React from 'react';
 import './Details.css'; 
+import config from '../../../config/config';
 
 export default function Details({ course, chapter }) {
-  const url = 'https://aps-data-lms-backend.onrender.com';
+  const url = config.backendUrl;
   return (
     <div className='Details'>
       <div className="instructorContainer">

@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-  limits: { fileSize: 100 * 1024 * 1024 },
+  limits: { fileSize: 2 * 1024 * 1024 * 1024 },
   fileFilter: function (req, file, cb) {
     const imageOnlyFields = ['coverImage', 'defaultThumbnail', 'profileImage'];
     const ext = path.extname(file.originalname).toLowerCase();

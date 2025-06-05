@@ -3,10 +3,11 @@ import './WaitList.css';
 import { assets } from '../../assets/assets';
 import NavbarWhite from '../../Component/Navbar/NavbarWhite';
 import axios from 'axios';
+import config from '../../config/config';
 
 const Waitlist = () => {
   const [stage, setStage] = useState('waitlist');
-  const url = 'https://aps-data-lms-backend.onrender.com';
+  const url = config.backendUrl;
   const [currentReferralIndex, setCurrentReferralIndex] = useState(0);
 
 

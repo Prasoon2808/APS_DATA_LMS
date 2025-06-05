@@ -4,6 +4,7 @@ import axios from "axios";
 import "./resetPassword.css"; // Add your CSS file for styling
 import { assets } from "../../../assets/assets";
 import NavbarWhite from "../../../Component/Navbar/NavbarWhite";
+import config from "../../../config/config";
 
 const ResetPassword = () => {
   const { token } = useParams();
@@ -19,7 +20,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/reset-password", {
+      const res = await axios.post(`${config.backendUrl}/api/auth/reset-password`, {
         token,
         newPassword: newPass
       });

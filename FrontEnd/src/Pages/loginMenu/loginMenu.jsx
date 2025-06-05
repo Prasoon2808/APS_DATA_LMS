@@ -5,6 +5,7 @@ import NavbarWhite from '../../Component/Navbar/NavbarWhite';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import config from '../../config/config';
 
 const LoginMenu = () => {
   const [selectedOption, setSelectedOption] = useState('student');
@@ -18,7 +19,7 @@ const LoginMenu = () => {
 
   const navigate = useNavigate();
   const {  user, login } = useAuth();
-  const url = "https://aps-data-lms-backend.onrender.com"
+  const url = config.backendUrl;
   useEffect(() => {
     if (user) {
       navigate(`/dashboard/${user.role}`);

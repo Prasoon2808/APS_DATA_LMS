@@ -25,7 +25,7 @@ const CourseSchema = new mongoose.Schema({
   description: String,
   learningObjectives: {
     type: [String], // ✅ Array of strings
-    required: true
+    required: false
   },  
   skillsCovered: {
     type: [String],
