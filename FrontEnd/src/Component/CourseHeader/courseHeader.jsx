@@ -19,30 +19,18 @@ const courseHeader = () => {
             <img src={assets.editIcon} alt="" />
           </div>
         </div>
-        <div className="skillTag_container">
+        <div className="skillTag_container Search">
           <div className="skillTag_item">
             <div className="left">
-              <img src={assets.streakIcon} alt="" />
+      
               <div className="Content">
-                <h2>Weekly Goal</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur</p>
+                <h2>Search</h2>
               </div>
             </div>
-            <img src={assets.editIcon} alt="" />
+            <img src={assets.searchIcon} alt="" />
           </div>
         </div>
-        <div className="skillTag_container">
-          <div className="skillTag_item">
-            <div className="left">
-              <img src={assets.streakIcon} alt="" />
-              <div className="Content">
-                <h2>Weekly Goal</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur</p>
-              </div>
-            </div>
-            <img src={assets.editIcon} alt="" />
-          </div>
-        </div>
+        
       </section>
     </div>
   )

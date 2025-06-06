@@ -1,0 +1,83 @@
+.adminSideBar {
+    width: 17%;
+    transition: width 0.3s ease;
+    height: 92vh;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 3px 4px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 8vh;
+    left: 0;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.adminSideBar.collapsed {
+    width: 70px;
+    padding: 20px 10px;
+}
+
+.adminSideBarMenu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.adminSideBarMenuItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 5px;
+    cursor: pointer;
+    opacity: 0.6;
+    white-space: nowrap;
+}
+.adminSideBarMenuItem:hover {
+    background-color: #b8ee173d;
+    opacity: 1;
+    border-radius: 10px;
+    box-shadow: inset 0 0px 5px rgba(44, 75, 0, 0.761);
+    transition: background-color 0.3s, opacity 0.3s;
+
+}
+.adminSideBarMenuItem.active {
+    background-color: #b8ee17bc;
+    opacity: 1;
+    border-radius: 10px;
+    box-shadow: inset 0 0px 5px rgba(46, 70, 1, 0.876);
+}
+
+.adminSideBarMenuItem img {
+    width: 40px;
+    height: 40px;
+}
+
+.adminSideBarMenuItem span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.adminSideBar.collapsed .adminSideBarMenuItem span {
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+}
+
+.toggleBtn {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+.toggleBtn img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+}

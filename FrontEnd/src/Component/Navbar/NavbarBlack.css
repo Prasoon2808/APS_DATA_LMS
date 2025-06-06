@@ -84,7 +84,7 @@
 
 
 .logout-btn-wrapper button {
-  background-color: #f44336;
+  background-color: #a8cd3d;
   color: white;
   border: none;
   padding: 10px;
@@ -97,7 +97,7 @@
 }
 
 .logout-btn-wrapper button:hover {
-  background-color: #d32f2f;
+  background-color: #698613;
 }
 
 

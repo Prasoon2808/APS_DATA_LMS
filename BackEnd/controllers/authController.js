@@ -18,11 +18,12 @@ exports.login = async (req, res) => {
       { expiresIn: remember ? "30d" : "1h" }
     );
 
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toLocaleDateString('en-CA'); // ✅ Fixed date
     if (!user.streakDates.includes(today)) {
       user.streakDates.push(today);
       await user.save();
     }
+
 
     res.json({
       token,

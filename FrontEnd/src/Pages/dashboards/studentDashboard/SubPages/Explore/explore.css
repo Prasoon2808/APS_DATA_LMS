@@ -36,8 +36,11 @@
 }
 .feeDue{
     width: 50%;
+    background: #a9cd3da4;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
 }
 .performance{
     width: 100%;

@@ -22,6 +22,9 @@ import CourseLayout from './Pages/dashboards/studentDashboard/SubPages/Courses/C
 import GetStarted from './Pages/GetStarted/GetStarted';
 import Waitlist from './Pages/WaitList/WaitList.jsx';
 import ReferralForm from './Pages/WaitList/Referral.jsx';
+import CourseCreationForm from './Pages/dashboards/adminDashboard/SubPages/CourseCreationForm/CourseCreationForm.jsx';
+import WaitlistApproval from './Pages/dashboards/adminDashboard/SubPages/WaitlistApproval/WaitlistApproval.jsx';
+import CourseManagement from './Pages/dashboards/adminDashboard/SubPages/CourseManagement/CourseManagement.jsx';
 
 const App = () => {
   return (
@@ -73,7 +76,15 @@ const App = () => {
             <AdminDashboard />
           </PrivateRoute>
         }
-      />
+      >
+        <Route index element={<Navigate to="waitlist-approval" replace />} />
+        <Route path="course-creation" element={<CourseCreationForm />} />
+        <Route path="waitlist-approval" element={<WaitlistApproval />} />
+        <Route path="course-management" element={<CourseManagement />} />
+        <Route path="user-management" element={<div>User Management</div>} />
+
+        
+      </Route>
 
 
       <Route path="/reset-password/:token" element={<ResetPassword />} />

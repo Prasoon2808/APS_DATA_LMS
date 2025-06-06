@@ -23,14 +23,8 @@ const CourseSchema = new mongoose.Schema({
   title: { type: String, required: true },
   coverImage: String,
   description: String,
-  learningObjectives: {
-    type: [String], // ✅ Array of strings
-    required: false
-  },  
-  skillsCovered: {
-    type: [String],
-    required: false
-  },  
+  learningObjectives: [String],
+  skillsCovered: [String],
   defaultThumbnail: String,
   author: {
     name: String,
@@ -38,6 +32,13 @@ const CourseSchema = new mongoose.Schema({
     profileImage: String,
   },
   sections: [SectionSchema],
+
+  // ✅ Lock feature
+  locked: {
+    type: Boolean,
+    default: false
+  }
 }, { timestamps: true });
+
 
 module.exports = mongoose.model('Course', CourseSchema);

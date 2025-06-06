@@ -14,32 +14,31 @@ function generateRandomPassword(length = 10) {
 }
 
 // Utility: Send email to user
-async function sendWelcomeEmail(email, password) {
+async function sendWaitlistEmail(email) {
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: process.env.EMAIL_USER,      // change
-      pass: process.env.EMAIL_PASS,         // change
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
   const mailOptions = {
     from: '"RatLab Team" <ratlab.edu@gmail.com>',
     to: email,
-    subject: 'Your Waitlist ID is Created',
+    subject: 'You Are on the Waitlist!',
     html: `
       <h3>Welcome to RatLab</h3>
-      <p>Your account has been created successfully.</p>
-      <p><b>Email:</b> ${email}</p>
-      <p><b>Password:</b> ${password}</p>
-      <p>You can now log in using these credentials.</p>
+      <p>You have been successfully added to our waitlist.</p>
+      <p>Your ID and password will be sent to this email once the platform is launched.</p>
       <br/>
-      <p>– RatLab Team</p>
+      <p>- RatLab Team</p>
     `
   };
 
   await transporter.sendMail(mailOptions);
 }
+
 
 // POST /api/waitlist/submit
 router.post('/submit', async (req, res) => {
@@ -53,24 +52,20 @@ router.post('/submit', async (req, res) => {
     const userEmail = user.email.toLowerCase().trim();
     const referralEmails = referrals.map(r => r.email.toLowerCase().trim());
 
-    // 1. Ensure user email is not already in auth table
-    const existingAuth = await AuthUser.findOne({ email: userEmail });
-    if (existingAuth) {
-      return res.status(400).json({ message: 'User email already exists' });
+    const existingUser = await UserData.findOne({ email: userEmail });
+    if (existingUser) {
+      return res.status(400).json({ message: 'User email already exists in waitlist' });
     }
 
-    // 2. Check for duplicate referral emails in input
     const hasDuplicates = new Set(referralEmails).size !== referralEmails.length;
     if (hasDuplicates) {
       return res.status(400).json({ message: 'Duplicate emails found in referral list' });
     }
 
-    // 3. Check if any referral email equals user email
     if (referralEmails.includes(userEmail)) {
       return res.status(400).json({ message: 'Referral email cannot match user email' });
     }
 
-    // 4. Check if referral emails already exist
     const usedReferrals = await Referral.find({ email: { $in: referralEmails } });
     if (usedReferrals.length > 0) {
       return res.status(400).json({
@@ -79,19 +74,8 @@ router.post('/submit', async (req, res) => {
       });
     }
 
-    // 5. Save userData to waitlist DB
-    const newUserData = await UserData.create({ ...user, verified: true });
+    await UserData.create({ ...user, verified: true, role: 'waitlist' });
 
-    // 6. Create auth user with password
-    const randomPassword = generateRandomPassword();
-    const hashedPassword = await bcrypt.hash(randomPassword, 10);
-    await AuthUser.create({
-      email: userEmail,
-      password: hashedPassword,
-      role: 'student'
-    });
-
-    // 7. Save referrals with referrerEmail
     const referralsWithRef = referrals.map(r => ({
       ...r,
       referrerEmail: userEmail,
@@ -99,15 +83,97 @@ router.post('/submit', async (req, res) => {
     }));
     await Referral.insertMany(referralsWithRef);
 
-    // 8. Send welcome email
-    await sendWelcomeEmail(userEmail, randomPassword);
+    await sendWaitlistEmail(userEmail);
 
-    res.status(200).json({ success: true, message: 'Waitlist entry successful' });
+    res.status(200).json({
+      success: true,
+      message: 'You have been added to our waitlist. Your ID and password will be emailed when we launch.'
+    });
 
   } catch (err) {
     console.error('[WAITLIST SUBMIT ERROR]', err);
     res.status(500).json({ message: 'Internal server error', error: err.message });
   }
 });
+
+// Email function for approval
+async function sendApprovalEmail(email, password) {
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
+
+  const mailOptions = {
+    from: '"RatLab Team" <ratlab.edu@gmail.com>',
+    to: email,
+    subject: 'You Have Been Approved!',
+    html: `
+      <h3>Congratulations!</h3>
+      <p>Your waitlist request has been approved.</p>
+      <p><b>Login ID:</b> ${email}</p>
+      <p><b>Password:</b> ${password}</p>
+      <p>Please login to the platform using these credentials.</p>
+      <br/>
+      <p>– RatLab Team</p>
+    `
+  };
+
+  await transporter.sendMail(mailOptions);
+}
+
+// Approve a waitlisted user
+router.post('/waitlist/approve/:id', async (req, res) => {
+  try {
+    const waitlistUser = await UserData.findById(req.params.id);
+    if (!waitlistUser) {
+      return res.status(404).json({ message: 'User not found in waitlist' });
+    }
+
+    const password = generateRandomPassword();
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Copy all waitlist fields to AuthUser
+    await AuthUser.create({
+      email: waitlistUser.email,
+      password: hashedPassword,
+      role: 'student',
+
+      name: waitlistUser.name,
+      gender: waitlistUser.gender,
+      country: waitlistUser.country,
+      countryCode: waitlistUser.countryCode,
+      affiliation: waitlistUser.affiliation,
+      institution: waitlistUser.institution,
+      verified: true,
+    });
+
+    await sendApprovalEmail(waitlistUser.email, password);
+    await UserData.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({
+      success: true,
+      message: 'User approved, credentials sent, and removed from waitlist.'
+    });
+
+  } catch (err) {
+    console.error('[WAITLIST APPROVAL ERROR]', err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+router.get('/waitlist/all', async (req, res) => {
+  try {
+    const users = await UserData.find({ role: 'waitlist' });
+    res.status(200).json(users);
+  } catch (err) {
+    console.error('[GET WAITLIST]', err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 
 module.exports = router;

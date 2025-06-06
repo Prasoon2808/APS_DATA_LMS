@@ -12,7 +12,7 @@ const Waitlist = () => {
 
 
   const [formData, setFormData] = useState({
-    name: '', gender: '', email: '', country: '', countryCode: '+91', affiliation: '', institution: ''
+    name: '', gender: '', email: '', country: '', affiliation: '', institution: ''
   });
 
   const [emailOtpSent, setEmailOtpSent] = useState(false);
@@ -20,7 +20,7 @@ const Waitlist = () => {
   const [emailVerified, setEmailVerified] = useState(false);
 
   const [referrals, setReferrals] = useState([
-    { name: '', gender: '', email: '', country: '', countryCode: '+91', affiliation: '', institution: '', verified: false }
+    { name: '', gender: '', email: '', country: '', affiliation: '', institution: '', verified: false }
   ]);
 
   const handleChange = (e) => {
@@ -97,7 +97,7 @@ const Waitlist = () => {
     setReferrals([
       ...referrals,
       {
-        name: '', gender: '', email: '', country: '', countryCode: '+91',
+        name: '', gender: '', email: '', country: '',
         affiliation: '', institution: '', verified: false
       }
     ]);

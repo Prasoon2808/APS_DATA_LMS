@@ -26,7 +26,13 @@ export default function CourseLayout() {
       });
   }, [id]);
 
-  if (!course || !selectedChapter) return <p>Loading...</p>;
+  if (!course) return <p>Loading course...</p>;
+
+const hasChapters = course.sections?.some(section => section.chapters?.length > 0);
+if (!hasChapters) return <p>This course has no chapters available.</p>;
+
+if (!selectedChapter) return <p>Please select a chapter to view.</p>;
+
 
   return (
     <div className={`courseLayout ${isSidebarCollapsed ? 'collapsed' : ''}`}>

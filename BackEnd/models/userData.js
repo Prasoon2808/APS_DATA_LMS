@@ -5,10 +5,10 @@ const userSchema = new mongoose.Schema({
   gender: String,
   email: { type: String },
   country: String,
-  countryCode: String,
   affiliation: String,
   institution: String,
-  verified: Boolean
+  verified: Boolean,
+  role: { type: String, default: 'waitlist' },
 }, { timestamps: true });
 
 module.exports = mongoose.model('User Data', userSchema);

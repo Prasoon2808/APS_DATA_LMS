@@ -55,7 +55,7 @@ const PerformanceGraph = () => {
         <PolarGrid />
         <PolarAngleAxis dataKey="subject" />
         <PolarRadiusAxis />
-        <Radar name="Score" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+        <Radar name="Score" dataKey="A" stroke="#a8cd3d" strokeWidth={3} fill="#a8cd3d" fillOpacity={0.6} />
       </RadarChart>
 
       {/* Right Legend */}

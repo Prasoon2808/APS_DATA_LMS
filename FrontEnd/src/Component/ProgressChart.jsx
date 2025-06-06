@@ -6,7 +6,7 @@ const data = [
   { name: 'Watched', value: 40 },
 ];
 
-const COLORS = ['#FF6384', '#4CAF50'];
+const COLORS = ['#777777', '#a8cd3d'];
 
 const ProgressChart = () => {
   const total = data.reduce((sum, item) => sum + item.value, 0);

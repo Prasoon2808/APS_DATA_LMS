@@ -28,21 +28,27 @@
     border-radius: 10px;
     margin-bottom: 10px;
 }
+.courseHeader .skillTag .skillTag_container.Search{
+    width: 65%;
+    height: 50%;
+    border-radius: 50px;
+}
 .courseHeader .skillTag .skillTag_item{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 0 20px;
     align-items: center;
 }
 .courseHeader .skillTag .skillTag_container .skillTag_item .left{
     display: flex;
     align-items: center;
+    
 
 }
 .courseHeader .skillTag .skillTag_item img{
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 }
 .courseHeader .skillTag .skillTag_item h2{
     font-size: 1.1rem;

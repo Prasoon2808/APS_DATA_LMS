@@ -5,7 +5,6 @@ const referralSchema = new mongoose.Schema({
   gender: String,
   email: { type: String, required: true, unique: true },
   country: String,
-  countryCode: String,
   affiliation: String,
   institution: String,
   verified: { type: Boolean, default: false },
