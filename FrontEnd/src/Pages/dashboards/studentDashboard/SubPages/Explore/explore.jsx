@@ -38,8 +38,10 @@ const Explore = () => {
             </div>
             <Link to="performance" className="performance clickable-box"><PerformanceGraph /></Link>
           </div>
-        
-          <CustomCalendar />
+          <div className="col-left">
+            <CustomCalendar />
+            <div className="hotDeals">News & Updates</div>
+          </div>
           
         </div>
       )}

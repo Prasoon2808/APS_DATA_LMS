@@ -12,6 +12,14 @@
     flex-direction: column;
     gap: 25px;
 }
+.explore .col-left{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
 .explore .col-right .col-up{
     width: 100%;
     height: 40%;
@@ -37,11 +45,15 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
 }
-.calendar{
-    width: 30%;
-    height: 100%;
+.explore .hotDeals{
+    width: 100%;
+    height: 60%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 .breadcrumb{
     margin-left: 25px;
