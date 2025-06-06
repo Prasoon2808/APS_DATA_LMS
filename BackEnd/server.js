@@ -11,6 +11,8 @@ const waitlistRoutes = require('./routes/waitlistRoutes');
 const referralDemoRoute = require('./routes/referralDemoRoutes');
 const path = require('path');
 
+const uploadRoot = process.env.UPLOAD_ROOT || path.join(__dirname, 'uploads');
+
 dotenv.config();
 connectDB();
 
@@ -31,8 +33,8 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/uploads/images', express.static(path.join(__dirname, 'uploads/images')));
+app.use('/uploads', express.static(uploadRoot));
+app.use('/uploads/images', express.static(path.join(uploadRoot, 'images')));
 
 app.use("/api/auth", authRoutes);
 app.use('/api/courses', courseRoutes);
