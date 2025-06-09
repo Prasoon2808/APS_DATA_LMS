@@ -9,6 +9,9 @@ const Waitlist = () => {
   const [stage, setStage] = useState('waitlist');
   const url = config.backendUrl;
   const [currentReferralIndex, setCurrentReferralIndex] = useState(0);
+  const [otpCooldown, setOtpCooldown] = useState(false);
+  const [cooldownTime, setCooldownTime] = useState(20);
+
 
 
   const [formData, setFormData] = useState({
@@ -34,11 +37,30 @@ const Waitlist = () => {
   };
 
   const sendEmailOtp = async () => {
+    if (otpCooldown) {
+      alert(`Please wait ${cooldownTime} seconds before resending the OTP.`);
+      return;
+    }
+    
     try {
       const res = await axios.post(`${url}/api/send-email-otp`, { email: formData.email });
       if (res.data.sent) {
         setEmailOtpSent(true);
+        setOtpCooldown(true);
+        setCooldownTime(20);
         alert('Email OTP sent successfully');
+
+        // Start countdown
+        const interval = setInterval(() => {
+          setCooldownTime(prev => {
+            if (prev <= 1) {
+              clearInterval(interval);
+              setOtpCooldown(false);
+              return 20;
+            }
+            return prev - 1;
+          });
+        }, 1000);
       } else {
         alert('Failed to send OTP');
       }
@@ -46,6 +68,8 @@ const Waitlist = () => {
       alert('Error sending OTP');
     }
   };
+
+
 
   const verifyEmailOtp = async () => {
     try {
@@ -156,7 +180,7 @@ const Waitlist = () => {
                     <label>Email ID*</label>
                     <input type="email" name="email" value={formData.email} onChange={handleChange} required />
                   </div>
-                  <button type='button' className='loginBtn' onClick={sendEmailOtp}>Send OTP</button>
+                  <button type='button' className='loginBtn' onClick={sendEmailOtp} disabled={otpCooldown} style={{ opacity: otpCooldown ? 0.7 : 1, cursor: otpCooldown ? 'not-allowed' : 'pointer' }}>{otpCooldown ? `Wait ${cooldownTime}s` : 'Send OTP'}</button>
                 </div>
                 {emailOtpSent && (
                   <div className="horzBlock">
