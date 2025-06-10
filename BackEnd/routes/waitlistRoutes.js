@@ -57,32 +57,8 @@ router.post('/submit', async (req, res) => {
       return res.status(400).json({ message: 'User email already exists in waitlist' });
     }
 
-    const hasDuplicates = new Set(referralEmails).size !== referralEmails.length;
-    if (hasDuplicates) {
-      return res.status(400).json({ message: 'Duplicate emails found in referral list' });
-    }
-
-    if (referralEmails.includes(userEmail)) {
-      return res.status(400).json({ message: 'Referral email cannot match user email' });
-    }
-
-    const usedReferrals = await Referral.find({ email: { $in: referralEmails } });
-    if (usedReferrals.length > 0) {
-      return res.status(400).json({
-        message: 'Referral email(s) already registered: ' +
-          usedReferrals.map(r => r.email).join(', ')
-      });
-    }
 
     await UserData.create({ ...user, verified: true, role: 'waitlist' });
-
-    const referralsWithRef = referrals.map(r => ({
-      ...r,
-      referrerEmail: userEmail,
-      verified: false
-    }));
-    await Referral.insertMany(referralsWithRef);
-
     await sendWaitlistEmail(userEmail);
 
     res.status(200).json({

@@ -63,10 +63,8 @@ const Waitlist = () => {
     if (!emailVerified) return alert('Please verify your email first.');
 
     try {
-      const check = await axios.post(`${url}/api/check-email-exists`, { email: formData.email });
-      if (check.data.exists) return alert('This email is already on the waitlist.');
 
-      const res = await axios.post(`${url}/api/submit-waitlist`, { user: formData });
+      const res = await axios.post(`${url}/api/submit`, { user: formData });
       if (res.data.success) {
         alert('Successfully added to waitlist!');
         window.location.href = '/thank-you';
