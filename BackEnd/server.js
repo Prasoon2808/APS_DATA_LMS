@@ -10,6 +10,7 @@ const emailOtpRoutes = require('./routes/emailOtpRoutes');
 const waitlistRoutes = require('./routes/waitlistRoutes');
 const referralDemoRoute = require('./routes/referralDemoRoutes');
 const path = require('path');
+const waitlistDemoRoutes = require('./routes/waitlistDemoRoutes');
 
 dotenv.config();
 connectDB();
@@ -39,6 +40,8 @@ app.use('/api/courses', courseRoutes);
 app.use('/api', emailOtpRoutes);
 app.use('/api', waitlistRoutes);
 app.use('/api', referralDemoRoute);
+app.use('/api', waitlistDemoRoutes);
+
 
 app.get('/', (req, res) => {
   res.send('APS Backend API is working!');
