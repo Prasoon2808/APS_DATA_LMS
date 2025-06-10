@@ -9,7 +9,7 @@ const Waitlist = () => {
   const url = config.backendUrl;
 
   const [formData, setFormData] = useState({
-    name: '', gender: '', email: '', country: '', affiliation: '', institution: ''
+    name: '', gender: '', email: '', country: '', phone: '', institution: ''
   });
 
   const [emailVerified, setEmailVerified] = useState(false);
@@ -122,20 +122,16 @@ const Waitlist = () => {
                   <input type='text' name="country" value={formData.country} onChange={handleChange} />
                 </div>
                 <div className="gender">
-                  <label>Affiliation*</label>
-                  <select name="affiliation" value={formData.affiliation} onChange={handleChange} required>
-                    <option value="">Select</option>
-                    <option value="college">College</option>
-                    <option value="organization">Organization</option>
-                  </select>
+                  <label>Phone No.*</label>
+                  <input type='number' name="phone" value={formData.phone} onChange={handleChange} required />
+
                 </div>
               </div>
-              {formData.affiliation && (
-                <div className="gender">
-                  <label>Enter your {formData.affiliation === 'college' ? 'College' : 'Organization'}</label>
-                  <input name="institution" value={formData.institution} onChange={handleChange} required />
-                </div>
-              )}
+              <div className="gender">
+                <label>Enter your College*</label>
+                <input name="institution" value={formData.institution} onChange={handleChange} required />
+              </div>
+              
               <button
                 type='button'
                 className='loginBtn'

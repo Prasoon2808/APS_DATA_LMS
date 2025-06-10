@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   gender: String,
   email: { type: String },
   country: String,
-  affiliation: String,
+  phone: Number,
   institution: String,
   verified: Boolean,
   role: { type: String, default: 'waitlist' },
