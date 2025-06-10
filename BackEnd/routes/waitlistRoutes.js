@@ -42,15 +42,14 @@ async function sendWaitlistEmail(email) {
 
 // POST /api/waitlist/submit
 router.post('/submit', async (req, res) => {
-  const { user, referrals } = req.body;
+  const { user } = req.body;
 
-  if (!user || !referrals || referrals.length !== 5) {
+  if (!user) {
     return res.status(400).json({ message: 'Incomplete form submission' });
   }
 
   try {
     const userEmail = user.email.toLowerCase().trim();
-    const referralEmails = referrals.map(r => r.email.toLowerCase().trim());
 
     const existingUser = await UserData.findOne({ email: userEmail });
     if (existingUser) {
