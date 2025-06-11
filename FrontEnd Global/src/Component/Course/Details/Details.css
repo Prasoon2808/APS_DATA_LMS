@@ -1,0 +1,147 @@
+.Details{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2rem;
+}
+.Details .instructorContainer{
+    width: 50%;
+    border-right: 1px solid #ccc;
+    margin-bottom: 2rem;
+
+}
+.Details .instructorDetails{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+.Details .instructorDetails img{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.Details .instructorDetails .instructorInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    color: #333;
+
+}
+.Details .instructorDetails .instructorInfo a{
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: #007bff;
+    border: 2px solid #007bff;
+    border-radius: 20px;
+    
+}
+.Details .instructorDetails .instructorInfo a:hover{
+    background-color: #007bff;
+    color: #fff;
+}
+.Details .instructorContainer h3{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #a1a2a2;
+}
+.Details .chapterDetails{
+    width: 100%;
+}
+.Details .chapterDetails h2{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+.Details .chapterDetails p{
+    font-size: 1rem;
+    color: #383838;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+.Details .courseDetails{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.Details .courseDetails h1{
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.7rem;
+}
+.Details .courseDetails p{
+    font-size: 1rem;
+    color: #383838;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+.Details .courseDetails h2{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+.Details .objectives{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.Details .objectives h3{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+}
+.Details .objectives ul{
+    list-style: none;
+    margin-bottom: 1rem;
+}
+.Details .objectives ul li{
+    font-size: 1rem;
+    color: #383838;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+}
+.Details .objectives ul li span{
+    color: #92cd2a;
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+.Details .skills{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.Details .skills h3{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+}
+.Details .skills ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.Details .skills ul li{
+    font-size: 1rem;
+    color: #383838;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    border: 1px solid #92cd2a;
+    cursor: pointer;
+}
+.Details .skills ul li:hover{
+    background-color: #92cd2a;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    
+}
+

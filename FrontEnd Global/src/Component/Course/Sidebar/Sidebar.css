@@ -1,0 +1,80 @@
+.sidebar {
+    width: 25%;
+    position: fixed;
+    left: 70px; /* after main sidebar */
+    top: 8vh;
+    background-color: #252627;
+    height: 100vh;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+  
+.sidebar.collapsed {
+    width: 70px;
+    background-color: #fff;
+    box-shadow: none;
+}
+
+.toggleSidebarBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: white;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+}
+.toggleSidebarBtn img{
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar h3 {
+    color: #fff;
+    font-size: 24px;
+    padding: 20px;
+    width: 100%;
+    border-bottom: #ffffff62 solid 1px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .section-title {
+    color: #fff;
+    font-size: 18px;
+    padding: 15px 20px;
+    border-bottom: #ffffff3e solid 1px;
+    white-space: nowrap;
+}
+
+.sidebar li {
+    padding: 15px 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.sidebar li:hover {
+    background-color: #3a3b3c;
+}
+
+.sidebar li.active {
+    background-color: #4a4b4c;
+}
+
+/* Hide content text when collapsed */
+.sidebar.collapsed .section-title,
+.sidebar.collapsed li,
+.sidebar.collapsed h3 {
+    display: none;
+}

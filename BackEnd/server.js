@@ -16,7 +16,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const allowedOrigins = ['https://edu-lab.in', 'http://localhost:5173'];
+const allowedOrigins = ['https://edu-lab.in', 'http://localhost:5173', 'https://edu-lab.co.in'];
 
 app.use(cors({
   origin: function (origin, callback) {

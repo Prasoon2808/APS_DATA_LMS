@@ -1,0 +1,103 @@
+.nav-black{
+    height: 7vh;
+    width: 100%;
+    padding: 2% 1.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    position: sticky;
+    background-color: #ffffff;
+}
+.nav-black .logo{
+    width: 18%;
+}
+.leftBar{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+    height: 100%;
+}
+.nav-black .streakIcon{
+    width: 5%;
+    margin-right: 2%;
+}
+.nav-black .profileIcon {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 2%;
+    cursor: pointer;
+}
+
+.nav-black .bellIcon{
+    width: 4.5%;
+    margin-right: 2%;
+}
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 8px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  z-index: 1000;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.dropdown-item {
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+.logout-btn-wrapper {
+  padding: 12px 20px;
+  margin-top: 5px;
+  border-top: 1px solid #eee;
+  background-color: transparent; /* Prevent hover coloring */
+}
+
+
+.logout-btn-wrapper button {
+  background-color: #a8cd3d;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.logout-btn-wrapper button:hover {
+  background-color: #698613;
+}
+
+

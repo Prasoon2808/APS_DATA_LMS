@@ -15,6 +15,11 @@ import arrowIcon from './Sidebar/arrowIcon.png';
 import crossIcon from './Sidebar/crossIcon.png';
 import userIcon from './login/user.png';
 import phoneIcon from './login/phone-call.png';
+import tickAnimation from './AnimationGIF.gif';
+import loadinganimation from './loadingAnimation.gif'
+import thankuhAnimation from './thankuhAnimation.gif';
+import greetingAnimation from './AnimationGreeting.gif';
+import crossIconWhite from './Sidebar/crossIconWhite.png';
 export const assets = {
     logo,
     logoWhite,
@@ -32,5 +37,11 @@ export const assets = {
     arrowIcon,
     crossIcon,
     userIcon,
-    phoneIcon
+    phoneIcon,
+    tickAnimation,
+    loadinganimation,
+    thankuhAnimation,
+    greetingAnimation,
+    crossIconWhite
+
 }

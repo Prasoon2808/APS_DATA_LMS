@@ -1,0 +1,62 @@
+.courseHeader{
+    width: 100%;
+    height: 28%;
+    padding: 40px 40px 0 40px;
+    background-color: #ffffff;
+}
+.courseHeader .heading{
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+.courseHeader .skillTag{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+
+}
+.courseHeader .skillTag .skillTag_container{
+    width: 31%;
+    height: 60%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: transparent;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.courseHeader .skillTag .skillTag_container.Search{
+    width: 65%;
+    height: 50%;
+    border-radius: 50px;
+}
+.courseHeader .skillTag .skillTag_item{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+}
+.courseHeader .skillTag .skillTag_container .skillTag_item .left{
+    display: flex;
+    align-items: center;
+    
+
+}
+.courseHeader .skillTag .skillTag_item img{
+    width: 40px;
+    height: 40px;
+}
+.courseHeader .skillTag .skillTag_item h2{
+    font-size: 1.1rem;
+    font-weight: 500;
+    
+}
+.courseHeader .skillTag .skillTag_item p{
+    font-size: 0.8rem;
+    font-weight: 300;
+   
+}

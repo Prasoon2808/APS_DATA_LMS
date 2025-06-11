@@ -1,0 +1,65 @@
+.explore{
+    width: 100%;
+    height: 100%;
+    padding: 10px 25px 20px 25px;
+    display: flex;
+    gap: 30px;
+}
+.explore .col-right{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.explore .col-left{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.explore .col-right .col-up{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    gap: 25px;
+}
+.attendance{
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.feeDue{
+    width: 50%;
+    background: #a9cd3da4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+}
+.performance{
+    width: 100%;
+    height: 60%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+.explore .hotDeals{
+    width: 100%;
+    height: 60%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.breadcrumb{
+    margin-left: 25px;
+    margin-top: 10px;
+    font-size: 1.3rem;
+}

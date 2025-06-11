@@ -1,0 +1,16 @@
+.courseLayout {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-content {
+  flex: 3;
+  margin-left: 26%;
+  margin-right: 26.2%;
+  transition: margin-left 0.3s ease;
+}
+
+/* When sidebar is collapsed */
+.courseLayout.collapsed .main-content {
+  margin-left:70px; /* collapsed sidebar width */
+}
