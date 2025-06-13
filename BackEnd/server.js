@@ -11,6 +11,7 @@ const waitlistRoutes = require('./routes/waitlistRoutes');
 const referralDemoRoute = require('./routes/referralDemoRoutes');
 const path = require('path');
 const waitlistDemoRoutes = require('./routes/waitlistDemoRoutes');
+const faqRoutes = require('./routes/FAQRoutes')
 
 dotenv.config();
 connectDB();
@@ -41,6 +42,7 @@ app.use('/api', emailOtpRoutes);
 app.use('/api', waitlistRoutes);
 app.use('/api', referralDemoRoute);
 app.use('/api', waitlistDemoRoutes);
+app.use('/api/faq', faqRoutes);
 
 
 app.get('/', (req, res) => {

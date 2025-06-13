@@ -7,6 +7,7 @@ const referralSchema = new mongoose.Schema({
   country: String,
   affiliation: String,
   institution: String,
+  referralCode:{type: String},
   verified: { type: Boolean, default: false },
   referrerEmail: { type: String, required: true } // links to user.email
 }, { timestamps: true });

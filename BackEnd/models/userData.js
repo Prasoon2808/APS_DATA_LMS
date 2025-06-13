@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   phone: Number,
   institution: String,
   verified: Boolean,
+  refCode: String,
   role: { type: String, default: 'waitlist' },
 }, { timestamps: true });
 

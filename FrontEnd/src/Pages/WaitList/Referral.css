@@ -1,0 +1,186 @@
+.loginPage {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.loginPage .coverImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.referral {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.referral h1{
+    position: absolute;
+    left: center;
+    font-size: 2.5rem;
+    text-align: center;
+    top: 8%;
+    color: white;
+    width: 45%;
+    font-weight: 400;
+    text-shadow: #88aa22 0px 0px 10px, #88aa22 0px 0px 20px, #88aa22 0px 0px 30px;
+    line-height: 1;
+    margin-top: 20px;
+    
+}
+
+.glass-container.referral-scroll {
+  position: relative;
+  right: center;
+  width: 800px;
+  height: 520px;
+  padding: 2rem;
+  background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.35));
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.642);
+  color: white;
+  text-align: center;
+  overflow-y: auto;
+  max-height: 520px;
+  margin-top: 40px;
+}
+
+.referral .glass-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  color: white;
+}
+
+.referral .loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.referral-entry {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.referral-entry p {
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.referral-entry p:hover {
+  color: whitesmoke;
+}
+.referral .glass-container.referral-scroll::-webkit-scrollbar{
+  display: none;
+}
+
+.referral .glass-container .gender {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.869);
+  border-radius: 10px;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.referral .glass-container .gender label {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.referral .glass-container input[type="text"],
+.referral .glass-container input[type="email"] {
+  width: 100%;
+  font-size: 1.1rem;
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
+.referral-entry input::placeholder {
+  color: white;
+}
+
+.referral .loginBtn {
+  width: 50%;
+  height: 55px;
+  font-size: 1.1rem;
+  background-color: #a8cd3d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background-color 0.2s ease;
+}
+
+.loginBtn:hover {
+  background-color: #88aa22;
+  color: white;
+}
+
+.referral .glass-container input:focus {
+  outline: none;
+  border: none;
+}
+
+.referral .glass-container input:focus::placeholder {
+  color: transparent;
+}
+.referral-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.referral-header:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.referral-header svg {
+  font-size: 1rem;
+  color: white;
+}
+
+

@@ -1,0 +1,103 @@
+/* FAQ.css */
+.faq-container {
+  padding: 2rem;
+  background: url('../../assets/login/bgimg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #333;
+  max-height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.faq-container h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  margin-top: 40px;
+}
+.faq-container p{
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+.faq-container p span{
+    font-weight: 700;
+}
+
+
+.faq-list .faq-search {
+  width: 80%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  outline: none;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  margin-bottom: 2rem;
+}
+
+.faq-list {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  width: 88%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  position: relative;
+}
+.faq-list::-webkit-scrollbar{
+    display: none;
+}
+.question-container{
+    width: 100%;
+    display: flex;
+    
+    justify-content: center;
+    gap: 40px;
+}
+.faq-container .addBtn{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 43px;
+    right: 13%;
+    cursor: pointer;
+}
+.q-c-left{
+    width: 50%;
+}
+.q-c-right{
+    width: 50%;
+}
+.faq-item {
+  border-bottom: 1px solid #eee;
+  padding: 1rem 1rem;
+  width: 100%;
+}
+
+.faq-question {
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-answer {
+  margin-top: 0.5rem;
+  color: #666;
+  line-height: 1.6;
+}

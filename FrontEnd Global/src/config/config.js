@@ -1,6 +1,6 @@
 
 const config = {
-  backendUrl: "https://api.edu-lab.in", // 👈 yeh change karne se sab jagah effect hoga
+  backendUrl: "http://localhost:5000", // 👈 yeh change karne se sab jagah effect hoga
 };
 
 export default config;

@@ -4,7 +4,9 @@
     padding: 2% 1.5%;
     display: flex;
     align-items: center;
+    position: fixed;
+    z-index: 999;
 }
 .nav .logo{
-    width: 18%;
+    width: 15%;
 }

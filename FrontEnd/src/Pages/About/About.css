@@ -1,0 +1,393 @@
+.section-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  background: url('../../assets/login/bgimg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.section-wrapper::-webkit-scrollbar {
+display: none;               
+}
+
+.section {
+    width: 100vw;
+    height: 100vh;
+    flex: none;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:white;
+}
+.section h2{
+    font-size: 3rem;
+    font-weight: 700;
+    margin-top: 40px;
+}
+.section p{
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+.section1 .box-container{
+    width: 85%;
+    display: flex;
+    gap: 10px;
+    height: 70vh;
+    margin-top: 20px;
+}
+.section1 .box{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 15px;
+    
+}
+.section1 .box1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem 1rem 1rem;
+}
+.section1 .box1 h1{
+    color: #a8cd3d;
+    font-size: 5rem;
+    font-weight: 600;  
+}
+.section1 .box1 h3{
+    color: black;
+    font-size: 1.55rem;
+    margin-top: 10px;
+    font-weight: 600;  
+}
+.section1 .box1 p{
+    color: black;
+    font-size: 1.47rem;
+    margin-top: 3px;
+}
+.section1 .box2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem 1rem 1rem;
+}
+.section1 .box2 h1{
+    color: #a8cd3d;
+    font-size: 5.8rem;
+    font-weight: 600;  
+}
+.section1 .box2 h3{
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 600;  
+}
+.section1 .box2 p{
+    color: black;
+    font-size: 1.3rem;
+    margin-top: 50px;
+    text-align: justify;
+}
+.section1 .box3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.section1 .box3 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.section1 .box4{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem 1rem 1rem;
+}
+.section1 .box4 h1{
+    color: #a8cd3d;
+    font-size: 5.5rem;
+    font-weight: 600;  
+}
+.section1 .box4 h3{
+    color: black;
+    font-size: 1.8rem;
+    font-weight: 600;  
+}
+.section1 .box4 p{
+    color: black;
+    font-size: 1.5rem;
+    margin-top: 70px;
+}
+.section1 .box5{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem 1rem 1rem;
+}
+.section1 .box5 h1{
+    color: #a8cd3d;
+    font-size: 5.5rem;
+    font-weight: 600;  
+}
+.section1 .box5 h3{
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 600;  
+}
+.section1 .box6{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.section1 .box6 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.section1 .box7{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem 1rem 1rem;
+}
+.section1 .box7 h1{
+    color: #a8cd3d;
+    font-size: 4.5rem;
+    font-weight: 600;  
+}
+.section1 .box7 h3{
+    color: black;
+    font-size: 1.53rem;
+    font-weight: 600;  
+}
+.section1 .box7 p{
+    color: black;
+    font-size: 1.3rem;
+}
+
+.section1 .box-container .left{
+    width: 47%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.section1 .box-container .left .upper{
+    width: 100%;
+    height: 40%;
+}
+.section1 .box-container .left .lower{
+    width: 100%;
+    height: 65%;
+    display: flex;
+    gap: 10px;
+}
+.section1 .box-container .left .lower .lower-left{
+    width: 45%;
+    height: 100%;
+}
+
+
+.section1 .box-container .left .lower .lower-right{
+    width: 55%;
+    height: 100%;
+}
+
+
+.section1 .box-container .right{
+    width: 53%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.section1 .box-container .right .upper{
+    width: 100%;
+    height: 70%;
+    display: flex; 
+    gap: 10px;
+}
+.section1 .box-container .right .upper .upper-left{
+    width: 45%;
+    height: 100%;
+}
+.section1 .box-container .right .upper .upper-right{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.section1 .box-container .right .upper .upper-right .u-r-up{
+    width: 100%;
+    height: 50%;
+}
+.section1 .box-container .right .upper .upper-right .u-r-low{
+    width: 100%;
+    height: 50%;
+}
+
+
+.section1 .box-container .right .lower{
+    width: 100%;
+    height: 30%;
+}
+.section2 .box-container{
+    width: 85%;
+    display: flex;
+    gap: 20px;
+    height: 70vh;
+    margin-top: 50px;
+}
+.section2 .box{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 15px;
+    padding: 1rem;
+}
+.section2 .box-container .left{
+    width: 47%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.section2 .box-container .left .upper{
+    width: 100%;
+    height: 35%;
+}
+.section2 .box-container .left .lower{
+    width: 100%;
+    height: 65%;
+    display: flex;
+    gap: 20px;
+}
+.section2 .box-container .left .lower .lower-left{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.section2 .box-container .left .lower .lower-left .l-l-up{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    gap: 20px;
+}
+.section2 .box-container .left .lower .lower-left .l-l-up .l-l-u-left{
+    width: 50%;
+    height: 100%;
+}
+.section2 .box-container .left .lower .lower-left .l-l-up .l-l-u-right{
+    width: 50%;
+    height: 100%;
+}
+
+.section2 .box-container .left .lower .lower-left .l-l-low{
+    width: 100%;
+    height: 60%;
+}
+
+.section2 .box-container .left .lower .lower-right{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.section2 .box-container .left .lower .lower-right .l-r-up{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    gap: 20px;
+}
+.section2 .box-container .left .lower .lower-right .l-r-up .l-r-u-left{
+    width: 50%;
+    height: 100%;
+}
+.section2 .box-container .left .lower .lower-right .l-r-up .l-r-u-right{
+    width: 50%;
+    height: 100%;
+}
+.section2 .box-container .left .lower .lower-right .l-r-low{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    gap: 20px;
+}
+.section2 .box-container .left .lower .lower-right .l-r-low .l-r-l-left{
+    width: 50%;
+    height: 100%;
+}
+.section2 .box-container .left .lower .lower-right .l-r-low .l-r-l-right{
+    width: 50%;
+    height: 100%;
+}
+
+
+
+
+.section2 .box-container .right{
+    width: 53%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.section2 .box-container .right .upper{
+    width: 100%;
+    height: 70%;
+    display: flex; 
+    gap: 20px;
+}
+.section2 .box-container .right .upper .upper-left{
+    width: 40%;
+    height: 100%;
+}
+.section2 .box-container .right .upper .upper-right{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.section2 .box-container .right .upper .upper-right .u-r-up{
+    width: 100%;
+    height: 50%;
+}
+.section2 .box-container .right .upper .upper-right .u-r-low{
+    width: 100%;
+    height: 50%;
+}
+
+
+.section2 .box-container .right .lower{
+    width: 100%;
+    height: 30%;
+}

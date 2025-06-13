@@ -27,6 +27,8 @@ import WaitlistApproval from './Pages/dashboards/adminDashboard/SubPages/Waitlis
 import CourseManagement from './Pages/dashboards/adminDashboard/SubPages/CourseManagement/CourseManagement.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import About from './Pages/About/About.jsx';
+import FAQ from './Pages/FAQ/FAQ.jsx';
 
 
 const App = () => {
@@ -37,6 +39,8 @@ const App = () => {
         <Route path="/login" element={<LoginMenu />} />
         <Route path='/waitlist' element={<Waitlist />} />
         <Route path='/waitlist/refer' element={<ReferralForm />} />
+        <Route path='/about' element={<About/>} />
+        <Route path='/faqs' element={<FAQ />} />
         
         <Route
           path="/dashboard/student"

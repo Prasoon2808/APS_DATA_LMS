@@ -8,7 +8,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    top: -12vh;
 }
 .waitList .coverImg{
     position: absolute;
@@ -33,6 +32,7 @@
     border: 2px solid rgba(255, 255, 255, 0.642);
     color: white;
     text-align: center;
+    margin-top: 50px;
 }
 .waitList .glass-container h2{
     font-size: 2.8rem;
@@ -51,6 +51,7 @@
     font-weight: 400;
     text-shadow: #88aa22 0px 0px 10px, #88aa22 0px 0px 20px, #88aa22 0px 0px 30px;
     line-height: 1;
+    margin-top: 20px;
     
 }
 .waitList h1 span{
@@ -61,6 +62,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    gap: 0px;
 }
 .waitList .loginForm p{
     font-size: 1.05rem;
@@ -116,6 +118,9 @@
     border: 1px solid rgba(255, 255, 255, 0.869);
     border-radius: 10px;
     padding-left: 1rem;
+}
+.waitList .glass-container .gender.code{
+    width: 50%;
 }
 .waitList .glass-container .gender label {
     margin: 0;
@@ -199,7 +204,13 @@
     font-size: 1.5rem;
     font-weight: 300;
     color: #ffffff;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+}
+.waitList .successMessage h6{
+    font-size: 1.2rem;
+    font-weight: 200;
+    color: #ffffff;
+    width: 75%;
 }
 .waitList .successMessage img{
     width: 150px;
@@ -218,6 +229,7 @@
     align-items: center;
     gap: 1.5rem;
     padding: 0 1rem;
+    margin-top: 2rem;
 }
 .waitList .successMessage .joinbtn{
     width: 40%;

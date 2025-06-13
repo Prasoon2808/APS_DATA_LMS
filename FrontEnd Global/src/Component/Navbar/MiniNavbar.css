@@ -1,0 +1,71 @@
+/* Change from vertical to horizontal */
+.right-navbar {
+  position: fixed;
+  top: 10px;                   /* Move to top */
+  left: 100%;                  /* Center horizontally */
+  transform: translateX(-100%); 
+  display: flex;
+  flex-direction: row;         /* 🔁 Make it horizontal */
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 8px 0px;
+  border-radius: 0 0 16px 16px;
+  z-index: 999;
+  width: 300px;                 /* Let content decide width */
+  height: 70px;
+  
+}
+
+
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  text-decoration: none;
+  color: #888;
+  transition: all 0.3s ease;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.nav-icon {
+  width: 50px;
+  height: 50px;
+  transition: all 0.3s ease;
+  padding: 8px;
+  transform: translateY(29%);
+}
+
+.nav-link.active .nav-icon {
+  background: transparent;
+  border: 2px solid #a8cd3d;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-label {
+  background: #a8cd3d;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  white-space: nowrap;
+  text-align: center;
+  margin-right: 8px;
+  opacity: 0;
+  transform: translate(5px, 10px);
+
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-link:hover .nav-label {
+  opacity: 1;
+  transform: translate(5px, 15px);
+}

@@ -3,6 +3,7 @@ import './GetStarted.css';
 import { assets } from '../../assets/assets';
 import NavbarWhite from '../../Component/Navbar/NavbarWhite';
 import { useNavigate } from 'react-router-dom';
+import MiniNavbar from '../../Component/Navbar/MiniNavbar';
 
 const GetStarted = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const GetStarted = () => {
     if (isIndian) {
       setShowPopup(false); // update with actual Indian student route
     } else {
-      navigate('/international'); // update with actual non-Indian route
+      window.location.replace('https://edu-lab.co.in'); // update with actual non-Indian route
     }
   };
 
@@ -24,7 +25,7 @@ const GetStarted = () => {
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-box">
-            <h2>Welcome to Edu<span>[LAB]</span> !</h2>
+            <h2>Welcome to EDU<span>[LAB]</span> !</h2>
             <img src={assets.greetingAnimation} alt="" />
             <p>Please select your profile to continue:</p>
             <h3>Are you an Indian student or an international student?</h3>
@@ -37,8 +38,10 @@ const GetStarted = () => {
       )}
 
       <div className='getStarted'>
-        <img src={assets.APSbg} alt="" />
-        <h1>Parameters.<br />Algorithms.<br />Logics</h1>
+
+        <img className='coverImg' src={assets.APSbg} alt="" />
+        <MiniNavbar />
+        <h1>Generations.<br />Parameters.<br />Algorithms.</h1>
         <div className="glass-container">
           <div className="glass-inner">
             <form className="loginForm front">
@@ -46,6 +49,7 @@ const GetStarted = () => {
               <h3>TO THE FUTURE OF LEARNING!</h3>
               <button className='loginBtn' type="button" onClick={() => navigate('/login')}>Login</button>
               <button className='waitlistBtn' type="button" onClick={() => navigate('/waitlist')}>Join The Waitlist</button>
+              <p className='getpara'>Free Platform For All Parametric Minds</p>
             </form>
           </div>
         </div>

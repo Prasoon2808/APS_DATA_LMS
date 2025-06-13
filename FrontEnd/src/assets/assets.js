@@ -20,6 +20,11 @@ import loadinganimation from './loadingAnimation.gif'
 import thankuhAnimation from './thankuhAnimation.gif';
 import greetingAnimation from './AnimationGreeting.gif';
 import crossIconWhite from './Sidebar/crossIconWhite.png';
+import homeIcon from './Navbar/homeIcon.png';
+import aboutIcon from './Navbar/aboutIcon.png';
+import faqIcon from './Navbar/faqIcon.png';
+import about1 from './About/about1.jpg'
+import about2 from './About/about2.jpg'
 export const assets = {
     logo,
     logoWhite,
@@ -42,6 +47,11 @@ export const assets = {
     loadinganimation,
     thankuhAnimation,
     greetingAnimation,
-    crossIconWhite
+    crossIconWhite,
+    homeIcon,
+    aboutIcon,
+    faqIcon,
+    about1,
+    about2
 
 }

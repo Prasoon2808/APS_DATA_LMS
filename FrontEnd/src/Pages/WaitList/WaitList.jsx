@@ -6,6 +6,7 @@ import axios from 'axios';
 import config from '../../config/config';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import MiniNavbar from '../../Component/Navbar/MiniNavbar';
 
 
 const Waitlist = () => {
@@ -16,10 +17,10 @@ const Waitlist = () => {
 
 
   const [formData, setFormData] = useState({
-    name: '', gender: '', email: '', country: '', phone: '', institution: ''
+    name: '', gender: '', email: '', country: 'India', phone: '', institution: '', refCode: ''
   });
 
-  const [emailVerified, setEmailVerified] = useState(false);
+  const [emailVerified, setEmailVerified] = useState(true);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -57,6 +58,7 @@ const Waitlist = () => {
 
       const res = await axios.post(`${url}/api/submit`, { user: formData });
       if (res.data.success) {
+        localStorage.setItem('mainUser', JSON.stringify(formData));
         setSubmitted(true);
       } else {
         toast.error('Failed to join the waitlist. Please try again later.');
@@ -64,17 +66,16 @@ const Waitlist = () => {
     } catch (err) {
       const errorMessage = err.response?.data?.message || 'An unexpected error occurred.';
       toast.error(errorMessage);
-      setEmailVerified(false);
-      window.location.reload(); // Reload the page to reset the form
     }
   };
 
   return (
     <div className='loginPage'>
       <NavbarWhite />
+      <MiniNavbar />
       <div className='waitList'>
         <img className='coverImg' src={assets.APSbg} alt="" />
-        <h1>Join Our <span>FREE</span> Eary-Access Waitlist!</h1>
+        <h1>Join Our <span>FREE</span> Early-Access Waitlist!</h1>
         <div className="glass-container">
           <div className="glass-inner">
             {!submitted ? 
@@ -96,39 +97,16 @@ const Waitlist = () => {
                       </select>
                     </div>
                   </div>
-                  <div className="horzBlock">
-                    <div className="gender">
-                      <label>Email ID*</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-                    </div>
-                    <button
-                      type='button'
-                      className='loginBtn'
-                      onClick={verifyEmailWithWaitlistDemo}
-                      disabled={emailVerified}
-                      style={{
-                        cursor: emailVerified ? 'not-allowed' : 'pointer',
-                        color: emailVerified ? '#000000' : '#ffffff',
-                        backgroundColor: emailVerified ? '#ffffff' : '#a8cd3d',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                      }}
-                    >
-                      {emailVerified ? (
-                        <img src={assets.tickAnimation} alt="Verified" style={{ width: '50px', height: '50px' }} />
-                      ) : verifyingEmail ? (
-                        <img src={assets.loadinganimation} alt="Loading" style={{ width: '100px', height: '100px' }} />
-                      ) : (
-                        'Verify Email'
-                      )}
-                    </button>
 
+                  <div className="gender">
+                    <label>Email ID*</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} required />
                   </div>
+                    
                   <div className="horzBlock">
                     <div className="gender">
                       <label>Current Country*</label>
-                      <input type='text' name="country" value={formData.country} onChange={handleChange} />
+                      <input type='text' name="country" value={formData.country} onChange={handleChange} readOnly/>
                     </div>
                     <div className="gender">
                       <label>Phone No.*</label>
@@ -136,11 +114,17 @@ const Waitlist = () => {
 
                     </div>
                   </div>
-                  <div className="gender">
-                    <label>Enter your College*</label>
-                    <input type='text' name="institution" value={formData.institution} onChange={handleChange} required />
+                  <div className="horzBlock">
+                    <div className="gender">
+                      <label>Enter your College*</label>
+                      <input type='text' name="institution" value={formData.institution} onChange={handleChange} required />
+                    </div>
+                    <div className="gender code">
+                      <label>Referral Code*</label>
+                      <input type='text' name="refCode" value={formData.refCode} onChange={handleChange} required />
+                    </div>
+
                   </div>
-                  
                   <button
                     type='button'
                     className='loginBtn'
@@ -155,10 +139,11 @@ const Waitlist = () => {
                 <div className="successMessage">
                   <img src={assets.thankuhAnimation} alt="Success" style={{width:'100px', height:'100px'}} />
                   <h2>Yay, You're on the Waitlist!</h2>
-                  <p>We will notify you via email when we launch.</p>
+                  <p>We will notify you via email when your waitlist is approved.</p>
+                  <h6>With our 5× referral engine & only 1,000 early-access spots, Refer friends now to climb the waitlist!</h6>
                   <div className="horzBtn">
                     <button type="button" className='loginBtn' onClick={()=>navigate('/')}>Return to Home</button>
-                    <button type="button" className='joinbtn' onClick={()=>{window.location.reload()}}>Add New Entry</button>
+                    <button type="button" className='joinbtn' onClick={()=>navigate('/waitlist/refer')}>Refer & Rise</button>
                   </div>
                 </div>
               )}
