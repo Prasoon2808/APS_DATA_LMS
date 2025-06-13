@@ -117,7 +117,7 @@ async function sendWaitlistEmail(email,userName) {
     <!-- Hero / Waitlist Confirmation -->
     <tr>
       <td class="hero">
-        <h1>Welcome to EDU[LAB],${userName}</h1>
+        <h1>Welcome to EDU[LAB], ${userName}</h1>
         <h2>You Are on the Waitlist!</h2>
         
         <p>Your ID and password will be sent to this email once the platform is launched.</p>
