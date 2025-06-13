@@ -28,7 +28,7 @@ function generateReferralCode(referrer) {
 }
 
 // Utility: Send waitlist email
-async function sendWaitlistEmail(email) {
+async function sendWaitlistEmail(email,userName) {
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
@@ -38,7 +38,7 @@ async function sendWaitlistEmail(email) {
   });
 
   const mailOptions = {
-    from: '"RatLab Team" <ratlab.edu@gmail.com>',
+    from: '"Team EDU[LAB]" <ratlab.edu@gmail.com>',
     to: email,
     subject: 'You Are on the Waitlist!',
     html: `
@@ -117,7 +117,7 @@ async function sendWaitlistEmail(email) {
     <!-- Hero / Waitlist Confirmation -->
     <tr>
       <td class="hero">
-        <h1>Welcome to EDU[LAB],</h1>
+        <h1>Welcome to EDU[LAB],${userName}</h1>
         <h2>You Are on the Waitlist!</h2>
         
         <p>Your ID and password will be sent to this email once the platform is launched.</p>
@@ -437,7 +437,7 @@ router.post('/submit', async (req, res) => {
     }
 
     await UserData.create({ ...user, verified: true, role: 'waitlist' });
-    await sendWaitlistEmail(userEmail);
+    await sendWaitlistEmail(userEmail,user.name);
 
     res.status(200).json({
       success: true,
