@@ -7,6 +7,7 @@ import NavbarWhite from '../../Component/Navbar/NavbarWhite';
 import config from '../../config/config';
 import { toast } from 'react-toastify';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import MiniNavbar from '../../Component/Navbar/MiniNavbar';
 
 const ReferralForm = () => {
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ const ReferralForm = () => {
   return (
     <div className="loginPage">
       <NavbarWhite />
+      <MiniNavbar />
       <img className="coverImg" src={assets.APSbg} alt="background" />
       <div className="referral">
         <h1>Refer & Rise</h1>

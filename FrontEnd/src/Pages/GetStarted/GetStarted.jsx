@@ -41,7 +41,7 @@ const GetStarted = () => {
 
         <img className='coverImg' src={assets.APSbg} alt="" />
         <MiniNavbar />
-        <h1>Generations.<br />Parameters.<br />Algorithms.</h1>
+        <h1>Generations.<br />Parameters.<br />Algorithms</h1>
         <div className="glass-container">
           <div className="glass-inner">
             <form className="loginForm front">

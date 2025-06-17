@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import config from '../../config/config';
 import { toast } from 'react-toastify';
+import MiniNavbar from '../../Component/Navbar/MiniNavbar'
 
 const LoginMenu = () => {
   const [selectedOption, setSelectedOption] = useState('student');
@@ -68,10 +69,12 @@ const LoginMenu = () => {
   return (
     <div className='loginPage'>
       <NavbarWhite />
+      <MiniNavbar />
+      
 
       <div className='main'>
         <img className='coverImage' src={assets.APSbg} alt=""/>
-        <h1>Parameters.<br />Algorithms.<br />Logics</h1>
+        <h1>Generations.<br />Parameters.<br />Algorithms</h1>
         <div className={`glass-container ${showForgot ? 'flip' : ''}`}>
           <div className="glass-inner">
             {/* Front side: Login Form */}

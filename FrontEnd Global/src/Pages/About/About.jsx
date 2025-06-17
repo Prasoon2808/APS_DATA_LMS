@@ -34,15 +34,7 @@ const AnimatedBox = ({ className = "",children }) => {
 const About = () => {
   const wrapperRef = useRef(null);
 
-  useEffect(() => {
-    const el = wrapperRef.current;
-    const onWheel = (e) => {
-      e.preventDefault();
-      el.scrollLeft += e.deltaY * 200;
-    };
-    el.addEventListener('wheel', onWheel, { passive: false });
-    return () => el.removeEventListener('wheel', onWheel);
-  }, []);
+  
 
   return (
     <>

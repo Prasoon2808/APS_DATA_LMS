@@ -166,7 +166,7 @@
     margin-top: 2rem;
     font-size: 1.1rem;
     background-color: #a8cd3d;
-    color: white;
+    color: black;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -310,3 +310,90 @@
 .popup-buttons button:hover {
   background-color: #88aa22;
 }
+
+@media (max-width: 1024px) {
+  .getStarted .glass-container {
+    right: 2%;
+    width: 450px;
+    padding: 2rem;
+  }
+
+  .getStarted h1 {
+    font-size: 4rem;
+    left: 2%;
+    width: 40%;
+  }
+
+  .getStarted .glass-container h2 {
+    font-size: 3rem;
+  }
+
+  .getStarted .glass-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .getStarted .glass-container .getpara {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .getStarted {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 6rem;
+  }
+
+  .getStarted h1 {
+    display: none;
+  }
+
+  .getStarted .glass-container {
+    width: 90%;
+    padding: 2rem 1.5rem;
+    margin-bottom: 3rem;
+    right: auto;
+    height: 430px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .getStarted .glass-container h2 {
+    font-size: 2.5rem;
+  }
+
+  .getStarted .glass-container h3 {
+    font-size: 1.2rem;
+  }
+
+  .getStarted .glass-container .getpara {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-box h2 {
+    font-size: 1.8rem;
+  }
+
+  .popup-box h3 {
+    font-size: 1rem;
+    width: 90%;
+  }
+
+  .popup-box img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .popup-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .popup-buttons button {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+

@@ -139,7 +139,7 @@
   height: 55px;
   font-size: 1.1rem;
   background-color: #a8cd3d;
-  color: white;
+  color: black;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -181,6 +181,58 @@
 .referral-header svg {
   font-size: 1rem;
   color: white;
+}
+/* ========== Responsive Media Queries ========== */
+@media (max-width: 768px) {
+  .referral h1 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    top: 10%;
+  }
+  .referral .glass-container.referral-scroll{
+    width: 90%;
+  }
+
+  .glass-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .referral .loginBtn {
+    width: 100%;
+  }
+
+  .referral-entry {
+    padding: 0.8rem;
+  }
+
+  .referral-header {
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .referral h1 {
+    font-size: 1.6rem;
+  }
+
+  .glass-container.referral-scroll {
+    padding: 1rem;
+    width: 90%;
+  }
+
+  .glass-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .gender input {
+    font-size: 0.9rem;
+  }
+
+  .loginBtn {
+    font-size: 1rem;
+    height: 48px;
+  }
 }
 
 

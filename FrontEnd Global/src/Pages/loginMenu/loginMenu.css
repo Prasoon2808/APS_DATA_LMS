@@ -218,4 +218,69 @@
 .main .forgotForm a{
     display: block;
 }
-  
+@media (max-width: 1024px) {
+  .main .glass-container {
+    right: 2%;
+    width: 450px;
+    padding: 2rem;
+  }
+
+  .main h1 {
+    font-size: 4rem;
+    left: 2%;
+    width: 40%;
+  }
+
+  .main .glass-container h2 {
+    font-size: 3rem;
+  }
+
+  .main .glass-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .main .glass-container .getpara {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 6rem;
+  }
+
+  .main h1 {
+    display: none;
+  }
+
+  .main .glass-container {
+    width: 90%;
+    padding: 2rem 1.5rem;
+    margin-bottom: 3rem;
+    right: auto;
+    height: 500px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .main .glass-container h2 {
+    font-size: 2.5rem;
+  }
+
+  .main .glass-container h3 {
+    font-size: 1.2rem;
+  }
+
+  .main .glass-container .radioRole label{
+    margin: 0 0.7rem;
+  }
+
+  .main .glass-container input{
+    width: 100%;
+  }
+  .main .glass-container .getpara {
+    font-size: 1rem;
+  }
+}

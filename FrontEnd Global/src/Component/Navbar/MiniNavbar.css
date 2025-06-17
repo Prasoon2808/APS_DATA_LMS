@@ -1,30 +1,26 @@
-/* Change from vertical to horizontal */
 .right-navbar {
   position: fixed;
-  top: 10px;                   /* Move to top */
-  left: 100%;                  /* Center horizontally */
-  transform: translateX(-100%); 
+  top: 10px;
+  left: 100%;
+  transform: translateX(-100%);
   display: flex;
-  flex-direction: row;         /* 🔁 Make it horizontal */
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 30px;
-  padding: 8px 0px;
+  padding: 8px 0;
   border-radius: 0 0 16px 16px;
   z-index: 999;
-  width: 300px;                 /* Let content decide width */
+  width: 300px;
   height: 70px;
-  
+  background: transparent;
 }
-
-
 
 .nav-link {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 12px;
   text-decoration: none;
   color: #888;
   transition: all 0.3s ease;
@@ -60,7 +56,6 @@
   margin-right: 8px;
   opacity: 0;
   transform: translate(5px, 10px);
-
   transition: all 0.3s ease;
   pointer-events: none;
 }
@@ -68,4 +63,39 @@
 .nav-link:hover .nav-label {
   opacity: 1;
   transform: translate(5px, 15px);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+  .right-navbar {
+    top: auto;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    width: 70%;
+    height: auto;
+    gap: 40px;
+    padding: 6px 10px;
+    background: rgba(170, 170, 170, 0.5); /* optional */
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+  }
+
+  .nav-icon {
+    width: 40px;
+    height: 40px;
+    transform: translateY(0);
+    padding: 6px;
+  }
+
+  .nav-link {
+    width: auto;
+    height: auto;
+  }
+
+  .nav-label {
+    display: none; /* hide on mobile for minimal UI */
+  }
 }

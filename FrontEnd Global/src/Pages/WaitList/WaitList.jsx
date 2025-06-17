@@ -75,13 +75,13 @@ const Waitlist = () => {
       <MiniNavbar />
       <div className='waitList'>
         <img className='coverImg' src={assets.APSbg} alt="" />
-        <h1>Join Our <span>FREE</span> Early-Access Waitlist!</h1>
+        <h1>Join Our <span>FREE</span> Early Access Waitlist!</h1>
         <div className="glass-container">
           <div className="glass-inner">
             {!submitted ? 
               (
                 <form className="loginForm front">
-                  <p>We are currently working on the platform. Please join the waitlist to get notified when we launch.</p>
+                  <p>We’re building something kickass for curious <span>‘Parametric Minds’</span>. Please Join the waitlist!</p>
                   <div className="horzBlock">
                     <div className="gender">
                       <label>Full Name*</label>
@@ -134,6 +134,7 @@ const Waitlist = () => {
                   >
                     Join Waitlist
                   </button>
+                  <div className='empty'>&nbsp;</div>
                 </form>
               ) : (
                 <div className="successMessage">

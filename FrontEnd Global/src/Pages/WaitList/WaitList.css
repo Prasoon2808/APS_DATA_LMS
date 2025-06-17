@@ -32,7 +32,7 @@
     border: 2px solid rgba(255, 255, 255, 0.642);
     color: white;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 2rem;
 }
 .waitList .glass-container h2{
     font-size: 2.8rem;
@@ -69,6 +69,9 @@
     font-weight: 300;
     margin-bottom: 1rem;
     color: #ffffff;
+}
+.waitList .loginForm p span{
+    font-weight: 700;
 }
 .waitList .glass-container input{
     width: 100%;
@@ -204,10 +207,10 @@
     font-size: 1.5rem;
     font-weight: 300;
     color: #ffffff;
-    margin-bottom: 0.5rem;
+    margin-bottom: 2.5rem;
 }
 .waitList .successMessage h6{
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 200;
     color: #ffffff;
     width: 75%;
@@ -229,11 +232,9 @@
     align-items: center;
     gap: 1.5rem;
     padding: 0 1rem;
-    margin-top: 2rem;
 }
 .waitList .successMessage .joinbtn{
-    width: 40%;
-    height: 65px;
+    width: 50%;
     padding: 1rem;
     font-size: 1.1rem;
     margin-top: 1rem;
@@ -242,6 +243,7 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    margin-bottom: 0.5rem;
 }
 .horzCont{
     width: 90%;
@@ -279,16 +281,16 @@
 }
 
 .waitList .loginBtn{
-    width: 40%;
-    height: 65px;
+    width: 50%;
     padding: 1rem;
     margin-top: 1rem;
     font-size: 1.1rem;
     background-color: #a8cd3d;
-    color: white;
+    color: black;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    margin-bottom: 0.5rem;
     
 }
 .waitList .loginBtn img{
@@ -353,4 +355,94 @@
 .forgotForm a{
     display: block;
 }
-  
+.waitList .empty{
+    width: 10px;
+    height: 1px;
+    background: transparent;
+}
+
+/* ========== Responsive Breakpoints ========== */
+@media (max-width: 1024px) {
+  .waitList .glass-container {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .waitList h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .waitList {
+    padding-top: 3rem;
+  }
+
+  .waitList .glass-container{
+    height: 500px;
+  }
+
+  .waitList h1 {
+    font-size: 1.8rem;
+    width: 60%;
+    top: 10%;
+  }
+
+  .waitList .loginBtn {
+    width: 100%;
+    max-width: none;
+  }
+
+  .waitList .horzBlock {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  .waitList .horzBlock .gender{
+    margin-top: 0;
+  }
+
+  .waitList .glass-container .gender.code {
+    width: 100%;
+  }
+
+
+  .waitList .successMessage .joinbtn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .waitList h1 {
+    font-size: 1.5rem;
+  }
+
+  .waitList .glass-container {
+    padding: 1rem;
+  }
+
+  .gender input,
+  .gender select {
+    font-size: 0.9rem;
+  }
+
+  .waitList .loginBtn {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+  .waitList .successMessage .joinbtn {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .waitList .successMessage h2 {
+    font-size: 1.8rem;
+  }
+
+  .waitList .successMessage p{
+    font-size: 1rem;
+  }
+  .waitList .successMessage h6{
+    font-size: 0.8rem;
+  }
+}
