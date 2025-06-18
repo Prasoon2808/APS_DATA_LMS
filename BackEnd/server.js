@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const cors = require("cors");
+const notebookRoutes = require("./routes/notebookRoutes")
 
 const courseRoutes = require('./routes/courseRoutes');
 const emailOtpRoutes = require('./routes/emailOtpRoutes');
@@ -12,6 +13,7 @@ const referralDemoRoute = require('./routes/referralDemoRoutes');
 const path = require('path');
 const waitlistDemoRoutes = require('./routes/waitlistDemoRoutes');
 const faqRoutes = require('./routes/FAQRoutes')
+const qnaRoutes = require('./routes/qnaRoutes')
 
 dotenv.config();
 connectDB();
@@ -43,6 +45,9 @@ app.use('/api', waitlistRoutes);
 app.use('/api', referralDemoRoute);
 app.use('/api', waitlistDemoRoutes);
 app.use('/api/faq', faqRoutes);
+app.use('/api/notebook', notebookRoutes);
+app.use('/api/qna', qnaRoutes);
+
 
 
 app.get('/', (req, res) => {

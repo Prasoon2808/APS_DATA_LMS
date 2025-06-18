@@ -1,0 +1,30 @@
+.tab-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+  justify-content: center;
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  font-size: 14px;
+}
+
+.tab-button .icon {
+  width: 20px;
+}
+
+.tab-button.active {
+  border-color: #a8cd3d;
+  color: #a8cd3d;
+}

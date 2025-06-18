@@ -7,6 +7,7 @@
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
+  margin-top: calc(7vh + 2rem);
 }
 
 .course-form h2, .course-form h3, .course-form h4 {

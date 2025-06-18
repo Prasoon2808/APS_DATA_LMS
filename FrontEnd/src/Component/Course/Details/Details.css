@@ -5,10 +5,10 @@
     padding: 2rem;
 }
 .Details .instructorContainer{
-    width: 50%;
-    border-right: 1px solid #ccc;
+    width: 100%;
     margin-bottom: 2rem;
-
+    display: flex;
+    gap: 100px;
 }
 .Details .instructorDetails{
     display: flex;

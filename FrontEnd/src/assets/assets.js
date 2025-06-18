@@ -25,6 +25,16 @@ import aboutIcon from './Navbar/aboutIcon.png';
 import faqIcon from './Navbar/faqIcon.png';
 import about1 from './About/about1.jpg'
 import about2 from './About/about2.jpg'
+import notebookIcon from './CourseLayout/notebookicon.png'
+import overviewIcon from './CourseLayout/overviewicon.png'
+import qnaIcon from './CourseLayout/qnaicon.png'
+import resourcesIcon from './CourseLayout/resourcesicon.png'
+import summaryIcon from './CourseLayout/summaryicon.png'
+import greenlockIcon from './CourseLayout/greenlockicon.png'
+import greylockIcon from './CourseLayout/greylockicon.png'
+import deleteIcon from './CourseLayout/deleteicon.png'
+import deleteIconred from './CourseLayout/deleteiconred.png'
+import editIcon2 from './CourseLayout/editicon.png'
 export const assets = {
     logo,
     logoWhite,
@@ -52,6 +62,15 @@ export const assets = {
     aboutIcon,
     faqIcon,
     about1,
-    about2
-
+    about2,
+    summaryIcon,
+    overviewIcon,
+    qnaIcon,
+    notebookIcon,
+    resourcesIcon,
+    greenlockIcon,
+    greylockIcon,
+    deleteIcon,
+    deleteIconred,
+    editIcon2
 }

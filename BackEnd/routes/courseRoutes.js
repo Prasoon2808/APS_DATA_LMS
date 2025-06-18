@@ -5,11 +5,8 @@ const courseController = require('../controllers/courseCreate');
 const Course = require('../models/course');
 
 // POST /api/courses/create
-router.post(
-    '/create',
-    upload.any(),
-    courseController.createCourse
-  );
+router.post('/create', courseController.createCourse);
+
 router.get('/', async (req, res) => {
     try {
       const courses = await Course.find();
@@ -29,25 +26,9 @@ router.get('/', async (req, res) => {
     }
   });
   // PUT: Update full course
-router.put('/:id', upload.any(), async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const courseData = JSON.parse(req.body.course);
-
-    if (req.files && Array.isArray(req.files)) {
-      req.files.forEach(file => {
-        if (file.fieldname === 'coverImage') {
-          courseData.coverImage = `/uploads/images/${file.filename}`;
-        }
-        if (file.fieldname === 'defaultThumbnail') {
-          courseData.defaultThumbnail = `/uploads/images/${file.filename}`;
-        }
-        if (file.fieldname === 'profileImage') {
-          courseData.author.profileImage = `/uploads/images/${file.filename}`;
-        }
-      });
-    }
-
-    const updated = await Course.findByIdAndUpdate(req.params.id, courseData, { new: true });
+    const updated = await Course.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.status(200).json(updated);
   } catch (error) {
     res.status(500).json({ error: error.message });

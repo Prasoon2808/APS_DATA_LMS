@@ -1,22 +1,22 @@
 const mongoose = require('mongoose');
 
-const FileSchema = new mongoose.Schema({
-  fileName: String,
-  fileUrl: String,
-  fileType: String,
-  fileSize: Number,
+const AuthorSchema = new mongoose.Schema({
+  name: String,
+  linkedinId: String,
+  profileImage: String
 });
 
 const ChapterSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: String,
-  content: FileSchema,
-  resources: [FileSchema],
+  content: String,
+  resources: [String],
+  summary: String // ✅ NEW FIELD
 });
 
 const SectionSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  chapters: [ChapterSchema],
+  chapters: [ChapterSchema]
 });
 
 const CourseSchema = new mongoose.Schema({
@@ -25,20 +25,12 @@ const CourseSchema = new mongoose.Schema({
   description: String,
   learningObjectives: [String],
   skillsCovered: [String],
-  defaultThumbnail: String,
-  author: {
-    name: String,
-    linkedinId: String,
-    profileImage: String,
-  },
+  authors: [AuthorSchema],     // 🔄 updated here
   sections: [SectionSchema],
-
-  // ✅ Lock feature
   locked: {
     type: Boolean,
     default: false
   }
 }, { timestamps: true });
-
 
 module.exports = mongoose.model('Course', CourseSchema);

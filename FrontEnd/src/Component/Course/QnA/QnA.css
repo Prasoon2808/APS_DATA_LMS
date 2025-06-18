@@ -1,0 +1,126 @@
+.qna-box {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.qna-box h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.qna-box textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.qna-box button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 0.4rem;
+}
+
+.qna-box button:hover {
+  background-color: #0056b3;
+}
+
+.qna-box .questions-list {
+  margin-top: 2rem;
+}
+
+.qna-box .q-block {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.qna-box .q-block:hover {
+  background: #f0f0f0;
+}
+
+.qna-box .q-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #222;
+}
+
+.qna-box .q-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.4rem 0 0.6rem 0;
+}
+
+.qna-box .expanded-section {
+  margin-top: 0.8rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed #ccc;
+}
+
+.qna-box .answers {
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.qna-box .a-block {
+  margin-bottom: 1rem;
+  background: #fefefe;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #e3e3e3;
+}
+
+.qna-box .a-text {
+  margin-bottom: 0.2rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.qna-box .a-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.3rem;
+}
+
+.qna-box .replies {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+  padding-left: 0.6rem;
+  border-left: 2px dashed #ddd;
+}
+
+.qna-box .reply-line {
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  color: #444;
+}
+
+.qna-box small {
+  color: #888;
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
+}
+
+.qna-box .answer-control {
+  margin-top: 1rem;
+}

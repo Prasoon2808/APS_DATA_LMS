@@ -6,20 +6,23 @@ export default function Details({ course, chapter }) {
   const url = config.backendUrl;
   return (
     <div className='Details'>
+      <h3>TUTORS</h3>
       <div className="instructorContainer">
-        <h3>Instructor</h3>
-        <div className="instructorDetails">
-          <img src={`${url}${course.author.profileImage}`} alt="Author"  />
-          <div className="instructorInfo">
-            <p>{course.author.name}</p>
-            <a href={course.author.linkedinId}>Linkedin Profile</a>
+        {Array.isArray(course.authors) && course.authors.map((author, idx) => (
+          <div className="instructorDetails" key={idx}>
+            <img src={author.profileImage} alt="Author" />
+            <div className="instructorInfo">
+              <p>{author.name}</p>
+              <a href={author.linkedinId} target="_blank" rel="noreferrer">LinkedIn Profile</a>
+            </div>
           </div>
-        </div>
+          
+        ))}
       </div>
-      <div className="chapterDetails">
+      {/* <div className="chapterDetails">
         <h2>{chapter.name}</h2>
         <p>{chapter.description}</p>
-      </div>
+      </div> */}
       <div className="courseDetails">
         <h1>ABOUT THE COURSE</h1>
         <h2>{course.title}</h2>

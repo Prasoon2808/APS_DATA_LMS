@@ -3,6 +3,8 @@ import React from 'react'
 import './CourseCard.css'
 import { useNavigate } from 'react-router-dom';
 import config from '../../config/config';
+import { assets } from '../../assets/assets';
+import { toast } from 'react-toastify';
 
 const CourseCard = ({ course }) => {
   const navigate = useNavigate();
@@ -10,7 +12,7 @@ const CourseCard = ({ course }) => {
 
   const handleClick = () => {
     if (course.locked) {
-      alert('🔒 This course is locked. You cannot access its content.');
+      toast.error('🔒 This course is locked. You cannot access its content.');
       return;
     }
     navigate(`/dashboard/student/courses/${course._id}`);
@@ -18,11 +20,25 @@ const CourseCard = ({ course }) => {
 
   return (
     <div className="course-card" onClick={handleClick}>
-      <img src={`${url}${course.coverImage}`} alt="Course Cover" />
-      <h3>{course.title}</h3>
-      <p>{course.skillsCovered?.join(', ')}</p>
-      <p>By: {course.author?.name}</p>
-      {course.locked && <p style={{ color: 'red', fontWeight: 'bold' }}>🔒 Locked</p>}
+      <img src={course.coverImage} alt="Course Cover" />
+      <div className="card-info">
+        <h3>{course.title}</h3>
+        <p className='author'>By: {Array.isArray(course.authors) ? course.authors.map(a => a.name).join(', ') : 'Unknown'}</p>
+        {course.skillsCovered && course.skillsCovered.length > 0 && (
+          <div className='skills'>
+            <ul>
+              {course.skillsCovered.slice(0, 6).map((skill, idx) => (
+                <li key={idx}>{skill}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {course.locked && 
+          <div className='locked'>
+            <img className='lockIcon' src={assets.greenlockIcon} alt="" />
+          </div>
+        }
+      </div>
     </div>
   );
 };

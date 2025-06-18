@@ -1,0 +1,44 @@
+.resources-list {
+  margin: 1rem 2rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.resource-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin: 0.8rem 0;
+}
+
+.file-name {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.download-btn {
+  background-color: #a8cd3d;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  background-color: #687e25;
+}
+
+.no-resources {
+  padding: 1rem;
+  font-style: italic;
+  color: #777;
+}

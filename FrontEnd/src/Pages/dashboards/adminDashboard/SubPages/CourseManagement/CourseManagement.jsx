@@ -3,6 +3,7 @@ import axios from 'axios';
 import EditCourseForm from './EditCourseForm';
 import './CourseManagement.css';
 import config from '../../../../../config/config';
+import { toast } from 'react-toastify';
 
 const CourseManagement = () => {
   const [courses, setCourses] = useState([]);
@@ -30,24 +31,22 @@ const CourseManagement = () => {
 
     try {
       await axios.delete(`${config.backendUrl}/api/courses/${id}`);
-      alert('✅ Course deleted');
+      toast.success('✅ Course deleted');
       fetchCourses();
     } catch (err) {
-      console.error('Delete failed:', err);
-      alert('❌ Could not delete course');
+      toast.error('❌ Could not delete course');
     }
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px', marginTop: '7vh' }}>
         <h2>Course Management</h2>
-        <div className="course-list">
+        <div className="mgnt">
             {courses.map(course => (
                 <div key={course._id} className="course-card">
-                <img src={`${config.backendUrl}${course.coverImage}`} alt="cover" />
+                <img src={course.coverImage} alt="cover" />
                 <h3>{course.title}</h3>
-                <p>{course.skillsCovered?.join(', ')}</p>
-                <p>By: {course.author?.name}</p>
+                <p className='author'>By: {Array.isArray(course.authors) ? course.authors.map(a => a.name).join(', ') : 'Unknown'}</p>
 
                 <button onClick={() => setEditId(course._id)}>✏️ Edit</button>
                 <button onClick={() => toggleLock(course._id)}>

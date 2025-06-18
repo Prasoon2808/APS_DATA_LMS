@@ -5,12 +5,13 @@
 
 .main-content {
   flex: 3;
-  margin-left: 26%;
-  margin-right: 26.2%;
-  transition: margin-left 0.3s ease;
+  margin-left: 0;
+  margin-right: 30.1%;
+  transition: margin-right 0.3s ease;
+  margin-top: 8vh;
 }
 
 /* When sidebar is collapsed */
-.courseLayout.collapsed .main-content {
-  margin-left:70px; /* collapsed sidebar width */
+.courseLayout.collapsed .main-content{
+  margin-right: calc(30% - 55px);
 }

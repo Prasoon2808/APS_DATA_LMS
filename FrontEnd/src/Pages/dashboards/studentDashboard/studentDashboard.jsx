@@ -14,7 +14,7 @@ const StudentDashboard = () => {
       <div className={`flex ${isSidebarCollapsed ? 'collapsed' : ''}`}>
         <SideBar onToggle={setIsSidebarCollapsed} />
         <div className="subPage">
-          <Outlet />
+          <Outlet context={{ isSidebarCollapsed }} />
         </div>
       </div>
     </div>

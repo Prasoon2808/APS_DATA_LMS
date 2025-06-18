@@ -1,0 +1,19 @@
+.summary-container {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-left: 4px solid #92cd2a;
+  border-radius: 8px;
+  margin: 2rem;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.summary-container h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #1d1d1d;
+}
+.summary-container p{
+    white-space: pre-line;
+}
