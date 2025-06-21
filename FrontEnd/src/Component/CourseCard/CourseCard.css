@@ -1,5 +1,5 @@
   .course-list .course-card {
-    width: 100%;
+    width: 200px;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
@@ -8,26 +8,24 @@
     background: #fff;
     position: relative;
     padding: 1rem;
-    display: flex;
-    gap: 1rem;
   }
   
   .course-list .course-card img {
-    height: 140px;
+    height: 100px;
     object-fit: cover;
     border-radius: 6px;
-    width: 30%;
+    width: 100%;
   }
   
   .course-list .course-card h3 {
-    font-size: 2rem;
+    font-size: 0.9rem;
     text-align: left;
+    font-weight: 600;
   }
   
   .course-list .course-card p.author {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    color: #92cd2a;
+    font-size: 0.5rem;
+    color: #a8cd3d;
     text-align: left;
 
   }
@@ -59,12 +57,12 @@
 
   .course-list .course-card .skills ul{
     list-style: none;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
   .course-list .course-card .skills ul li{
-      font-size: 0.9rem;
+      font-size: 0.7rem;
       color: #383838;
       font-weight: 300;
       padding: 0.2rem 0.5rem;
@@ -78,3 +76,31 @@
       transition: all 0.3s ease-in-out;
       
   }
+  .course-list.list-view {
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.course-list .course-card.list {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.course-list .course-card.list img {
+  width: 200px;
+  height: auto;
+}
+
+.course-list .course-card.list p.author{
+  font-size: 0.7rem;
+}
+
+.course-list .course-card.list .card-info {
+  flex-grow: 1;
+}
+
+.skills ul.visible {
+  display: flex !important;
+  margin-top: 1rem;
+}

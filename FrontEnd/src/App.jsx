@@ -29,6 +29,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import About from './Pages/About/About.jsx';
 import FAQ from './Pages/FAQ/FAQ.jsx';
+import BulkEmailSender from './Pages/dashboards/adminDashboard/SubPages/BulkEmailSender/BulkEmailSender.jsx';
 
 
 const App = () => {
@@ -90,6 +91,7 @@ const App = () => {
           <Route path="waitlist-approval" element={<WaitlistApproval />} />
           <Route path="course-management" element={<CourseManagement />} />
           <Route path="user-management" element={<div>User Management</div>} />
+          <Route path="sent-invites" element={<BulkEmailSender />} />
 
           
         </Route>

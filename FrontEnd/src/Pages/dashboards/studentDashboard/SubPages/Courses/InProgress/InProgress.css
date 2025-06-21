@@ -1,8 +1,24 @@
 .course-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
     padding: 2rem;
     justify-content: flex-start;
   }
-  
+  .view-toggle-bar {
+  text-align: right;
+  padding: 1rem 2rem 0 2rem;
+}
+
+.view-toggle-bar button {
+  padding: 0.5rem 1rem;
+  background-color: var(--main-color);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-toggle-bar button:hover {
+  background-color: var(--hover-main-color);
+}

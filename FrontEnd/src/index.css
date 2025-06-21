@@ -16,3 +16,7 @@ a{
 .app{
   width: 100%;
 }
+:root{
+  --main-color: #a8cd3d;
+  --hover-main-color: #88aa22;
+}

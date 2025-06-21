@@ -12,8 +12,9 @@ const waitlistRoutes = require('./routes/waitlistRoutes');
 const referralDemoRoute = require('./routes/referralDemoRoutes');
 const path = require('path');
 const waitlistDemoRoutes = require('./routes/waitlistDemoRoutes');
-const faqRoutes = require('./routes/FAQRoutes')
-const qnaRoutes = require('./routes/qnaRoutes')
+const faqRoutes = require('./routes/FAQRoutes');
+const qnaRoutes = require('./routes/qnaRoutes');
+const emailRoutes = require('./routes/emailRoutes')
 
 dotenv.config();
 connectDB();
@@ -47,6 +48,7 @@ app.use('/api', waitlistDemoRoutes);
 app.use('/api/faq', faqRoutes);
 app.use('/api/notebook', notebookRoutes);
 app.use('/api/qna', qnaRoutes);
+app.use('/api', emailRoutes);
 
 
 

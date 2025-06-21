@@ -6,7 +6,7 @@ import config from '../../config/config';
 import { assets } from '../../assets/assets';
 import { toast } from 'react-toastify';
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, isListView }) => {
   const navigate = useNavigate();
   const url = config.backendUrl;
 
@@ -19,14 +19,14 @@ const CourseCard = ({ course }) => {
   };
 
   return (
-    <div className="course-card" onClick={handleClick}>
+    <div className={`course-card ${isListView ? 'list' : ''}`} onClick={handleClick}>
       <img src={course.coverImage} alt="Course Cover" />
       <div className="card-info">
         <h3>{course.title}</h3>
         <p className='author'>By: {Array.isArray(course.authors) ? course.authors.map(a => a.name).join(', ') : 'Unknown'}</p>
         {course.skillsCovered && course.skillsCovered.length > 0 && (
           <div className='skills'>
-            <ul>
+            <ul className={isListView ? 'visible' : ''}>
               {course.skillsCovered.slice(0, 6).map((skill, idx) => (
                 <li key={idx}>{skill}</li>
               ))}

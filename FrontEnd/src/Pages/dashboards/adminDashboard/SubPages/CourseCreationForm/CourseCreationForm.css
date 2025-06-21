@@ -42,7 +42,7 @@ textarea {
 /* Buttons */
 .course-form button {
   font-size: 1rem;
-  padding: 0.6rem 1rem;
+  padding: 0.7rem 1rem;
   border-radius: 6px;
   cursor: pointer;
   border: none;
@@ -101,6 +101,29 @@ label {
   padding: 0.4rem;
   background-color: #fff;
 }
+.skill-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.4rem 0.7rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  margin-left: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
 
 /* Responsive Design */
 @media (max-width: 600px) {

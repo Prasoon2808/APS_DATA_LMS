@@ -35,6 +35,7 @@ import greylockIcon from './CourseLayout/greylockicon.png'
 import deleteIcon from './CourseLayout/deleteicon.png'
 import deleteIconred from './CourseLayout/deleteiconred.png'
 import editIcon2 from './CourseLayout/editicon.png'
+import sendInviteIcon from './Sidebar/sendiviteicon.png'
 export const assets = {
     logo,
     logoWhite,
@@ -72,5 +73,6 @@ export const assets = {
     greylockIcon,
     deleteIcon,
     deleteIconred,
-    editIcon2
+    editIcon2,
+    sendInviteIcon
 }

@@ -53,6 +53,24 @@ const CourseCreationForm = () => {
     setCourse({ ...course, sections: updatedSections });
   };
 
+  const deleteChapter = (sectionIdx, chapterIdx) => {
+    const updatedSections = [...course.sections];
+    updatedSections[sectionIdx].chapters.splice(chapterIdx, 1);
+    setCourse({ ...course, sections: updatedSections });
+  };
+
+  const deleteSkill = (skillIdx) => {
+    const updated = [...course.skillsCovered];
+    updated.splice(skillIdx, 1);
+    setCourse({ ...course, skillsCovered: updated });
+  };
+
+  const deleteObjective = (objectiveIdx) => {
+    const updated = [...course.learningObjectives];
+    updated.splice(objectiveIdx, 1);
+    setCourse({ ...course, learningObjectives: updated });
+  };
+
   const handleSectionName = (index, value) => {
     const updatedSections = [...course.sections];
     updatedSections[index].name = value;
@@ -105,7 +123,7 @@ const CourseCreationForm = () => {
 
       <h3>Skills Covered</h3>
       {course.skillsCovered.map((skill, idx) => (
-        <div className="form-group" key={idx}>
+        <div className="form-group skill-field" key={idx}>
           <input
             type="text"
             placeholder={`Skill ${idx + 1}`}
@@ -116,11 +134,13 @@ const CourseCreationForm = () => {
               setCourse({ ...course, skillsCovered: updated });
             }}
           />
+          <button type="button" className="delete-btn" onClick={() => deleteSkill(idx)}>Delete</button>
         </div>
       ))}
       <button type="button" className="add-btn" onClick={() => setCourse({ ...course, skillsCovered: [...course.skillsCovered, ''] })}>
         + Add Skill
       </button>
+
 
       <h3>Cover Image URL</h3>
       <div className="form-group">
@@ -133,7 +153,7 @@ const CourseCreationForm = () => {
 
       <h3>Learning Objectives</h3>
       {course.learningObjectives.map((objective, idx) => (
-        <div className="form-group" key={idx}>
+        <div className="form-group skill-field" key={idx}>
           <input
             type="text"
             placeholder={`Objective ${idx + 1}`}
@@ -144,11 +164,13 @@ const CourseCreationForm = () => {
               setCourse({ ...course, learningObjectives: updated });
             }}
           />
+          <button type="button" className="delete-btn" onClick={() => deleteObjective(idx)}>Delete</button>
         </div>
       ))}
       <button type="button" className="add-btn" onClick={() => setCourse({ ...course, learningObjectives: [...course.learningObjectives, ''] })}>
         + Add Objective
       </button>
+
 
       <h3>Author Info</h3>
       {course.authors.map((author, idx) => (
@@ -230,6 +252,10 @@ const CourseCreationForm = () => {
               <button type="button" className="add-btn" onClick={() => addResource(sIdx, cIdx)}>
                 + Add Resource Link
               </button>
+              <button type="button" className="delete-btn" onClick={() => deleteChapter(sIdx, cIdx)}>
+                Delete Chapter
+              </button>
+
             </div>
           ))}
           <button type="button" className="add-btn" onClick={() => addChapter(sIdx)}>

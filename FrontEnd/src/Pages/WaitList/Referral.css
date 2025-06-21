@@ -30,7 +30,7 @@
     color: white;
     width: 45%;
     font-weight: 400;
-    text-shadow: #88aa22 0px 0px 10px, #88aa22 0px 0px 20px, #88aa22 0px 0px 30px;
+    text-shadow: var(--main-color) 0px 0px 10px, var(--main-color) 0px 0px 20px, var(--main-color) 0px 0px 30px;
     line-height: 1;
     margin-top: 20px;
     
@@ -138,7 +138,7 @@
   width: 50%;
   height: 55px;
   font-size: 1.1rem;
-  background-color: #a8cd3d;
+  background-color: var(--main-color);
   color: black;
   border: none;
   border-radius: 10px;
@@ -148,7 +148,7 @@
 }
 
 .loginBtn:hover {
-  background-color: #88aa22;
+  background-color: var(--hover-main-color);
   color: white;
 }
 

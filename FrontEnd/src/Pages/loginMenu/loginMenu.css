@@ -161,14 +161,14 @@
     padding: 1rem;
     margin-top: 2rem;
     font-size: 1.1rem;
-    background-color: #a8cd3d;
+    background-color: var(--main-color);
     color: white;
     border: none;
     border-radius: 50px;
     cursor: pointer;
 }
 .main .loginBtn:hover{
-    background-color: #88aa22;
+    background-color: var(--hover-main-color);
     color: white;
 }
 .main .forgetPass{

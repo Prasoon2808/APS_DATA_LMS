@@ -52,7 +52,8 @@ const WaitlistApproval = () => {
                 <th>Email</th>
                 <th>Institution</th>
                 <th>Country</th>
-                <th>Affiliation</th>
+                <th>Phone No.</th>
+                <th>Ref. Code</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -63,7 +64,8 @@ const WaitlistApproval = () => {
                   <td>{user.email}</td>
                   <td>{user.institution}</td>
                   <td>{user.country}</td>
-                  <td>{user.affiliation}</td>
+                  <td>{user.phone}</td>
+                  <td>{user.refCode}</td>
                   <td>
                     <button className="approve-btn" onClick={() => approveUser(user._id)}>
                       Approve

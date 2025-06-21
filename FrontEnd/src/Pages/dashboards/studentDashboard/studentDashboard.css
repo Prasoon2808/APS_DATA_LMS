@@ -26,6 +26,6 @@
     width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #a7cb3a;
+    background: var(--main-color);
     border-radius: 10px;
 }
