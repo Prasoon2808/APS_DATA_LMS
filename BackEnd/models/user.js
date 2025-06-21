@@ -14,8 +14,8 @@ const userSchema = new mongoose.Schema({
   name: String,
   gender: String,
   country: String,
+  phone: Number,
   countryCode: String,
-  affiliation: String,
   institution: String,
   verified: Boolean
 });

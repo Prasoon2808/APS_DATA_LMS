@@ -521,8 +521,8 @@ router.post('/waitlist/approve/:id', async (req, res) => {
       name: waitlistUser.name,
       gender: waitlistUser.gender,
       country: waitlistUser.country,
+      phone: waitlistUser.phone,
       countryCode: waitlistUser.countryCode,
-      affiliation: waitlistUser.affiliation,
       institution: waitlistUser.institution,
       verified: true,
     });

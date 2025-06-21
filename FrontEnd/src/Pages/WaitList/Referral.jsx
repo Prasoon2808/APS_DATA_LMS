@@ -15,6 +15,7 @@ const ReferralForm = () => {
     Array.from({ length: 5 }, () => ({ name: '', email: '' }))
   );
   const [openIndex, setOpenIndex] = useState(0); // First one open
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (index, field, value) => {
     const updated = [...referrals];
@@ -30,7 +31,7 @@ const ReferralForm = () => {
     if (referrals.some(r => !r.name || !r.email)) {
       return toast.error('Please fill in all 5 referrals before submitting.');
     }
-
+    setLoading(true);
     const user = JSON.parse(localStorage.getItem('mainUser'));
     try {
       const res = await axios.post(`${config.backendUrl}/api/referral/submit`, { user, referrals });
@@ -42,6 +43,8 @@ const ReferralForm = () => {
       }
     } catch (err) {
       toast.error('Error submitting referrals. Try again.');
+    }finally {
+      setLoading(false); // stop loading
     }
   };
 
@@ -87,8 +90,17 @@ const ReferralForm = () => {
                 )}
               </div>
             ))}
-            <button type="button" className="loginBtn" onClick={handleSubmit}>
-              Submit Referrals
+            <button
+              type="button"
+              className="loginBtn"
+              onClick={handleSubmit}
+              disabled={loading}
+              style={{
+                opacity: loading ? 0.6 : 1,
+                cursor: loading ? 'not-allowed' : 'pointer'
+              }}
+            >
+              {loading ? <img src={assets.loadinganimation} /> : 'Submit Referrals'}
             </button>
           </form>
         </div>

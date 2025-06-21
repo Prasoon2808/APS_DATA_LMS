@@ -147,6 +147,11 @@
   transition: background-color 0.2s ease;
 }
 
+.referral .loginBtn img{
+  width: 100px;
+  transform: translateY(-25%);
+}
+
 .loginBtn:hover {
   background-color: var(--hover-main-color);
   color: white;

@@ -52,10 +52,15 @@ const Waitlist = () => {
   };
 
   const handleSubmit = async () => {
+    // Check all fields are filled
+    const { name, gender, email, country, phone, institution, refCode } = formData;
+    if (!name || !gender || !email || !country || !phone || !institution || !refCode) {
+      return toast.error('Please fill all required fields.');
+    }
+
     if (!emailVerified) return toast.error('Please verify your email first.');
 
     try {
-
       const res = await axios.post(`${url}/api/submit`, { user: formData });
       if (res.data.success) {
         localStorage.setItem('mainUser', JSON.stringify(formData));
@@ -68,6 +73,7 @@ const Waitlist = () => {
       toast.error(errorMessage);
     }
   };
+
 
   return (
     <div className='loginPage'>
