@@ -4,6 +4,7 @@ import { assets } from '../../assets/assets';
 import NavbarWhite from '../../Component/Navbar/NavbarWhite';
 import { useNavigate } from 'react-router-dom';
 import MiniNavbar from '../../Component/Navbar/MiniNavbar';
+import PageTitle from '../../PageTitle';
 
 const GetStarted = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const GetStarted = () => {
 
   return (
     <div className='loginPage'>
+      <PageTitle title="Home"/>
       <NavbarWhite />
 
       {showPopup && (

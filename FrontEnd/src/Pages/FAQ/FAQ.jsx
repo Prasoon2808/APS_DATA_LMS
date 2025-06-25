@@ -5,6 +5,7 @@ import MiniNavbar from '../../Component/Navbar/MiniNavbar';
 import { assets } from '../../assets/assets';
 import config from '../../config/config';
 import { toast } from 'react-toastify';
+import PageTitle from '../../PageTitle';
 
 const FAQ = () => {
   const [faqs, setFaqs] = useState([]);
@@ -50,6 +51,7 @@ const FAQ = () => {
 
   return (
     <>
+      <PageTitle title='FAQs'/>
       <NavbarWhite />
       <MiniNavbar />
       <div className="faq-container">

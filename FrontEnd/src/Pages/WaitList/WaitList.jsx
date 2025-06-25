@@ -7,6 +7,7 @@ import config from '../../config/config';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import MiniNavbar from '../../Component/Navbar/MiniNavbar';
+import PageTitle from '../../PageTitle';
 
 
 const Waitlist = () => {
@@ -77,6 +78,7 @@ const Waitlist = () => {
 
   return (
     <div className='loginPage'>
+      <PageTitle title="Waitlist"/>
       <NavbarWhite />
       <MiniNavbar />
       <div className='waitList'>

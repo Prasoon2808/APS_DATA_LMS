@@ -8,6 +8,7 @@ import { useAuth } from '../../context/AuthContext';
 import config from '../../config/config';
 import { toast } from 'react-toastify';
 import MiniNavbar from '../../Component/Navbar/MiniNavbar'
+import PageTitle from '../../PageTitle';
 
 const LoginMenu = () => {
   const [selectedOption, setSelectedOption] = useState('student');
@@ -68,6 +69,7 @@ const LoginMenu = () => {
 
   return (
     <div className='loginPage'>
+      <PageTitle title='Login' />
       <NavbarWhite />
       <MiniNavbar />
       

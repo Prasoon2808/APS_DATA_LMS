@@ -6,10 +6,13 @@ import axios from 'axios';
 import config from '../../config/config';
 import { toast } from 'react-toastify';
 import MiniNavbar from '../../Component/Navbar/MiniNavbar';
+import PageTitle from '../../PageTitle';
+import { useNavigate } from 'react-router-dom';
 
 const EventRegister = () => {
   const url = config.backendUrl;
   const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: '', gender: '', email: '', country: 'India', phone: '', institution: '', refCode: 'EXCL100IND'
@@ -39,6 +42,7 @@ const EventRegister = () => {
 
   return (
     <div className='eventPage'>
+      <PageTitle title='Events' />
       <NavbarWhite />
       <MiniNavbar />
       <div className='eventWrapper'>
@@ -88,7 +92,7 @@ const EventRegister = () => {
                     </div>
                   </div>
                   <div className="gender">
-                    <label>Enter your College*</label>
+                    <label>College or Organization*</label>
                     <input type='text' name="institution" value={formData.institution} onChange={handleChange} required />
                   </div>
                   <button type='button' className='loginBtn' onClick={handleSubmit}>Register Now</button>

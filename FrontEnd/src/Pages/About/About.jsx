@@ -5,6 +5,7 @@ import MiniNavbar from '../../Component/Navbar/MiniNavbar';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { assets } from '../../assets/assets';
+import PageTitle from '../../PageTitle';
 
 // AnimatedBox Component
 const AnimatedBox = ({ className = "",children }) => {
@@ -38,6 +39,7 @@ const About = () => {
 
   return (
     <>
+      <PageTitle title='About' />
       <NavbarWhite />
       <MiniNavbar />
       <div className="section-wrapper" ref={wrapperRef}>

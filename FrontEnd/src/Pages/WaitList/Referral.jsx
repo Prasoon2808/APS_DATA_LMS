@@ -8,6 +8,7 @@ import config from '../../config/config';
 import { toast } from 'react-toastify';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import MiniNavbar from '../../Component/Navbar/MiniNavbar';
+import PageTitle from '../../PageTitle';
 
 const ReferralForm = () => {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ const ReferralForm = () => {
 
   return (
     <div className="loginPage">
+      <PageTitle title='Refer & Rise' />
       <NavbarWhite />
       <MiniNavbar />
       <img className="coverImg" src={assets.APSbg} alt="background" />
