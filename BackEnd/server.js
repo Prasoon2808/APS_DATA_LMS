@@ -49,6 +49,7 @@ app.use('/api/faq', faqRoutes);
 app.use('/api/notebook', notebookRoutes);
 app.use('/api/qna', qnaRoutes);
 app.use('/api', emailRoutes);
+app.use('/api/event', require('./routes/event'));
 
 
 

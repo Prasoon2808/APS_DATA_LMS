@@ -11,7 +11,7 @@
   padding: 8px 0;
   border-radius: 0 0 16px 16px;
   z-index: 999;
-  width: 300px;
+  width: 400px;
   height: 70px;
   background: transparent;
 }
@@ -74,7 +74,7 @@
     left: 50%;
     transform: translateX(-50%);
     flex-direction: row;
-    width: 70%;
+    width: 75%;
     height: auto;
     gap: 40px;
     padding: 6px 10px;

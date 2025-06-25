@@ -1,0 +1,74 @@
+.adminPanel {
+  padding: 40px;
+  background: #ffffff;
+  min-height: 100vh;
+  color: black;
+  font-family: Arial, sans-serif;
+  margin-top: 8vh;
+}
+
+.adminPanel h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #a8cd3d;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.51);
+  backdrop-filter: blur(8px);
+}
+
+th, td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: #a8cd3d;
+  color: black;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+tr:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.headerRow button {
+  padding: 10px 16px;
+  background: #a8cd3d;
+  color: black;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.headerRow button:hover {
+  background: #88aa22;
+  color: white;
+}

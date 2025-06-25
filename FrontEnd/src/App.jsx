@@ -30,6 +30,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import About from './Pages/About/About.jsx';
 import FAQ from './Pages/FAQ/FAQ.jsx';
 import BulkEmailSender from './Pages/dashboards/adminDashboard/SubPages/BulkEmailSender/BulkEmailSender.jsx';
+import Events from './Pages/Events/Events.jsx';
+import EventAdmin from './Pages/dashboards/adminDashboard/SubPages/EventManager/EventAdmin.jsx';
 
 
 const App = () => {
@@ -42,6 +44,7 @@ const App = () => {
         <Route path='/waitlist/refer' element={<ReferralForm />} />
         <Route path='/about' element={<About/>} />
         <Route path='/faqs' element={<FAQ />} />
+        <Route path='/events' element={<Events />} />
         
         <Route
           path="/dashboard/student"
@@ -92,6 +95,7 @@ const App = () => {
           <Route path="course-management" element={<CourseManagement />} />
           <Route path="user-management" element={<div>User Management</div>} />
           <Route path="sent-invites" element={<BulkEmailSender />} />
+          <Route path="event-registration" element={<EventAdmin />} />
 
           
         </Route>

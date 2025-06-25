@@ -1,19 +1,44 @@
+.summary{
+  margin: 2rem;
+}
+
+.summary .header{
+  width: 100%;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.summary .header h2{
+  font-size: 5rem;
+  width: 70%;
+}
+
+.summary .header .stamp{
+  margin-left: 70px;
+  font-size: 0.9rem;
+}
+
+.summary .header .stamp p{
+  text-align: center;
+}
+
+.summary .header .stamp img{
+  width: 100px;
+}
+
 .summary-container {
-  padding: 2rem;
+  
   background-color: #f8f9fa;
   border-left: 4px solid #92cd2a;
   border-radius: 8px;
-  margin: 2rem;
+  padding: 2rem;
   font-size: 1.1rem;
   color: #333;
   line-height: 1.6;
 }
 
-.summary-container h2 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  color: #1d1d1d;
-}
 .summary-container p{
     white-space: pre-line;
 }

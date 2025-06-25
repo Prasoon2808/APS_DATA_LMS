@@ -33,15 +33,16 @@ display: none;
     margin-top: 40px;
 }
 .section p{
-    font-size: 1.2rem;
-    margin-top: 10px;
+    font-size: 1rem;
+    margin-top: 5px;
 }
 .section1 .box-container{
     width: 85%;
     display: flex;
     gap: 10px;
     height: 70vh;
-    margin-top: 20px;
+    margin-top: 40px;
+    overflow: hidden;
 }
 .section1 .box{
     width: 100%;
@@ -56,22 +57,22 @@ display: none;
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem 2rem 2rem 2rem;
 }
 .section1 .box1 h1{
     color: #a8cd3d;
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: 600;  
 }
 .section1 .box1 h3{
     color: black;
-    font-size: 1.55rem;
+    font-size: 1rem;
     margin-top: 10px;
     font-weight: 600;  
 }
 .section1 .box1 p{
     color: black;
-    font-size: 1.47rem;
+    font-size: 0.8rem;
     margin-top: 3px;
 }
 .section1 .box2{
@@ -80,22 +81,21 @@ display: none;
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem 2rem 2rem 2rem;
 }
 .section1 .box2 h1{
     color: #a8cd3d;
-    font-size: 5.8rem;
+    font-size: 3rem;
     font-weight: 600;  
 }
 .section1 .box2 h3{
     color: black;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;  
 }
 .section1 .box2 p{
     color: black;
-    font-size: 1.3rem;
-    margin-top: 50px;
+    font-size: 0.8rem;
     text-align: justify;
 }
 .section1 .box3{
@@ -108,6 +108,9 @@ display: none;
 .section1 .box3 img{
     width: 100%;
     height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+
     object-fit: cover;
     border-radius: 15px;
 }
@@ -118,21 +121,21 @@ display: none;
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem 2rem 2rem 2rem;
 }
 .section1 .box4 h1{
     color: #a8cd3d;
-    font-size: 5.5rem;
+    font-size: 3rem;
     font-weight: 600;  
 }
 .section1 .box4 h3{
     color: black;
-    font-size: 1.8rem;
+    font-size: 1rem;
     font-weight: 600;  
 }
 .section1 .box4 p{
     color: black;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
     margin-top: 70px;
 }
 .section1 .box5{
@@ -141,16 +144,17 @@ display: none;
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 0 1rem 1rem 1rem;
+    min-height: 0;
+    padding: 1rem 2rem 2rem 2rem;
 }
 .section1 .box5 h1{
     color: #a8cd3d;
-    font-size: 5.5rem;
+    font-size: 3rem;
     font-weight: 600;  
 }
 .section1 .box5 h3{
     color: black;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;  
 }
 .section1 .box6{
@@ -163,6 +167,8 @@ display: none;
 .section1 .box6 img{
     width: 100%;
     height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: cover;
     border-radius: 15px;
 }
@@ -172,21 +178,21 @@ display: none;
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem 2rem 2rem 2rem;
 }
 .section1 .box7 h1{
     color: #a8cd3d;
-    font-size: 4.5rem;
+    font-size: 3rem;
     font-weight: 600;  
 }
 .section1 .box7 h3{
     color: black;
-    font-size: 1.53rem;
+    font-size: 1.2rem;
     font-weight: 600;  
 }
 .section1 .box7 p{
     color: black;
-    font-size: 1.3rem;
+    font-size: 0.8rem;
 }
 
 .section1 .box-container .left{
@@ -194,6 +200,7 @@ display: none;
     height: 100%;
     display: flex;
     flex-direction: column;
+    min-height: 0;
     gap: 10px;
 }
 .section1 .box-container .left .upper{
@@ -205,6 +212,7 @@ display: none;
     height: 65%;
     display: flex;
     gap: 10px;
+    min-height: 0;
 }
 .section1 .box-container .left .lower .lower-left{
     width: 45%;
@@ -224,12 +232,14 @@ display: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-height: 0;
 }
 .section1 .box-container .right .upper{
     width: 100%;
-    height: 70%;
+    height: 65%;
     display: flex; 
     gap: 10px;
+    min-height: 0;
 }
 .section1 .box-container .right .upper .upper-left{
     width: 45%;
@@ -241,10 +251,12 @@ display: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-height: 0;
 }
 .section1 .box-container .right .upper .upper-right .u-r-up{
     width: 100%;
     height: 50%;
+    min-height: 0;
 }
 .section1 .box-container .right .upper .upper-right .u-r-low{
     width: 100%;
@@ -254,7 +266,7 @@ display: none;
 
 .section1 .box-container .right .lower{
     width: 100%;
-    height: 30%;
+    height: 35%;
 }
 .section2 .box-container{
     width: 85%;

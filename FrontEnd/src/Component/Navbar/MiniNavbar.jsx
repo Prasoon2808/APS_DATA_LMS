@@ -8,6 +8,7 @@ const navItems = [
   { name: 'Home', path: '/', icon: assets.homeIcon },
   { name: 'About', path: '/about', icon: assets.aboutIcon },
   { name: 'FAQs', path: '/faqs', icon: assets.faqIcon },
+  { name: 'Events', path: '/events', icon: assets.eventIcon },
 ];
 
 const MiniNavbar = () => {

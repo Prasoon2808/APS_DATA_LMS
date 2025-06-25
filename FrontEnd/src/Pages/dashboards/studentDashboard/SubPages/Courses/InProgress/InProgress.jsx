@@ -10,9 +10,13 @@ const InProgress = () => {
 
   useEffect(() => {
     axios.get(`${config.backendUrl}/api/courses`)
-      .then(res => setCourses(res.data))
+      .then(res => {
+        const shuffled = res.data.sort(() => Math.random() - 0.5);
+        setCourses(shuffled);
+      })
       .catch(err => console.error(err));
   }, []);
+
 
   const toggleView = () => {
     setIsListView(prev => !prev);

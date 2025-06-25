@@ -9,6 +9,7 @@ const menuItems = [
     { path: 'course-management', icon: assets.quizIcon, label: 'Course Management' },
     { path: 'user-management', icon: assets.searchIcon, label: 'User Management' },
     { path: 'sent-invites', icon: assets.sendInviteIcon, label: 'Send Invites' },
+    { path: 'event-registration', icon: assets.assignmentIcon, label: 'Event Manager' },
 
 ]
 

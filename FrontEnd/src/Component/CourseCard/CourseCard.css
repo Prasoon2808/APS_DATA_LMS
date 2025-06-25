@@ -39,8 +39,8 @@
     position: absolute;
     z-index: 10;
     left: 1rem;
-    width: calc(30% - 1rem);
-    height: 140px;
+    width: calc(100% - 2rem);
+    height: 100px;
     backdrop-filter: blur(7px);
     background-color: #f8f8f83a;
     top: 1rem;
@@ -90,6 +90,11 @@
 .course-list .course-card.list img {
   width: 200px;
   height: auto;
+}
+
+.course-list.list-view .course-card.list .locked{
+  width: 200px;
+  height: 113px;
 }
 
 .course-list .course-card.list p.author{

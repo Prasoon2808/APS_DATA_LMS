@@ -23,6 +23,7 @@ import crossIconWhite from './Sidebar/crossIconWhite.png';
 import homeIcon from './Navbar/homeIcon.png';
 import aboutIcon from './Navbar/aboutIcon.png';
 import faqIcon from './Navbar/faqIcon.png';
+import eventIcon from './Navbar/eventiconwhite.png'
 import about1 from './About/about1.jpg'
 import about2 from './About/about2.jpg'
 import notebookIcon from './CourseLayout/notebookicon.png'
@@ -36,6 +37,8 @@ import deleteIcon from './CourseLayout/deleteicon.png'
 import deleteIconred from './CourseLayout/deleteiconred.png'
 import editIcon2 from './CourseLayout/editicon.png'
 import sendInviteIcon from './Sidebar/sendiviteicon.png'
+import labratStamp from './CourseLayout/[LAB]rat.ai - Stamp.png'
+import event from './event.jpg'
 export const assets = {
     logo,
     logoWhite,
@@ -74,5 +77,8 @@ export const assets = {
     deleteIcon,
     deleteIconred,
     editIcon2,
-    sendInviteIcon
+    sendInviteIcon,
+    labratStamp,
+    eventIcon,
+    event
 }
