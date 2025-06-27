@@ -10,6 +10,7 @@ const menuItems = [
     { path: 'user-management', icon: assets.searchIcon, label: 'User Management' },
     { path: 'sent-invites', icon: assets.sendInviteIcon, label: 'Send Invites' },
     { path: 'event-registration', icon: assets.assignmentIcon, label: 'Event Manager' },
+    { path: 'email-template', icon: assets.sendInviteIcon, label: 'Mail Template Upload' },
 
 ]
 

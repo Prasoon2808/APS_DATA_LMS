@@ -6,31 +6,32 @@ import config from '../../../../../config/config';
 const EventAdmin = () => {
   const url = config.backendUrl;
   const [registrations, setRegistrations] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchRegistrations = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${url}/api/event/all`);
+      setRegistrations(res.data || []);
+    } catch (err) {
+      console.error('Error fetching registrations:', err);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    const fetchRegistrations = async () => {
-      try {
-        const res = await axios.get(`${url}/api/event/all`);
-        setRegistrations(res.data || []);
-      } catch (err) {
-        console.error('Error fetching registrations:', err);
-      }
-    };
-
     fetchRegistrations();
+
+    const interval = setInterval(() => {
+        if (!loading) fetchRegistrations();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []);
 
+
   const downloadCSV = () => {
-    const header = [
-      'Name',
-      'Gender',
-      'Email',
-      'Phone',
-      'Country',
-      'Institution',
-      'Referral Code',
-      'Registered On'
-    ];
+    const header = ['Name', 'Gender', 'Email', 'Phone', 'Country', 'Institution', 'Referral Code', 'Registered On'];
     const rows = registrations.map(r => [
       r.name,
       r.gender,
@@ -59,8 +60,12 @@ const EventAdmin = () => {
     <div className="adminPanel">
       <div className="headerRow">
         <h2>Event Registrations</h2>
-        <button onClick={downloadCSV}>Download CSV</button>
+        <div className="btnGroup">
+          <button onClick={fetchRegistrations}>{loading ? 'Refreshing...' : 'Refresh'}</button>
+          <button onClick={downloadCSV}>Download CSV</button>
+        </div>
       </div>
+
       <div className="tableWrapper">
         <table>
           <thead>

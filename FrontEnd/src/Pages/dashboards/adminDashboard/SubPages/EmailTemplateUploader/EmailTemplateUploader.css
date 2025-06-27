@@ -1,0 +1,148 @@
+:root {
+  --accent: #a8cd3d;
+  --accent-hover: #8dbb2f;
+  --text-dark: #333;
+  --bg-light: #fdfdfd;
+  --border-color: #ddd;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.template-layout {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 40px auto;
+  margin-top: calc(8vh + 20px);
+  max-width: 100%;
+  padding: 0 20px;
+}
+
+.template-box,
+.template-list-box {
+  flex: 1 1 600px;
+  max-width: 700px;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+}
+
+.template-list-box{
+  max-width: 450px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.template-box h3,
+.template-list-box h4 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+  text-align: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 6px;
+}
+
+.email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.email-form label {
+  font-weight: 600;
+  color: #444;
+}
+
+.email-form input[type="text"],
+.email-form textarea {
+  padding: 14px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: var(--bg-light);
+  transition: border 0.3s ease;
+}
+
+.email-form input[type="text"]:focus,
+.email-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(168, 205, 61, 0.2);
+}
+
+.email-form textarea {
+  font-family: monospace;
+  min-height: 180px;
+  line-height: 1.4;
+  resize: vertical;
+}
+
+.email-form button {
+  background-color: var(--accent);
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.2s ease;
+}
+
+.email-form button:hover {
+  background-color: var(--accent-hover);
+  box-shadow: 0 2px 8px rgba(168, 205, 61, 0.3);
+}
+
+.template-list-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.template-list-box li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.template-list-box li span {
+  font-weight: 500;
+  color: #222;
+}
+
+.template-list-box li button {
+  background-color: #eee;
+  color: #333;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.template-list-box li button:hover {
+  background-color: #ddd;
+}
+
+.template-list-box li button:last-child {
+  background-color: crimson;
+  color: white;
+}
+
+.template-list-box li button:last-child:hover {
+  background-color: darkred;
+}

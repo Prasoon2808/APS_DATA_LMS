@@ -58,17 +58,22 @@ tr:hover {
   margin-bottom: 20px;
 }
 
-.headerRow button {
+.btnGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.btnGroup button {
   padding: 10px 16px;
-  background: #a8cd3d;
+  background: #adcd3d;
   color: black;
-  font-weight: 500;
+  font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
 
-.headerRow button:hover {
+.btnGroup button:hover {
   background: #88aa22;
   color: white;
 }

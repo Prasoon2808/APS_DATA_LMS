@@ -32,6 +32,7 @@ import FAQ from './Pages/FAQ/FAQ.jsx';
 import BulkEmailSender from './Pages/dashboards/adminDashboard/SubPages/BulkEmailSender/BulkEmailSender.jsx';
 import Events from './Pages/Events/Events.jsx';
 import EventAdmin from './Pages/dashboards/adminDashboard/SubPages/EventManager/EventAdmin.jsx';
+import EmailTemplateUploader from './Pages/dashboards/adminDashboard/SubPages/EmailTemplateUploader/EmailTemplateUploader.jsx'
 
 
 const App = () => {
@@ -96,6 +97,7 @@ const App = () => {
           <Route path="user-management" element={<div>User Management</div>} />
           <Route path="sent-invites" element={<BulkEmailSender />} />
           <Route path="event-registration" element={<EventAdmin />} />
+          <Route path="email-template" element={<EmailTemplateUploader /> } />
 
           
         </Route>
