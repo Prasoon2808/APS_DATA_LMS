@@ -15,6 +15,8 @@ const waitlistDemoRoutes = require('./routes/waitlistDemoRoutes');
 const faqRoutes = require('./routes/FAQRoutes');
 const qnaRoutes = require('./routes/qnaRoutes');
 const emailRoutes = require('./routes/emailRoutes')
+const eventRoutes = require('./routes/eventMeta');
+const blogRoutes = require('./routes/BlogRoutes');
 
 dotenv.config();
 connectDB();
@@ -50,6 +52,8 @@ app.use('/api/notebook', notebookRoutes);
 app.use('/api/qna', qnaRoutes);
 app.use('/api', emailRoutes);
 app.use('/api/event', require('./routes/event'));
+app.use('/api/event-meta', eventRoutes);
+app.use('/api/blogs', blogRoutes);
 
 
 

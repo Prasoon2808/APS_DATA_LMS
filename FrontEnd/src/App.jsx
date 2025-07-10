@@ -33,6 +33,11 @@ import BulkEmailSender from './Pages/dashboards/adminDashboard/SubPages/BulkEmai
 import Events from './Pages/Events/Events.jsx';
 import EventAdmin from './Pages/dashboards/adminDashboard/SubPages/EventManager/EventAdmin.jsx';
 import EmailTemplateUploader from './Pages/dashboards/adminDashboard/SubPages/EmailTemplateUploader/EmailTemplateUploader.jsx'
+import CreateEvent from './Pages/dashboards/adminDashboard/SubPages/AddEvent/CreateEvent.jsx';
+import Blogs from './Pages/Blogs/Blogs.jsx';
+import BlogForm from './Pages/dashboards/adminDashboard/SubPages/AddBlog/Addblog.jsx';
+import BackReferralForm from './Pages/WaitList/BackReferral.jsx';
+
 
 
 const App = () => {
@@ -43,9 +48,11 @@ const App = () => {
         <Route path="/login" element={<LoginMenu />} />
         <Route path='/waitlist' element={<Waitlist />} />
         <Route path='/waitlist/refer' element={<ReferralForm />} />
+        <Route path='/refer' element={<BackReferralForm />} />
         <Route path='/about' element={<About/>} />
         <Route path='/faqs' element={<FAQ />} />
         <Route path='/events' element={<Events />} />
+        <Route path='/blogs' element={<Blogs />} />
         
         <Route
           path="/dashboard/student"
@@ -98,6 +105,8 @@ const App = () => {
           <Route path="sent-invites" element={<BulkEmailSender />} />
           <Route path="event-registration" element={<EventAdmin />} />
           <Route path="email-template" element={<EmailTemplateUploader /> } />
+          <Route path="event-creation" element={<CreateEvent />} />
+          <Route path='blogs-creation' element={<BlogForm />} />
 
           
         </Route>

@@ -10,7 +10,7 @@ import { FaPlus, FaMinus } from 'react-icons/fa';
 import MiniNavbar from '../../Component/Navbar/MiniNavbar';
 import PageTitle from '../../PageTitle';
 
-const ReferralForm = () => {
+const BackReferralForm = () => {
   const navigate = useNavigate();
   const [referrals, setReferrals] = useState(
     Array.from({ length: 5 }, () => ({ name: '', email: '' }))
@@ -30,37 +30,32 @@ const ReferralForm = () => {
 
   const handleSubmit = async () => {
     if (referrals.some(r => !r.name || !r.email)) {
-      return toast.error('Please fill in all 5 referrals before submitting.');
-    }
-
-    const user = JSON.parse(localStorage.getItem('mainUser'));
-
-    if (!user || !user.email) {
-      return toast.error('User details missing. Please login again.');
+        return toast.error('Please fill in all 5 referrals before submitting.');
     }
 
     setLoading(true);
-    console.log("Submitting Referrals:", { user, referrals });
+    console.log("Submitting Referrals:", { referrals });
 
     try {
-      const res = await axios.post(`${config.backendUrl}/api/waitlist-referral/submit`, { user, referrals });
-      if (res.data.success) {
+        const res = await axios.post(`${config.backendUrl}/api/referral/submit`, { referrals });
+        if (res.data.success) {
         toast.success('Referrals submitted successfully!');
         navigate('/');
-      } else {
+        } else {
         alert(res.data.message);
-      }
+        }
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Error submitting referrals. Try again.');
+        toast.error(err.response?.data?.message || 'Error submitting referrals. Try again.');
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
   };
 
 
+
   return (
     <div className="loginPage">
-      <PageTitle title='Refer & Rise' />
+      <PageTitle title='Referral' />
       <NavbarWhite />
       <MiniNavbar />
       <img className="coverImg" src={assets.APSbg} alt="background" />
@@ -120,4 +115,4 @@ const ReferralForm = () => {
   );
 };
 
-export default ReferralForm;
+export default BackReferralForm;

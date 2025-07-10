@@ -6,12 +6,29 @@ import config from '../../../../../config/config';
 const EventAdmin = () => {
   const url = config.backendUrl;
   const [registrations, setRegistrations] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [selectedEventId, setSelectedEventId] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // Fetch all events
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await axios.get(`${url}/api/event-meta/all`);
+        setEvents(res.data || []);
+      } catch (err) {
+        console.error('Error fetching events:', err);
+      }
+    };
+    fetchEvents();
+  }, []);
+
+  // Fetch registrations of selected event
   const fetchRegistrations = async () => {
+    if (!selectedEventId) return;
     setLoading(true);
     try {
-      const res = await axios.get(`${url}/api/event/all`);
+      const res = await axios.get(`${url}/api/event/by-event/${selectedEventId}`);
       setRegistrations(res.data || []);
     } catch (err) {
       console.error('Error fetching registrations:', err);
@@ -19,17 +36,17 @@ const EventAdmin = () => {
     setLoading(false);
   };
 
+  // Refresh every 10 seconds
   useEffect(() => {
+    if (!selectedEventId) return;
     fetchRegistrations();
-
     const interval = setInterval(() => {
-        if (!loading) fetchRegistrations();
+      if (!loading) fetchRegistrations();
     }, 10000);
-
     return () => clearInterval(interval);
-  }, []);
+  }, [selectedEventId]);
 
-
+  // CSV Download
   const downloadCSV = () => {
     const header = ['Name', 'Gender', 'Email', 'Phone', 'Country', 'Institution', 'Referral Code', 'Registered On'];
     const rows = registrations.map(r => [
@@ -50,7 +67,7 @@ const EventAdmin = () => {
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.setAttribute('download', 'event_registrations.csv');
+    downloadLink.setAttribute('download', `${selectedEventId}_registrations.csv`);
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
@@ -58,46 +75,68 @@ const EventAdmin = () => {
 
   return (
     <div className="adminPanel">
-      <div className="headerRow">
-        <h2>Event Registrations</h2>
-        <div className="btnGroup">
-          <button onClick={fetchRegistrations}>{loading ? 'Refreshing...' : 'Refresh'}</button>
-          <button onClick={downloadCSV}>Download CSV</button>
-        </div>
+      <h2>Event Manager</h2>
+
+      {/* Event Cards */}
+      <div className="eventCards">
+        {events.map(evt => (
+          <div
+            key={evt.eventId}
+            className={`eventCard ${selectedEventId === evt.eventId ? 'active' : ''}`}
+            onClick={() => setSelectedEventId(evt.eventId)}
+          >
+            <img src={evt.posterUrl} alt={evt.eventName} />
+            <p>{evt.eventName}</p>
+          </div>
+        ))}
       </div>
 
-      <div className="tableWrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Gender</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Country</th>
-              <th>Institution</th>
-              <th>Referral Code</th>
-              <th>Registered On</th>
-            </tr>
-          </thead>
-          <tbody>
-            {registrations.map((user, index) => (
-              <tr key={user._id}>
-                <td>{index + 1}</td>
-                <td>{user.name}</td>
-                <td>{user.gender}</td>
-                <td>{user.email}</td>
-                <td>{user.phone}</td>
-                <td>{user.country}</td>
-                <td>{user.institution}</td>
-                <td>{user.refCode}</td>
-                <td>{new Date(user.createdAt).toLocaleString()}</td>
+      {/* Buttons */}
+      {selectedEventId && (
+        <div className="headerRow">
+          <h3>Registrations for: {selectedEventId}</h3>
+          <div className="btnGroup">
+            <button onClick={fetchRegistrations}>{loading ? 'Refreshing...' : 'Refresh'}</button>
+            <button onClick={downloadCSV}>Download CSV</button>
+          </div>
+        </div>
+      )}
+
+      {/* Table */}
+      {selectedEventId && (
+        <div className="tableWrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Country</th>
+                <th>Institution</th>
+                <th>Referral Code</th>
+                <th>Registered On</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {registrations.map((user, index) => (
+                <tr key={user._id}>
+                  <td>{index + 1}</td>
+                  <td>{user.name}</td>
+                  <td>{user.gender}</td>
+                  <td>{user.email}</td>
+                  <td>{user.phone}</td>
+                  <td>{user.country}</td>
+                  <td>{user.institution}</td>
+                  <td>{user.refCode}</td>
+                  <td>{new Date(user.createdAt).toLocaleString()}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

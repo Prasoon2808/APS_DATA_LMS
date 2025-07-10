@@ -2,21 +2,41 @@ const express = require('express');
 const router = express.Router();
 const EventRegistration = require('../models/EventRegistration');
 
+// Register user for event
 router.post('/register', async (req, res) => {
-  const { name, gender, email, country, phone, institution, refCode } = req.body.user;
+  const {
+    name,
+    gender,
+    email,
+    country,
+    phone,
+    institution,
+    refCode,
+    eventId
+  } = req.body.user;
 
-  if (!name || !gender || !email || !country || !phone || !institution || !refCode) {
-    return res.status(400).json({ message: 'All fields are required.' });
+  if (!name || !gender || !email || !country || !phone || !institution || !refCode || !eventId) {
+    return res.status(400).json({ message: 'All fields including eventId are required.' });
   }
 
   try {
-    // ✅ Check for existing email
-    const existing = await EventRegistration.findOne({ email });
+    // Check if email already registered for this event
+    const existing = await EventRegistration.findOne({ email, eventId });
     if (existing) {
-      return res.status(409).json({ message: 'This email is already registered.' });
+      return res.status(409).json({ message: 'This email is already registered for this event.' });
     }
 
-    const newRegistration = new EventRegistration({ name, gender, email, country, phone, institution, refCode });
+    const newRegistration = new EventRegistration({
+      eventId,
+      name,
+      gender,
+      email,
+      country,
+      phone,
+      institution,
+      refCode
+    });
+
     await newRegistration.save();
     res.json({ success: true });
   } catch (err) {
@@ -25,6 +45,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
+// Get all registrations (not filtered)
 router.get('/all', async (req, res) => {
   try {
     const allRegs = await EventRegistration.find().sort({ createdAt: -1 });
@@ -34,5 +55,15 @@ router.get('/all', async (req, res) => {
   }
 });
 
+// ✅ Filtered registrations by eventId
+router.get('/by-event/:eventId', async (req, res) => {
+  try {
+    const { eventId } = req.params;
+    const regs = await EventRegistration.find({ eventId }).sort({ createdAt: -1 });
+    res.json(regs);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching registrations by event.' });
+  }
+});
 
 module.exports = router;

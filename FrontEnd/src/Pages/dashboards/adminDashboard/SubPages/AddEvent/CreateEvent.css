@@ -1,0 +1,70 @@
+.createEventContainer {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.createEventContainer h2 {
+  text-align: center;
+  color: #a8cd3d;
+  margin-bottom: 20px;
+}
+
+.addEventForm label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 500;
+  color: #444;
+}
+
+.addEventForm input[type="text"],
+.addEventForm input[type="url"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f3f3f3;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.addEventForm button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #a8cd3d;
+  color: black;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.addEventForm button:hover {
+  background: #8bb72e;
+  color: white;
+}
+
+.statusMsg {
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 500;
+}

@@ -2,7 +2,6 @@
   padding: 30px;
   max-width: 1200px;
   margin: auto;
-  font-family: 'Segoe UI', sans-serif;
   margin-top: 7vh;
 }
 
@@ -53,4 +52,8 @@
 
 .approve-btn:hover {
   background-color: var(--hover-main-color);
+}
+
+.approve-btn {
+  margin-left: 8px; /* Adds spacing between buttons like Download CSV and Approve */
 }

@@ -451,7 +451,7 @@ router.post('/submit', async (req, res) => {
 });
 
 // Referral form submission
-router.post('/referral/submit', async (req, res) => {
+router.post('/waitlist-referral/submit', async (req, res) => {
   const { user, referrals } = req.body;
 
   if (!user || !referrals || !Array.isArray(referrals)) {
@@ -502,6 +502,60 @@ router.post('/referral/submit', async (req, res) => {
     res.status(500).json({ message: 'Failed to submit referrals.', error: err.message });
   }
 });
+
+// Referral form submission (no user object required)
+router.post('/referral/submit', async (req, res) => {
+  const { referrals } = req.body;
+
+  // Validate referrals array
+  if (!referrals || !Array.isArray(referrals)) {
+    return res.status(400).json({ message: 'Invalid referral data.' });
+  }
+
+  try {
+    const duplicateEmails = [];
+    const fixedReferralCode = 'EDU100REF25'; // <-- your fixed code here
+
+    for (const ref of referrals) {
+      if (!ref.email || !ref.name) continue;
+
+      const email = ref.email.toLowerCase();
+      const alreadyExists = await Referral.findOne({ email });
+
+      if (alreadyExists) {
+        duplicateEmails.push(email);
+        continue;
+      }
+
+      await Referral.create({
+        name: ref.name,
+        email,
+        referrerEmail: 'system', // or you can remove this field from schema if no longer needed
+        referralCode: fixedReferralCode
+      });
+
+      try {
+        await sendReferralDemoEmail(email, ref.name, 'Edu[LAB] India Team', fixedReferralCode);
+      } catch (emailErr) {
+        console.error(`Failed to send referral email to ${email}:`, emailErr.message);
+      }
+    }
+
+    if (duplicateEmails.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: `The following emails have already been referred: ${duplicateEmails.join(', ')}`
+      });
+    }
+
+    res.status(200).json({ success: true, message: 'Referrals submitted successfully.' });
+
+  } catch (err) {
+    console.error('[REFERRAL SUBMIT ERROR]', err);
+    res.status(500).json({ message: 'Failed to submit referrals.', error: err.message });
+  }
+});
+
 
 // Approve user from waitlist
 router.post('/waitlist/approve/:id', async (req, res) => {

@@ -1,0 +1,84 @@
+.blog-form-wrapper {
+  padding: 3rem;
+  background: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.blog-form-wrapper .blog-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 700px;
+  width: 100%;
+}
+
+.blog-form-wrapper .blog-form h3 {
+  margin-top: 1rem;
+  color: #444;
+  font-size: 1.2rem;
+}
+
+.blog-form-wrapper .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.blog-form-wrapper .input-text,
+.blog-form-wrapper .textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.blog-form-wrapper .textarea {
+  min-height: 80px;
+}
+
+.blog-form-wrapper .section-box {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #f9f9f9;
+  margin-bottom: 1rem;
+}
+
+.blog-form-wrapper .button-primary {
+  background-color: #a8cd3d;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.blog-form-wrapper .button-primary:hover {
+  background-color: #8ab62f;
+}
+
+.blog-form-wrapper .button-secondary {
+  background-color: #eee;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.6rem;
+}
+
+.blog-form-wrapper .button-secondary:hover {
+  background-color: #ddd;
+}

@@ -39,6 +39,7 @@ import editIcon2 from './CourseLayout/editicon.png'
 import sendInviteIcon from './Sidebar/sendiviteicon.png'
 import labratStamp from './CourseLayout/[LAB]rat.ai - Stamp.png'
 import event from './event.jpg'
+import blogsIcon from './Navbar/blogsiconwhite.png';
 export const assets = {
     logo,
     logoWhite,
@@ -80,5 +81,6 @@ export const assets = {
     sendInviteIcon,
     labratStamp,
     eventIcon,
-    event
+    event,
+    blogsIcon
 }

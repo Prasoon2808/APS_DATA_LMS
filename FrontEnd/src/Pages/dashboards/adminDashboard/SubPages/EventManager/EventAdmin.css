@@ -77,3 +77,40 @@ tr:hover {
   background: #88aa22;
   color: white;
 }
+
+.eventCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+  justify-content: flex-start;
+}
+
+.eventCard {
+  width: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: #f4f4f4;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.eventCard img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.eventCard p {
+  padding: 10px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.eventCard.active {
+  border: 2px solid #a8cd3d;
+  box-shadow: 0 0 10px rgba(168, 205, 61, 0.7);
+}
