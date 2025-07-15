@@ -84,7 +84,7 @@ const LoginMenu = () => {
               <h2>Login</h2>
               <img className='crossIcon' src={assets.crossIconWhite} alt="" onClick={handlecrossIconClick} />
               <div className="radioRole">
-                {['student', 'faculty', 'admin'].map((role) => (
+                {['student', 'smartLABS', 'admin'].map((role) => (
                   <label key={role}>
                     <input
                       type="radio"

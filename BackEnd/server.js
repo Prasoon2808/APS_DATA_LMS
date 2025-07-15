@@ -54,6 +54,8 @@ app.use('/api', emailRoutes);
 app.use('/api/event', require('./routes/event'));
 app.use('/api/event-meta', eventRoutes);
 app.use('/api/blogs', blogRoutes);
+app.use('/api/quiz', require('./routes/quizRoutes'));
+app.use('/api/forum', require('./routes/forumRoutes'));
 
 
 

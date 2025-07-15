@@ -60,7 +60,7 @@ textarea {
   background-color: #0056b3;
 }
 
-.submit-btn {
+.course-form .submit-btn {
   background-color: #28a745;
   color: white;
   margin-top: 2rem;
@@ -68,7 +68,7 @@ textarea {
   width: 100%;
 }
 
-.submit-btn:hover {
+.course-form .submit-btn:hover {
   background-color: #218838;
 }
 

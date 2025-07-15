@@ -1,0 +1,96 @@
+.profile-page {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.profile-page h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.profile-page .avatar-preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.profile-page .avatar-preview img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #8AB62F;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.profile-page .avatar-block {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.profile-page .avatar-block h4 {
+  margin-bottom: 0.5rem;
+}
+
+.profile-page .avatar-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.profile-page .avatar-selector img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: 0.2s ease;
+}
+
+.profile-page .avatar-selector img.selected {
+  border-color: #8AB62F;
+  box-shadow: 0 0 6px #8AB62F;
+}
+
+.profile-page .form-block {
+  margin-bottom: 1.5rem;
+}
+
+.profile-page .form-row {
+  margin-bottom: 1rem;
+}
+
+.profile-page .form-row label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.profile-page .form-row input {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.profile-page .btn-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.profile-page .btn-row button {
+  background-color: #8AB62F;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,0 +1,143 @@
+.quiz-builder {
+  margin-top: 8vh;  
+  display: flex;
+  font-family: 'Segoe UI', sans-serif;
+  height: 92vh;
+  background: #f5f5f5;
+}
+
+/* === Left Sidebar === */
+.quiz-builder .left-panel {
+  width: 260px;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quiz-builder .left-panel button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
+
+.quiz-builder .left-panel button:hover {
+  background-color: #f0f0f0;
+}
+
+.quiz-builder .left-panel ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.quiz-builder .left-panel li {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  background: #f9f9f9;
+  margin-bottom: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.quiz-builder .left-panel li.active {
+  background-color: #a8cd3d;
+  color: #fff;
+  font-weight: 600;
+  border-color: #8AB62F;
+}
+
+.quiz-builder .publish-btn {
+  background-color: #a8cd3d;
+  color: white;
+  font-weight: 600;
+}
+
+/* === Right Main Panel === */
+.quiz-builder .main-panel {
+  flex-grow: 1;
+  padding: 30px 40px;
+  overflow-y: auto;
+}
+
+.quiz-builder .main-panel h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.quiz-builder input[type="text"],
+.quiz-builder input[type="number"],
+.quiz-builder textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.quiz-builder textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* === Question Section === */
+.quiz-builder .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 16px;
+}
+
+.quiz-builder .question-input {
+  font-weight: 500;
+  background: #fffefc;
+}
+
+.quiz-builder .options-list {
+  margin-top: 16px;
+}
+
+.quiz-builder .option-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.quiz-builder .option-item input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.quiz-builder .option-item button {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.quiz-builder .delete-btn {
+  background: #e74c3c;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}

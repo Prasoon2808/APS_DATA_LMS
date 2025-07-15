@@ -41,6 +41,34 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.validateToken = async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id);
+
+    if (!user) return res.status(401).json({ msg: "Invalid user" });
+
+    res.json({
+      user: {
+        _id: user._id,
+        email: user.email,
+        role: user.role,
+        name: user.name,
+        institution: user.institution || '',
+        phone: user.phone || '',
+        country: user.country || '',
+        gender: user.gender || '',
+        avatar: user.avatar || '1.jpg',
+      },
+    });
+  } catch (err) {
+    res.status(401).json({ msg: "Unauthorized or invalid token" });
+  }
+};
+
+
+
 exports.getStreakDates = async (req, res) => {
   try {
     const token = req.headers.authorization?.split(' ')[1];

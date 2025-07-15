@@ -2,13 +2,13 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LoginMenu from './Pages/loginMenu/loginMenu';
 import StudentDashboard from './Pages/dashboards/studentDashboard/studentDashboard';
-import FacultyDashboard from './Pages/dashboards/facultyDashboard/facultyDashboard';
+import FacultyDashboard from './Pages/dashboards/facultyDashboard/FacultyDashboard.jsx';
 import AdminDashboard from './Pages/dashboards/adminDashboard/adminDashboard';
 import PrivateRoute from './Component/PrivateRoute.jsx';
 import ResetPassword from './Pages/loginMenu/ResetPassword/resetPassword';
 import Explore from './Pages/dashboards/studentDashboard/SubPages/Explore/explore';
 import Courses from './Pages/dashboards/studentDashboard/SubPages/Courses/courses';
-import Quiz from './Pages/dashboards/studentDashboard/SubPages/Quiz/quiz';
+import Quiz from './Pages/dashboards/studentDashboard/SubPages/Quiz/AllQuizzes.jsx';
 import Assignment from './Pages/dashboards/studentDashboard/SubPages/Assignment/assignment';
 import Attendance from './Pages/dashboards/studentDashboard/SubPages/Explore/Attendance/attendance';
 import FeeDue from './Pages/dashboards/studentDashboard/SubPages/Explore/FeeDue/feeDue';
@@ -37,8 +37,12 @@ import CreateEvent from './Pages/dashboards/adminDashboard/SubPages/AddEvent/Cre
 import Blogs from './Pages/Blogs/Blogs.jsx';
 import BlogForm from './Pages/dashboards/adminDashboard/SubPages/AddBlog/Addblog.jsx';
 import BackReferralForm from './Pages/WaitList/BackReferral.jsx';
-
-
+import QuizBuilder from './Pages/dashboards/adminDashboard/SubPages/QuizBuilder/QuizBuilder.jsx';
+import QuizStartPage from './Pages/dashboards/studentDashboard/SubPages/Quiz/QuizStartPage.jsx';
+import QuizMainPage from './Pages/dashboards/studentDashboard/SubPages/Quiz/QuizMainPage.jsx';
+import QuizResultPage from './Pages/dashboards/studentDashboard/SubPages/Quiz/QuizResultPage.jsx';
+import Forum from './Pages/dashboards/facultyDashboard/SubPages/ForumPage.jsx';
+import ProfilePage from './Pages/Profile/ProfilePage.jsx';
 
 const App = () => {
   return (
@@ -53,6 +57,7 @@ const App = () => {
         <Route path='/faqs' element={<FAQ />} />
         <Route path='/events' element={<Events />} />
         <Route path='/blogs' element={<Blogs />} />
+        
         
         <Route
           path="/dashboard/student"
@@ -75,19 +80,28 @@ const App = () => {
             <Route path="mycollection" element={<MyCollection />} />
             <Route path="learninghistory" element={<LearningHistory />} />
           </Route>
-          <Route path="quiz" element={<Quiz />} />
+          <Route path="quizzes" element={<Quiz />} />
+          <Route path="quiz/:quizId/start" element={<QuizStartPage />} />
+          <Route path="quiz/:quizId" element={<QuizMainPage />} />
+          <Route path='quiz/:quizId/result' element={<QuizResultPage />} />
+
           <Route path="assignment" element={<Assignment />} />
           <Route path="courses/:id" element={<CourseLayout />} />
+          <Route path='profile' element={<ProfilePage />} />
         </Route>
 
         <Route
-          path="/dashboard/faculty"
+          path="/dashboard/smartLABS"
           element={
-            <PrivateRoute allowedRoles={['faculty']}>
+            <PrivateRoute allowedRoles={['smartLABS']}>
               <FacultyDashboard />
             </PrivateRoute>
           }
-        />
+        >
+          <Route index element={<Navigate to="network" replace />} />
+          <Route path="network" element={<Forum />} />
+          <Route path='profile' element={<ProfilePage />} />
+        </Route>
 
         <Route
           path="/dashboard/admin"
@@ -107,6 +121,8 @@ const App = () => {
           <Route path="email-template" element={<EmailTemplateUploader /> } />
           <Route path="event-creation" element={<CreateEvent />} />
           <Route path='blogs-creation' element={<BlogForm />} />
+          <Route path='quiz-builder' element={<QuizBuilder />} />
+          <Route path='profile' element={<ProfilePage />} />
 
           
         </Route>

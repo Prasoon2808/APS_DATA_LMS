@@ -40,6 +40,12 @@ import sendInviteIcon from './Sidebar/sendiviteicon.png'
 import labratStamp from './CourseLayout/[LAB]rat.ai - Stamp.png'
 import event from './event.jpg'
 import blogsIcon from './Navbar/blogsiconwhite.png';
+import networkIcon from './Sidebar/networkIcon.png';
+import avatar1 from './Avatar/1.jpg';
+import avatar2 from './Avatar/2.jpg';
+import avatar3 from './Avatar/3.jpg';
+import avatar4 from './Avatar/4.jpg';
+import avatar5 from './Avatar/5.jpg';
 export const assets = {
     logo,
     logoWhite,
@@ -82,5 +88,11 @@ export const assets = {
     labratStamp,
     eventIcon,
     event,
-    blogsIcon
+    blogsIcon,
+    networkIcon,
+    avatar1,
+    avatar2,
+    avatar3,
+    avatar4,
+    avatar5
 }

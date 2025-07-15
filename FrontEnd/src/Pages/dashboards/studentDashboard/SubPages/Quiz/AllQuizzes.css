@@ -1,0 +1,149 @@
+.quiz-student-wrapper {
+  padding: 40px;
+  background: #f9f9f9;
+  min-height: 92vh;
+  margin-top: 8vh;
+}
+
+.quiz-student-wrapper h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.quiz-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: flex-start;
+}
+
+/* === CARD STYLING === */
+.quiz-card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 420px;
+}
+
+.quiz-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* === SQUARE IMAGE === */
+.quiz-image {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.quiz-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.enrolled-tag {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: #a8cd3d;
+  color: white;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+
+}
+
+/* === QUIZ INFO === */
+.quiz-info {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  height: calc(100% - 160px);
+}
+
+.quiz-info h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.quiz-info p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+  flex-grow: 1;
+}
+
+/* === MODERN CIRCULAR STATS === */
+.quiz-meta-modern {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.circular-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+}
+
+.circular-chart {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: conic-gradient(#a8cd3d 0deg, #e0e0e0 0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-inner {
+  background: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+}
+
+.circular-wrapper small {
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* === FOOTER === */
+.quiz-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.start-btn {
+  background: #a8cd3d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+}

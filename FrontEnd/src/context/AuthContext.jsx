@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
+import config from "../config/config";
 
 const storage = localStorage;
 
@@ -8,35 +10,58 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const token = storage.getItem("token");
-    const role = storage.getItem("role");
-    const _id = storage.getItem("userId");
-    const email = storage.getItem("email");
-    const name = storage.getItem("name"); // ✅ new
-
-    if (token && role && _id) {
-      setUser({ token, role, email, _id, name }); // ✅ include name
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+    if (token) {
+      axios
+        .get(`${config.backendUrl}/api/auth/validate-token`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {
+          setUser({
+            token,
+            ...res.data.user,
+          });
+        })
+        .catch(() => {
+          localStorage.clear();
+          sessionStorage.clear();
+          setUser(null);
+        });
     }
   }, []);
 
-  const login = (data) => {
+  const login = (data, rememberMe) => {
+    const storage = rememberMe ? localStorage : sessionStorage;
+
     storage.setItem("token", data.token);
     storage.setItem("role", data.user.role);
     storage.setItem("userId", data.user._id);
     storage.setItem("email", data.user.email);
-    storage.setItem("name", data.user.name); // ✅ save name
+    storage.setItem("name", data.user.name);
+    storage.setItem("institution", data.user.institution);
+    storage.setItem("phone", data.user.phone);
+    storage.setItem("country", data.user.country);
+    storage.setItem("gender", data.user.gender);
+    storage.setItem("avatar", data.user.avatar || "1.jpg");
+
 
     setUser({
       token: data.token,
       role: data.user.role,
       email: data.user.email,
       _id: data.user._id,
-      name: data.user.name, // ✅ add to state
+      name: data.user.name,
+      institution: data.user.institution,
+      phone: data.user.phone,
+      country: data.user.country,
+      gender: data.user.gender,
+      avatar: data.user.avatar || "1.jpg",
     });
   };
 
   const logout = () => {
-    storage.clear();
+    localStorage.clear();
+    sessionStorage.clear();
     setUser(null);
   };
 
@@ -46,5 +71,6 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
 
 export const useAuth = () => useContext(AuthContext);

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
-  role: { type: String, enum: ["student", "faculty", "admin"], required: true },
+  role: { type: String, enum: ["student", "smartLABS", "admin"], required: true },
   resetTokenUsed: { type: Boolean, default: false },
   streakDates: {
     type: [String],
@@ -17,7 +17,9 @@ const userSchema = new mongoose.Schema({
   phone: Number,
   countryCode: String,
   institution: String,
-  verified: Boolean
+  verified: Boolean,
+  avatar: { type: String, default: '' }, // e.g., 'avatar1.png'
+
 });
 
 module.exports = mongoose.model("User", userSchema);

@@ -11,6 +11,7 @@
     width: calc(100% - 17%);
     height: 86vh;
     transition: margin-left 0.3s ease, width 0.3s ease;
+    
 }
 
 .flex.collapsed .subPage {
