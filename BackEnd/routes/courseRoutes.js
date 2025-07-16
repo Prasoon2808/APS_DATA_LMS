@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../middleware/uploadMiddleware');
 const courseController = require('../controllers/courseCreate');
 const Course = require('../models/course');
 

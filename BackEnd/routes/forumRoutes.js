@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Forum = require('../models/forum');
+const { multerMid, uploadToGCS } = require('../middleware/uploadToGCS');
 
 // GET all posts
 router.get('/', async (req, res) => {
@@ -17,12 +18,20 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/upload', multerMid.single('file'), uploadToGCS, (req, res) => {
+  if (!req.file || !req.file.cloudStoragePublicUrl) {
+    return res.status(400).json({ error: 'Upload failed' });
+  }
+  res.json({ url: req.file.cloudStoragePublicUrl });
+});
+
 
 // POST a new post
 router.post('/', async (req, res) => {
   try {
-    const { userId, question, category } = req.body;
-    const newPost = await Forum.create({ userId, question, category, answers: [] });
+    const { userId, question, category, mediaUrl } = req.body;
+    const newPost = await Forum.create({ userId, question, category, mediaUrl, answers: [] });
+
     res.status(201).json(newPost);
   } catch (err) {
     res.status(500).json({ message: 'Error creating post' });

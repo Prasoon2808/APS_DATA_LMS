@@ -18,6 +18,7 @@ const postSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   question: String,
   category: { type: String, default: 'general' },
+  mediaUrl: String,
   likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   answers: [answerSchema],
   createdAt: { type: Date, default: Date.now }

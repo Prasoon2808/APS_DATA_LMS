@@ -46,6 +46,14 @@ import avatar2 from './Avatar/2.jpg';
 import avatar3 from './Avatar/3.jpg';
 import avatar4 from './Avatar/4.jpg';
 import avatar5 from './Avatar/5.jpg';
+import docIcon from './Avatar/19.png';
+import videoIcon from './Avatar/20.png';
+import imageIcon from './Avatar/21.png';
+import sendIcon from './Avatar/22.png';
+import reshareIcon from './Avatar/23.png';
+import commentIcon from './Avatar/24.png';
+import likeIcon from './Avatar/25.png';
+import likeFilledIcon from './Avatar/26.png';
 export const assets = {
     logo,
     logoWhite,
@@ -94,5 +102,13 @@ export const assets = {
     avatar2,
     avatar3,
     avatar4,
-    avatar5
+    avatar5,
+    docIcon,
+    videoIcon,
+    imageIcon,
+    sendIcon,
+    reshareIcon,
+    commentIcon,
+    likeIcon,
+    likeFilledIcon
 }
