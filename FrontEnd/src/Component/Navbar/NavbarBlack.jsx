@@ -13,6 +13,7 @@ const avatarMap = import.meta.glob('../../assets/Avatar/*.jpg', {
 const NavbarBlack = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const { user } = useAuth();
+  
 
   const avatarSrc = avatarMap[`../../assets/Avatar/${user?.avatar}`];
 
@@ -47,7 +48,15 @@ const NavbarBlack = () => {
                   Profile
                 </Link>
               </div>
-              <div className="dropdown-item">Settings</div>
+              <div className="dropdown-item">
+                <Link
+                  to={`/dashboard/${user?.role}/settings`}
+                  onClick={() => setShowDropdown(false)}
+                >
+                  Settings
+                </Link>
+              </div>
+              
               <div className="logout-btn-wrapper">
                 <LogoutButton />
               </div>

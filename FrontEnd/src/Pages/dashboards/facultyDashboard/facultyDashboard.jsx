@@ -5,7 +5,7 @@ import FacultySideBar from '../../../Component/FacultySideBar/FacultySideBar'
 import PageTitle from '../../../PageTitle'
 import './FacultyDashboard.css'
 const FacultyDashboard = () => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = React.useState(false)
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = React.useState(true)
 
   return (
     <div className='facultyDashboard'>

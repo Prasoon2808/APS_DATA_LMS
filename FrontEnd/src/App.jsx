@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LoginMenu from './Pages/loginMenu/loginMenu';
 import StudentDashboard from './Pages/dashboards/studentDashboard/studentDashboard';
-import FacultyDashboard from './Pages/dashboards/facultyDashboard/FacultyDashboard.jsx';
+import FacultyDashboard from './Pages/dashboards/facultyDashboard/facultyDashboard.jsx';
 import AdminDashboard from './Pages/dashboards/adminDashboard/adminDashboard';
 import PrivateRoute from './Component/PrivateRoute.jsx';
 import ResetPassword from './Pages/loginMenu/ResetPassword/resetPassword';
@@ -43,6 +43,7 @@ import QuizMainPage from './Pages/dashboards/studentDashboard/SubPages/Quiz/Quiz
 import QuizResultPage from './Pages/dashboards/studentDashboard/SubPages/Quiz/QuizResultPage.jsx';
 import Forum from './Pages/dashboards/facultyDashboard/SubPages/ForumPage.jsx';
 import ProfilePage from './Pages/Profile/ProfilePage.jsx';
+import SettingsPage from './Pages/Settings/SettingsPage.jsx';
 
 const App = () => {
   return (
@@ -88,6 +89,7 @@ const App = () => {
           <Route path="assignment" element={<Assignment />} />
           <Route path="courses/:id" element={<CourseLayout />} />
           <Route path='profile' element={<ProfilePage />} />
+          <Route path='settings' element={<SettingsPage/>} />
         </Route>
 
         <Route
@@ -101,6 +103,7 @@ const App = () => {
           <Route index element={<Navigate to="network" replace />} />
           <Route path="network" element={<Forum />} />
           <Route path='profile' element={<ProfilePage />} />
+          <Route path='settings' element={<SettingsPage/>} />
         </Route>
 
         <Route
@@ -123,6 +126,7 @@ const App = () => {
           <Route path='blogs-creation' element={<BlogForm />} />
           <Route path='quiz-builder' element={<QuizBuilder />} />
           <Route path='profile' element={<ProfilePage />} />
+          <Route path='settings' element={<SettingsPage/>} />
 
           
         </Route>

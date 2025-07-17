@@ -5,6 +5,7 @@ const updateUser = require("../controllers/updateUser");
 const addUser = require("../controllers/addUser");
 const sendResetLink = require("../controllers/sendResetLink");
 const resetPassword = require("../controllers/resetPassword");
+const { changePassword } = require('../controllers/authController');
 
 const { validateToken } = require("../controllers/authController");
 
@@ -17,7 +18,7 @@ router.put("/update/:id", updateUser);
 
 router.get("/validate-token", validateToken);
 
-
+router.post("/change-password", changePassword);
 router.post("/login", login);
 const { getStreakDates } = require("../controllers/authController");
 router.get("/streak-dates", getStreakDates);

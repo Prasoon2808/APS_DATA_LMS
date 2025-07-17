@@ -14,7 +14,8 @@ const avatarMap = {
 };
 
 export default function ForumPage() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+
   const userId = user?._id;
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState('');
@@ -28,6 +29,20 @@ export default function ForumPage() {
   const [replyFormFor, setReplyFormFor] = useState(null);
   const [expandedId, setExpandedId] = useState(null);
   const [searchText, setSearchText] = useState('');
+  const [feedFilter, setFeedFilter] = useState('all'); // 'all', 'my', 'saved', 'job'
+  
+  const totalPosts = posts.length;
+  const totalLikesAll = posts.reduce((sum, p) => sum + (p.likes?.length || 0), 0);
+  const userPosts = posts.filter(p => p.userId?._id === userId);
+  const userLikes = userPosts.reduce((sum, p) => sum + (p.likes?.length || 0), 0);
+  
+  // Avoid division by zero
+  const popularityScore = totalPosts > 0 && totalLikesAll > 0
+  ? ((userPosts.length * userLikes) / (totalPosts * totalLikesAll)) * 100
+  : 0;
+  
+  if (loading) return null;
+
 
   useEffect(() => {
     fetchPosts();
@@ -43,7 +58,7 @@ export default function ForumPage() {
   const formatTime = (d) => new Date(d).toLocaleString();
 
   const handleNewPost = async () => {
-    if (!newPost.trim()) return;
+    if (!newPost.trim() && !file) return;
 
     let fileUrl = '';
     if (file) {
@@ -120,7 +135,62 @@ export default function ForumPage() {
 
       <main className="forum-container">
         <div style={{ display: 'flex', gap: '2rem' }}>
-          <div style={{ flex: 2 }}>
+          <div style={{ flex: 0.8 }}>
+            <div className="forum-leftbar">
+              <div className="forum-profile-card">
+                <img src={avatarMap[user?.avatar || '1.jpg']} alt="avatar" className="forum-profile-avatar" />
+                <h3>{user?.name || 'Anonymous'}</h3>
+                <p className="forum-profile-subtitle">{user?.role}</p>
+                <p className="forum-profile-org">{user?.institution}</p>
+              </div>
+
+              <div className="forum-profile-stats">
+                <div className="forum-profile-stat">
+                  <span>Total Posts</span>
+                  <strong>{userPosts.length}</strong>
+                </div>
+                <div className="forum-profile-stat">
+                  <span>Post impressions</span>
+                  <strong>{userLikes}</strong>
+                </div>
+                <div className="forum-profile-stat">
+                  <span>Popularity</span>
+                  <strong>{popularityScore.toFixed(0)}%</strong>
+                </div>
+
+              </div>
+              <div className="forum-feed-filter-box">
+                <div
+                  className={`forum-feed-filter-item ${feedFilter === 'all' ? 'active' : ''}`}
+                  onClick={() => setFeedFilter('all')}
+                >
+                  <img src='https://storage.googleapis.com/edu-lab/27.png' alt="all" className="forum-icon-m" />
+                  All Posts
+                </div>
+                <div
+                  className={`forum-feed-filter-item ${feedFilter === 'my' ? 'active' : ''}`}
+                  onClick={() => setFeedFilter('my')}
+                >
+                  <img src='https://storage.googleapis.com/edu-lab/28.png' alt="my" className="forum-icon-m" />
+                  My Posts
+                </div>
+                <div
+                  className={`forum-feed-filter-item ${feedFilter === 'saved' ? 'active' : ''}`}
+                >
+                  <img src='https://storage.googleapis.com/edu-lab/29.png' alt="saved" className="forum-icon-lm" />
+                  Saved Posts
+                </div>
+                <div
+                  className={`forum-feed-filter-item ${feedFilter === 'job' ? 'active' : ''}`}
+                >
+                  <img src='https://storage.googleapis.com/edu-lab/30.png' alt="job" className="forum-icon-lm" />
+                  Job Posts
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div style={{ flex: 1.9 }}>
             <section className="forum-new-post">
               <div className="forum-new-post-input">
                 <img
@@ -128,11 +198,12 @@ export default function ForumPage() {
                   alt="avatar"
                   className="forum-avatar"
                 />
-                <input
-                  type="text"
+                <textarea
+                  
                   placeholder="Start a post"
                   value={newPost}
                   onChange={(e) => setNewPost(e.target.value)}
+                  
                 />
               </div>
 
@@ -191,9 +262,18 @@ export default function ForumPage() {
             </section>
 
             <section className="forum-list">
-              {posts.filter(post =>
+              {posts
+              .filter(post => {
+                if (feedFilter === 'my') return post.userId?._id === userId;
+                if (feedFilter === 'saved') return false; // placeholder
+                if (feedFilter === 'job') return false;   // placeholder
+                return true; // all feeds
+              })
+              .filter(post =>
                 post.question?.toLowerCase().includes(searchText.toLowerCase())
-              ).map(post => {
+              )
+              .map(post => {
+
                 const isOpen = expandedId === post._id;
                 return (
                   <div key={post._id} className="forum-post" onClick={() => setExpandedId(isOpen ? null : post._id)}>
@@ -295,7 +375,8 @@ export default function ForumPage() {
                           </div>
                         ))}
                         <div className="forum-answer-control">
-                          <textarea
+                          <input
+                            type="text"
                             placeholder={post.category === 'doubt' ? 'Write your answer...' : 'Write a comment...'}
                             value={responses[post._id] || ''}
                             onClick={(e) => e.stopPropagation()}

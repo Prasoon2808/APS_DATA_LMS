@@ -31,7 +31,12 @@ exports.login = async (req, res) => {
         _id: user._id,
         email: user.email,
         role: user.role,
-        name: user.name         // ✅ add this
+        name: user.name,
+        institution: user.institution || '',
+        phone: user.phone || '',
+        country: user.country || '',
+        gender: user.gender || '',
+        avatar: user.avatar || '1.jpg',
       }
     });
 
@@ -77,6 +82,27 @@ exports.getStreakDates = async (req, res) => {
     res.json({ streakDates: user.streakDates });
   } catch (err) {
     res.status(401).json({ msg: "Unauthorized or Invalid Token" });
+  }
+};
+
+
+exports.changePassword = async (req, res) => {
+  const { userId, currentPassword, newPassword } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
+    const match = await bcrypt.compare(currentPassword, user.password);
+    if (!match) return res.status(400).json({ msg: "Current password is incorrect" });
+
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(newPassword, salt);
+    await user.save();
+
+    res.json({ msg: "Password changed successfully" });
+  } catch (err) {
+    res.status(500).json({ msg: "Server error" });
   }
 };
 

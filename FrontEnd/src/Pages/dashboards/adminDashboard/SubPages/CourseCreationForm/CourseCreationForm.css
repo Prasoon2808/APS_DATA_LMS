@@ -25,7 +25,7 @@
 .section-block input[type="file"],
 .chapter-block input[type="text"],
 .chapter-block input[type="file"],
-textarea {
+.course-form textarea {
   width: 100%;
   padding: 0.7rem;
   border-radius: 6px;
@@ -34,7 +34,8 @@ textarea {
   font-size: 1rem;
 }
 
-textarea {
+
+.course-form textarea {
   min-height: 100px;
   resize: vertical;
 }

@@ -8,6 +8,8 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const token = localStorage.getItem("token") || sessionStorage.getItem("token");
@@ -17,16 +19,17 @@ export const AuthProvider = ({ children }) => {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
-          setUser({
-            token,
-            ...res.data.user,
-          });
+          setUser({ token, ...res.data.user });
+          setLoading(false);
         })
         .catch(() => {
           localStorage.clear();
           sessionStorage.clear();
           setUser(null);
+          setLoading(false);
         });
+    } else {
+      setLoading(false);
     }
   }, []);
 
@@ -66,7 +69,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
+
       {children}
     </AuthContext.Provider>
   );
