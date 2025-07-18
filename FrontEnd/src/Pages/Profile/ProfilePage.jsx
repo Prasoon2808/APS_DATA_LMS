@@ -12,6 +12,11 @@ const avatarOptions = [
   { file: '3.jpg', src: assets.avatar3 },
   { file: '4.jpg', src: assets.avatar4 },
   { file: '5.jpg', src: assets.avatar5 },
+  { file: '6.png', src: assets.avatar6 },
+  { file: '7.png', src: assets.avatar7 },
+  { file: '8.png', src: assets.avatar8 },
+  { file: '9.png', src: assets.avatar9 },
+  { file: '10.png', src: assets.avatar10 },
 ];
 
 export default function ProfilePage() {

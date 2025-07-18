@@ -1,0 +1,167 @@
+.assignment-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 2rem;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.assignment-form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.assignment-form-container .assignment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.assignment-form-container .assignment-form input,
+.assignment-form-container .assignment-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.assignment-form-container .assignment-form textarea {
+  min-height: 100px;
+}
+
+.assignment-form-container .assignment-form button {
+  padding: 0.9rem;
+  background-color: #8AB62F;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.assignment-form-container .assignment-form button:hover {
+  background-color: #7aa027;
+}
+.assignment-form-container .assignment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.assignment-form-container .assignment-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.assignment-form-container .assignment-info {
+  flex: 1;
+}
+
+.assignment-form-container .assignment-info h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.assignment-form-container .assignment-info p {
+  margin: 0.2rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.assignment-form-container .assignment-image {
+  width: 180px;
+  margin-left: 2rem;
+  flex-shrink: 0;
+}
+
+.assignment-form-container .assignment-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.assignment-form-container .assignment-controls {
+  margin-top: 1rem;
+}
+
+.assignment-form-container .assignment-controls button {
+  background-color: #8AB62F;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.assignment-form-container .assignment-controls button:hover {
+  background-color: #7aa028;
+}
+
+
+.assignment-form-container .assignment-form .toggle-task-btn {
+  background-color: #444;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.assignment-form-container .assignment-form .toggle-task-btn:hover {
+  background-color: #333;
+}
+
+.assignment-form-container .task-block {
+  background-color: #f2f2f2;
+  padding: 1rem;
+  border-left: 5px solid #8AB62F;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.assignment-form-container .task-block input,
+.assignment-form-container .task-block textarea {
+  padding: 0.6rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  width: 100%;
+  resize: vertical;
+}
+
+.assignment-form-container .task-block button {
+  align-self: flex-start;
+  background-color: #c0392b;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.assignment-form-container .task-block button:hover {
+  background-color: #a93226;
+}

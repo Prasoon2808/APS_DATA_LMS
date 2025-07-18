@@ -46,6 +46,11 @@ import avatar2 from './Avatar/2.jpg';
 import avatar3 from './Avatar/3.jpg';
 import avatar4 from './Avatar/4.jpg';
 import avatar5 from './Avatar/5.jpg';
+import avatar6 from './Avatar/6.png';
+import avatar7 from './Avatar/7.png';
+import avatar8 from './Avatar/8.png';
+import avatar9 from './Avatar/9.png';
+import avatar10 from './Avatar/10.png';
 import docIcon from './Avatar/19.png';
 import videoIcon from './Avatar/20.png';
 import imageIcon from './Avatar/21.png';
@@ -103,6 +108,11 @@ export const assets = {
     avatar3,
     avatar4,
     avatar5,
+    avatar6,
+    avatar7,    
+    avatar8,
+    avatar9,
+    avatar10,
     docIcon,
     videoIcon,
     imageIcon,

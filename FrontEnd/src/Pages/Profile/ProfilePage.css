@@ -38,20 +38,28 @@
 }
 
 .profile-page .avatar-selector {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
-  flex-wrap: wrap;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .profile-page .avatar-selector img {
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid transparent;
   transition: 0.2s ease;
 }
+
+.profile-page .avatar-selector img.selected {
+  border-color: #8AB62F;
+  box-shadow: 0 0 6px #8AB62F;
+}
+
 
 .profile-page .avatar-selector img.selected {
   border-color: #8AB62F;

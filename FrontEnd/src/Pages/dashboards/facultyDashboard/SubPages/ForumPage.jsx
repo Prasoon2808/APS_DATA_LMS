@@ -4,6 +4,7 @@ import './Forum.css';
 import config from '../../../../config/config';
 import { useAuth } from '../../../../context/AuthContext';
 import { assets } from '../../../../assets/assets';
+import PageTitle from '../../../../PageTitle';
 
 const avatarMap = {
   '1.jpg': assets.avatar1,
@@ -11,6 +12,11 @@ const avatarMap = {
   '3.jpg': assets.avatar3,
   '4.jpg': assets.avatar4,
   '5.jpg': assets.avatar5,
+  '6.png': assets.avatar6,
+  '7.png': assets.avatar7,
+  '8.png': assets.avatar8,
+  '9.png': assets.avatar9,
+  '10.png': assets.avatar10,
 };
 
 export default function ForumPage() {
@@ -128,10 +134,7 @@ export default function ForumPage() {
 
   return (
     <div className="forum-page">
-      <header className="forum-header">
-        <h1>💬 EDU[LAB] Community Forum</h1>
-        <p>Ideas. Doubts. Feedback. All in one feed.</p>
-      </header>
+      <PageTitle title="Community" />
 
       <main className="forum-container">
         <div style={{ display: 'flex', gap: '2rem' }}>
@@ -154,7 +157,7 @@ export default function ForumPage() {
                   <strong>{userLikes}</strong>
                 </div>
                 <div className="forum-profile-stat">
-                  <span>Popularity</span>
+                  <span>Influence</span>
                   <strong>{popularityScore.toFixed(0)}%</strong>
                 </div>
 
@@ -192,6 +195,18 @@ export default function ForumPage() {
           </div>
           <div style={{ flex: 1.9 }}>
             <section className="forum-new-post">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #eee' }}>
+                <div className="forum-type-select">
+                  <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                    <option value="general">General</option>
+                    <option value="doubt">Doubt</option>
+                    <option value="idea">Idea</option>
+                  </select>
+                </div>
+                <button className="forum-post-submit" onClick={handleNewPost} disabled={uploading}>
+                  {uploading ? 'Uploading...' : 'Post'}
+                </button>
+              </div>
               <div className="forum-new-post-input">
                 <img
                   src={avatarMap[user?.avatar || '1.jpg']}
@@ -247,18 +262,6 @@ export default function ForumPage() {
               </div>
 
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', marginTop: '1rem' }}>
-                <div className="forum-type-select">
-                  <select value={category} onChange={(e) => setCategory(e.target.value)}>
-                    <option value="general">General</option>
-                    <option value="doubt">Doubt</option>
-                    <option value="idea">Idea</option>
-                  </select>
-                </div>
-                <button className="forum-post-submit" onClick={handleNewPost} disabled={uploading}>
-                  {uploading ? 'Uploading...' : 'Post'}
-                </button>
-              </div>
             </section>
 
             <section className="forum-list">

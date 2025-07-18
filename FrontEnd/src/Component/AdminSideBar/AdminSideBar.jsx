@@ -14,6 +14,7 @@ const menuItems = [
     { path: 'email-template', icon: assets.sendInviteIcon, label: 'Mail Template Upload' },
     { path: 'blogs-creation', icon: assets.quizIcon, label: 'Add Blog' },
     { path: 'quiz-builder', icon: assets.quizIcon, label: 'Quiz Creator' },
+    { path: 'assignment-manager', icon: assets.assignmentIcon, label: 'Assignment Manager' },
 
 ]
 

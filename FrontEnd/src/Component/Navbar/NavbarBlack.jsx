@@ -5,7 +5,7 @@ import LogoutButton from '../logoutbtn';
 import { useAuth } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
 
-const avatarMap = import.meta.glob('../../assets/Avatar/*.jpg', {
+const avatarMap = import.meta.glob('../../assets/Avatar/*.{jpg,png}', {
   eager: true,
   import: 'default',
 });

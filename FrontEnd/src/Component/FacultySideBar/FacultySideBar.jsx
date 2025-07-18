@@ -5,7 +5,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { assets } from '../../assets/assets';
 
 const menuItems = [
-  { path: 'network', icon: assets.networkIcon, label: 'Network' },
+  { path: 'network', icon: assets.networkIcon, label: 'Community' },
+  { path: 'assignment', icon: assets.assignmentIcon, label: 'Assignment' },
 ];
 
 const FacultySideBar = ({ onToggle }) => {

@@ -44,6 +44,11 @@ import QuizResultPage from './Pages/dashboards/studentDashboard/SubPages/Quiz/Qu
 import Forum from './Pages/dashboards/facultyDashboard/SubPages/ForumPage.jsx';
 import ProfilePage from './Pages/Profile/ProfilePage.jsx';
 import SettingsPage from './Pages/Settings/SettingsPage.jsx';
+import AdminAssignmentPage from './Pages/dashboards/adminDashboard/SubPages/AssignmentManager/AssignmentManager.jsx';
+import StudentAssignments from './Pages/dashboards/facultyDashboard/SubPages/SmartLABSAssingment/SmartLABSAssignment.jsx';
+import AssignmentStartPage from './Pages/dashboards/facultyDashboard/SubPages/SmartLABSAssingment/AssignmentStartPage.jsx';
+import AssignmentTaskListPage from './Pages/dashboards/facultyDashboard/SubPages/SmartLABSAssingment/AssignmentTaskListPage.jsx';
+import AssignmentTaskPage from './Pages/dashboards/facultyDashboard/SubPages/SmartLABSAssingment/AssignmentTaskPage.jsx';
 
 const App = () => {
   return (
@@ -102,6 +107,10 @@ const App = () => {
         >
           <Route index element={<Navigate to="network" replace />} />
           <Route path="network" element={<Forum />} />
+          <Route path='assignment' element={<StudentAssignments />} />
+          <Route path='assignment/:assignmentId/start' element={<AssignmentStartPage />} /> 
+          <Route path="assignment/:assignmentId/tasks" element={<AssignmentTaskListPage />} />
+          <Route path='assignment/:assignmentId/task/:taskNumber' element={<AssignmentTaskPage />} />
           <Route path='profile' element={<ProfilePage />} />
           <Route path='settings' element={<SettingsPage/>} />
         </Route>
@@ -125,6 +134,7 @@ const App = () => {
           <Route path="event-creation" element={<CreateEvent />} />
           <Route path='blogs-creation' element={<BlogForm />} />
           <Route path='quiz-builder' element={<QuizBuilder />} />
+          <Route path='assignment-manager' element={<AdminAssignmentPage />} />
           <Route path='profile' element={<ProfilePage />} />
           <Route path='settings' element={<SettingsPage/>} />
 

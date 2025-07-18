@@ -1,0 +1,93 @@
+.student-assignment-list {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 8vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.student-assignment-list h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #222;
+}
+
+.student-assignment-list .assignment-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fefefe;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.04);
+}
+
+.student-assignment-list .assignment-card img {
+  max-width: 150px;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.student-assignment-list .assignment-card h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.student-assignment-list .assignment-card p {
+  margin: 0.3rem 0;
+  color: #555;
+}
+
+.student-assignment-list .assignment-card button {
+  margin-top: 0.6rem;
+  padding: 0.5rem 1rem;
+  background-color: #8AB62F;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.student-assignment-list .assignment-card button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.student-assignment-list .assignment-card {
+  position: relative;
+  justify-content: space-between;
+}
+
+.student-assignment-list .assignment-info {
+  flex: 1;
+}
+
+.student-assignment-list .assignment-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.student-assignment-list .submitted-btn {
+  background-color: #ccc;
+  color: #555;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: not-allowed;
+  font-weight: 500;
+}
+
+
+.student-assignment-list .circular-progress circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(0.75turn);
+  transform-origin: center;
+}

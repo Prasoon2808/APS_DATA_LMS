@@ -59,14 +59,14 @@ export default function SettingsPage() {
             value={formData.currentPassword}
             onChange={handleChange}
             required
-            
+    
           />
         </div>
 
         <div>
           <label>New Password</label>
           <input
-            type="text"
+            type="password"
             name="newPassword"
             value={formData.newPassword}
             onChange={handleChange}
@@ -77,7 +77,7 @@ export default function SettingsPage() {
         <div>
           <label>Re-enter New Password</label>
           <input
-            type="password"
+            type="text"
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
