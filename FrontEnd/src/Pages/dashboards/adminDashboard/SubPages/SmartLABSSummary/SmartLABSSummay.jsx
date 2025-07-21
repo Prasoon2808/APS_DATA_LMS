@@ -62,6 +62,10 @@ export default function AdminSummaryForm({ mode = 'add' }) {
     const updated = formData.summaryText.filter((_, i) => i !== index);
     setFormData(prev => ({ ...prev, summaryText: updated }));
   };
+  const cleanForm = {
+    ...formData,
+    userId: userId,
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -69,7 +73,7 @@ export default function AdminSummaryForm({ mode = 'add' }) {
       await axios.put(`${config.backendUrl}/api/smartlabs/session-summary/${id}`, formData);
       alert('Updated!');
     } else {
-      await axios.post(`${config.backendUrl}/api/smartlabs/session-summary`, formData);
+      await axios.post(`${config.backendUrl}/api/smartlabs/session-summary`, cleanForm);
       alert('Added!');
     }
   };

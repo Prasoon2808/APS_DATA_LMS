@@ -14,7 +14,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const userId = req.user.id; // secure this
+  const userId = req.user.userId; // secure this
   const body = { ...req.body };
 
   if (body.recordingLink && body.recordingLink.length < 20) {
