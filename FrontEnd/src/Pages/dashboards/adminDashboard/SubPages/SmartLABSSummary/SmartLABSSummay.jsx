@@ -3,8 +3,11 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './SmartLABSSummary.css';
 import config from '../../../../../config/config';
+import { useAuth } from '../../../../../context/AuthContext';
 
 export default function AdminSummaryForm({ mode = 'add' }) {
+  const { user } = useAuth();
+  const userId = user?._id;
   const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -32,6 +35,11 @@ export default function AdminSummaryForm({ mode = 'add' }) {
     }
   }, [mode, id]);
 
+  const handleOAuth = () => {
+    if (!user || !userId) return alert("User not logged in");
+    const redirectURL = `https://api.edu-lab.in/api/oauth2/youtube?userId=${userId}`;
+    window.location.href = redirectURL;
+  };
   const handleChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -69,6 +77,22 @@ export default function AdminSummaryForm({ mode = 'add' }) {
   return (
     <div className="admin-form">
       <h2>{mode === 'edit' ? 'Edit' : 'Add'} Summary</h2>
+      <div style={{ marginBottom: '1rem', textAlign: 'center' }}>
+    <button
+      style={{
+        backgroundColor: '#a8cd3d',
+        color: 'white',
+        padding: '0.6rem 1.2rem',
+        border: 'none',
+        borderRadius: '8px',
+        fontWeight: 'bold',
+        cursor: 'pointer'
+      }}
+      onClick={handleOAuth}
+    >
+      🔗 Connect YouTube Account
+    </button>
+  </div>
       <form onSubmit={handleSubmit}>
         <input name="sessionTitle" placeholder="Title" value={formData.sessionTitle} onChange={handleChange} required />
         <input name="sessionDate" type="date" value={formData.sessionDate} onChange={handleChange} required />
