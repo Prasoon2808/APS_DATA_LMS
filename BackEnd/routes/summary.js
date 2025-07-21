@@ -14,17 +14,33 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const userId = req.user.userId; // secure this
-  const body = { ...req.body };
+  try {
+    console.log('🟡 Incoming summary POST:', req.body);
 
-  if (body.recordingLink && body.recordingLink.length < 20) {
-    const embed = await getEmbedHtml(body.recordingLink, userId);
-    if (embed) body.recordingLink = embed;
+    const userId = req.body.userId;
+    if (!userId) throw new Error('Missing userId');
+
+    const body = { ...req.body };
+
+    if (body.recordingLink && body.recordingLink.length < 20) {
+      console.log('🔵 Fetching embed for video ID:', body.recordingLink);
+      const embed = await getEmbedHtml(body.recordingLink, userId);
+      if (embed) {
+        body.recordingLink = embed;
+        console.log('🟢 Embed URL:', embed);
+      } else {
+        throw new Error('Failed to generate YouTube embed (maybe token missing?)');
+      }
+    }
+
+    const summary = new SessionSummary(body);
+    await summary.save();
+    console.log('✅ Summary saved!');
+    res.json({ success: true });
+  } catch (err) {
+    console.error('❌ Error in POST /session-summary:', err);
+    res.status(500).json({ error: err.message });
   }
-
-  const summary = new SessionSummary(body);
-  await summary.save();
-  res.json({ success: true });
 });
 
 router.put('/:id', async (req, res) => {

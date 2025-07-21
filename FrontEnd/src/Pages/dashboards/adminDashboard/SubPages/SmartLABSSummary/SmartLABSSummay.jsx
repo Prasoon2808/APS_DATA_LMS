@@ -67,12 +67,19 @@ export default function AdminSummaryForm({ mode = 'add' }) {
     userId: userId,
   };
 
+
+
   const handleSubmit = async e => {
     e.preventDefault();
     if (mode === 'edit') {
       await axios.put(`${config.backendUrl}/api/smartlabs/session-summary/${id}`, formData);
       alert('Updated!');
     } else {
+      console.log('Submitting formData:', {
+  ...formData,
+  userId
+});
+
       await axios.post(`${config.backendUrl}/api/smartlabs/session-summary`, cleanForm);
       alert('Added!');
     }
