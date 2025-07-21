@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const SessionSummary = require('../models/SessionSummary');
+const getEmbedHtml = require('../utils/getEmbedHtml');
 
 router.get('/', async (req, res) => {
   const sessions = await SessionSummary.find().sort({ sessionDate: -1 });
@@ -13,7 +14,15 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const summary = new SessionSummary(req.body);
+  const userId = req.user.id; // secure this
+  const body = { ...req.body };
+
+  if (body.recordingLink && body.recordingLink.length < 20) {
+    const embed = await getEmbedHtml(body.recordingLink, userId);
+    if (embed) body.recordingLink = embed;
+  }
+
+  const summary = new SessionSummary(body);
   await summary.save();
   res.json({ success: true });
 });
