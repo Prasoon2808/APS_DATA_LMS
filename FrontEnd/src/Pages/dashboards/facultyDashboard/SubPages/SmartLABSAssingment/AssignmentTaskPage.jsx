@@ -22,6 +22,8 @@ const AssignmentTaskPage = () => {
   const fetchData = async () => {
     if (!userId || !assignmentId) {
       console.warn("User ID or assignment ID is missing.");
+      toast.error("User ID or assignment ID is missing.");
+      navigate('/dashboard/smartLABS/assignment');
       return;
     }
 

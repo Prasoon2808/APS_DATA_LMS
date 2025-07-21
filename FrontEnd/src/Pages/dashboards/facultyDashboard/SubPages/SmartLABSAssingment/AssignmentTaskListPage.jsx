@@ -25,7 +25,9 @@ const AssignmentTaskListPage = () => {
       // If submission not found, create one
       if (err.response?.status === 404) {
         await axios.post(`${config.backendUrl}/api/smartlabs/assignment/start/${assignmentId}`, { userId });
-        window.location.reload(); // re-fetch with new submission
+        const newSubmission = await axios.get(`${config.backendUrl}/api/smartlabs/assignment/submission/${assignmentId}?userId=${userId}`);
+        setTasks(newSubmission.data.tasks);
+        // re-fetch with new submission
       } else {
         console.error("Task list load error:", err);
       }

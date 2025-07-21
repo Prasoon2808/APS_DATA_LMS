@@ -1,0 +1,185 @@
+.schedule-container {
+  max-width: 1200px;
+  margin: auto;
+  margin-top: calc(8vh + 2rem);
+  padding: 40px 20px;
+  background: #fff;
+  color: #111;
+}
+
+.schedule-container .schedule-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.schedule-container .schedule-title green {
+  color: #a8cd3d;
+}
+
+.schedule-container .schedule-title red {
+  color: red;
+}
+
+.schedule-container .schedule-title span {
+  font-size: 2rem;
+  color: #555;
+}
+
+.schedule-container .section-title {
+  font-size: 1.6rem;
+  margin: 40px 0 20px;
+  color: #111;
+  text-transform: uppercase;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.schedule-container .event-row {
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.schedule-container .event-date {
+  width: 80px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  padding-right: 16px;
+}
+
+.schedule-container .event-day {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.schedule-container .event-month,
+.schedule-container .event-year {
+  font-size: 1rem;
+  color: #555;
+}
+
+.schedule-container .event-info {
+  flex: 1;
+}
+
+.schedule-container .event-info h3 {
+  font-size: 1.2rem;
+  margin: 0 0 6px;
+}
+
+.schedule-container .event-location {
+  font-size: 0.95rem;
+  margin: 4px 0;
+  color: #444;
+}
+.schedule-container .meeting-info {
+  font-size: 0.95rem;
+  margin: 4px 0;
+  color: #444;
+}
+.schedule-container .meeting-info span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 4px 0;
+  color: #333;
+}
+
+.schedule-container .event-tag {
+  font-size: 0.8rem;
+  background: #a8cd3d;
+  color: white;
+  padding: 4px 9px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.event-tag.software {
+  background-color: #a8cd3d; /* blue */
+}
+
+.event-tag.theory {
+  background-color: #0066ff; /* purple */
+}
+
+.event-tag.critics {
+  background-color: #ca0707; /* orange */
+}
+
+.event-tag.software---mentoring {
+  background-color: #1abc9c; /* teal */
+}
+
+.event-tag.software---design-studio {
+  background-color: #ff7700; /* green */
+}
+
+.event-tag.design-studio---exhibition {
+  background-color: #f39c12; /* amber */
+}
+
+.event-tag.design-studio---critics {
+  background-color: #7700ff; /* deep orange */
+}
+
+.event-tag.critics---mentoring {
+  background-color: #11c700; /* dark teal */
+}
+
+.event-tag.architectural-field-trip {
+  background-color: #003cff; /* gray */
+}
+
+.event-tag.graduation---exhibition {
+  background-color: #ff0000; /* red */
+}
+
+.event-tag.exhibition {
+  background-color: #ff0000; /* dark blue */
+}
+
+.event-tag.online-global-symposium {
+  background-color: #ff4800; /* muted gray */
+}
+
+
+.schedule-container .zoom-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #0070f3;
+  color: white;
+  text-align: center;
+  padding: 8px 16px;
+  border: 2px solid #0070f3;
+  margin-left: 30px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.schedule-container .zoom-btn:hover {
+  background-color: #0057c2;
+}
+.schedule-container .rec-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: transparent;
+  color: black;
+  border: 2px solid #000;
+  padding: 8px 16px;
+  margin-left: 30px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.schedule-container .rec-btn:hover {
+  background-color: #000000;
+  color: white;
+}

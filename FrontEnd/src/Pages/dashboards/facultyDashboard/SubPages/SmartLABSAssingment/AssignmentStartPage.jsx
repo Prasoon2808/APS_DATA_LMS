@@ -41,7 +41,7 @@ const AssignmentStartPage = () => {
         <p><strong>Type:</strong> {assignment.type}</p>
         <p><strong>Grading / Credits:</strong> {assignment.evaluation}</p>
         <p><strong>Allocated In:</strong> {assignment.allocatedIn}</p>
-        <p><strong>Submission Type:</strong> {assignment.submissionType}</p>
+        <p><strong>Submission:</strong> {assignment.submissionType}</p>
         <p><strong>Output:</strong> {assignment.output}</p>
       </div>
 

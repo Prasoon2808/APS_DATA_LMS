@@ -61,7 +61,21 @@ export default function ForumPage() {
     setPosts(Array.isArray(res.data) ? res.data : []);
   };
 
-  const formatTime = (d) => new Date(d).toLocaleString();
+  const formatTime = (d) => {
+  const date = new Date(d).toLocaleString('en-IN', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  });
+  return date.replace(/(\d{2}) (\w{3}) (\d{4})/, '$1 $2, $3');
+};
+
+console.log(formatTime('2024-05-11T12:30:00'));
+// Output: "11 May, 2024 12:30 PM"
+
 
   const handleNewPost = async () => {
     if (!newPost.trim() && !file) return;
@@ -187,7 +201,7 @@ export default function ForumPage() {
                   className={`forum-feed-filter-item ${feedFilter === 'job' ? 'active' : ''}`}
                 >
                   <img src='https://storage.googleapis.com/edu-lab/30.png' alt="job" className="forum-icon-lm" />
-                  Job Posts
+                  Job Board
                 </div>
               </div>
 
@@ -421,7 +435,7 @@ export default function ForumPage() {
                       <div className="forum-trending-rank">#{i + 1}</div>
                       <div className="forum-trending-content">
                         <p className="trending-question">
-                          {(post.question || '').slice(0, 70)}{post.question.length > 70 ? '...' : ''}
+                          {(post.question || '').slice(0, 50)}{post.question.length > 70 ? '...' : ''}
                         </p>
                         <small>
                           {formatTime(post.createdAt)} · {post.likes?.length || 0} likes · #{post.category}

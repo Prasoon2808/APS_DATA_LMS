@@ -9,10 +9,10 @@ const connectDB = async () => {
 const createUsers = async () => {
   await connectDB();
 
-  const hashedPassword = await bcrypt.hash('RLEDU#Admin@2025', 10);
+  const hashedPassword = await bcrypt.hash('ELI#Video@2025', 10);
 
   await User.create([
-      { email: 'prasoon.saxena@edu-lab.in', password: hashedPassword, role: 'smartLABS' },
+    { email: 'anand.rajgarhia@edu-lab.in', password: hashedPassword, role: 'smartLABS' },
   ]);
 
   console.log('Users seeded successfully');

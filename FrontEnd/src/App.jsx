@@ -49,6 +49,10 @@ import StudentAssignments from './Pages/dashboards/facultyDashboard/SubPages/Sma
 import AssignmentStartPage from './Pages/dashboards/facultyDashboard/SubPages/SmartLABSAssingment/AssignmentStartPage.jsx';
 import AssignmentTaskListPage from './Pages/dashboards/facultyDashboard/SubPages/SmartLABSAssingment/AssignmentTaskListPage.jsx';
 import AssignmentTaskPage from './Pages/dashboards/facultyDashboard/SubPages/SmartLABSAssingment/AssignmentTaskPage.jsx';
+import Schedule from './Pages/dashboards/facultyDashboard/SubPages/Schedule/Schedule.jsx';
+import AdminSummaryForm from './Pages/dashboards/adminDashboard/SubPages/SmartLABSSummary/SmartLABSSummay.jsx';
+import SummaryPage from './Pages/dashboards/facultyDashboard/SubPages/SessionSummary/SessionSummary.jsx';
+import AllSummaries from './Pages/dashboards/facultyDashboard/SubPages/SessionSummary/AllSessionSummary.jsx';
 
 const App = () => {
   return (
@@ -111,8 +115,11 @@ const App = () => {
           <Route path='assignment/:assignmentId/start' element={<AssignmentStartPage />} /> 
           <Route path="assignment/:assignmentId/tasks" element={<AssignmentTaskListPage />} />
           <Route path='assignment/:assignmentId/task/:taskNumber' element={<AssignmentTaskPage />} />
+          <Route path="schedule" element={<Schedule />} />
           <Route path='profile' element={<ProfilePage />} />
           <Route path='settings' element={<SettingsPage/>} />
+          <Route path="summaries" element={<AllSummaries />} />
+          <Route path="summary/:id" element={<SummaryPage />} />
         </Route>
 
         <Route
@@ -137,6 +144,8 @@ const App = () => {
           <Route path='assignment-manager' element={<AdminAssignmentPage />} />
           <Route path='profile' element={<ProfilePage />} />
           <Route path='settings' element={<SettingsPage/>} />
+          <Route path="summary/add" element={<AdminSummaryForm mode="add" />} />
+          <Route path="summary/edit/:id" element={<AdminSummaryForm mode="edit" />} />
 
           
         </Route>

@@ -12,13 +12,10 @@ const WaitlistApproval = () => {
 
   const fetchWaitlist = async () => {
     try {
-      setLoading(true);
       const res = await axios.get(`${url}/api/waitlist/all`);
       setWaitlist(res.data);
-      setLoading(false);
     } catch (err) {
       console.error('Error fetching waitlist:', err);
-      setLoading(false);
     }
   };
 
@@ -48,12 +45,10 @@ const WaitlistApproval = () => {
   };
 
   useEffect(() => {
-    fetchWaitlist(); // initial load
-    const interval = setInterval(() => {
-      fetchWaitlist(); // refresh every 10 seconds
-    }, 10000);
-    return () => clearInterval(interval); // cleanup
-  }, []);
+      fetchWaitlist();
+      const interval = setInterval(fetchWaitlist, 2000);
+      return () => clearInterval(interval);
+    }, []);
 
   return (
     <div className="waitlist-approval-container">

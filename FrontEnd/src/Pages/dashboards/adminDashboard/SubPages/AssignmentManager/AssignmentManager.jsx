@@ -84,9 +84,9 @@ const AdminAssignmentPage = () => {
         <input type="text" name="title" placeholder="Title" value={formData.title} onChange={handleChange} required />
         <textarea name="brief" placeholder="Brief Description" value={formData.brief} onChange={handleChange} required />
         <input type="text" name="type" placeholder="Type" value={formData.type} onChange={handleChange} />
-        <input type="text" name="evaluation" placeholder="Evaluation" value={formData.evaluation} onChange={handleChange} />
+        <input type="text" name="evaluation" placeholder="Grades / Credits" value={formData.evaluation} onChange={handleChange} />
         <input type="text" name="allocatedIn" placeholder="Allocated In" value={formData.allocatedIn} onChange={handleChange} />
-        <input type="text" name="submissionType" placeholder="Submission Type" value={formData.submissionType} onChange={handleChange} />
+        <input type="text" name="submissionType" placeholder="Submission" value={formData.submissionType} onChange={handleChange} />
         <input type="text" name="output" placeholder="Output Format" value={formData.output} onChange={handleChange} />
         <textarea name="generalNotes" placeholder="General Notes (one per line)" value={formData.generalNotes} onChange={handleChange} />
         <input type="file" onChange={(e) => setImage(e.target.files[0])} />

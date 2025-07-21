@@ -15,7 +15,7 @@ const menuItems = [
     { path: 'blogs-creation', icon: assets.quizIcon, label: 'Add Blog' },
     { path: 'quiz-builder', icon: assets.quizIcon, label: 'Quiz Creator' },
     { path: 'assignment-manager', icon: assets.assignmentIcon, label: 'Assignment Manager' },
-
+    { path: 'summary/add', icon: assets.assignmentIcon, label: 'Add Summary' },
 ]
 
 const AdminSideBar = ({onToggle}) => {

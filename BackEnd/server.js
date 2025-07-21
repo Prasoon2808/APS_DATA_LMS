@@ -58,7 +58,7 @@ app.use('/api/quiz', require('./routes/quizRoutes'));
 app.use('/api/forum', require('./routes/forumRoutes'));
 app.use('/api/assignment', require('./routes/assignmentRoutes'));
 app.use('/api/smartlabs/assignment', require('./routes/smartLABSAssignment'));
-
+app.use('/api/smartlabs/session-summary', require('./routes/summary'));
 
 app.get('/', (req, res) => {
   res.send('APS Backend API is working!');

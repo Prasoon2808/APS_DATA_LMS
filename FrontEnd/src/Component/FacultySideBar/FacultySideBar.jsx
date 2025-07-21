@@ -7,6 +7,8 @@ import { assets } from '../../assets/assets';
 const menuItems = [
   { path: 'network', icon: assets.networkIcon, label: 'Community' },
   { path: 'assignment', icon: assets.assignmentIcon, label: 'Assignment' },
+  { path: 'schedule', icon: assets.courseIcon, label: 'Schedule' },
+  { path: 'summaries', icon:'https://storage.googleapis.com/edu-lab/my%20sessions%20icon%20sidebar.png', label: 'Sessions' },
 ];
 
 const FacultySideBar = ({ onToggle }) => {

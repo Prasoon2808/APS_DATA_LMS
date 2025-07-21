@@ -7,13 +7,13 @@ import { useAuth } from '../../../../../context/AuthContext';
 
 const StudentAssignments = () => {
   const {user} = useAuth();
-    const userId = user?._id;
+  const userId = user?._id;
   const [assignments, setAssignments] = useState([]);
   const navigate = useNavigate();
 
  useEffect(() => {
   axios
-    .get(`${config.backendUrl}/api/smartlabs/assignment/all?userId=${user?._id}`)
+    .get(`${config.backendUrl}/api/smartlabs/assignment/all?userId=${userId}`)
     .then((res) => {
       setAssignments(res.data);
     })
