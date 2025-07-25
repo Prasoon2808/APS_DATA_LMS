@@ -30,7 +30,13 @@ const AdminAssignmentPage = () => {
   const handleTaskChange = (index, e) => {
     const updated = [...tasks];
     const name = e.target.name;
-    updated[index][name] = name === 'hints' ? e.target.value.split('\n') : e.target.value;
+    updated[index][name] =
+    name === 'hints'
+      ? e.target.value.split('\n')
+      : name === 'taskNumber'
+        ? parseInt(e.target.value, 10) || 0
+        : e.target.value;
+
     setTasks(updated);
   };
 
