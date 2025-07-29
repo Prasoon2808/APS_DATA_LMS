@@ -42,29 +42,30 @@ export default function BulkEmailSender() {
   };
 
   const sendEmail = async (recipient, index) => {
-    try {
-      const res = await fetch(`${config.backendUrl}/api/send-bulk-email`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          emailList: [recipient],
-          templateName: selectedTemplate
-        }),
-      });
+  try {
+    const res = await fetch(`${config.backendUrl}/api/send-bulk-email`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        emailList: [recipient],
+        templateName: selectedTemplate
+      }),
+    });
 
-      const result = await res.json();
+    const result = await res.json();
 
-      if (res.ok && result.message.includes('sent')) {
-        setStatusMap(prev => ({ ...prev, [index]: 'success' }));
-        setSentCount(prev => prev + 1);
-      } else {
-        setStatusMap(prev => ({ ...prev, [index]: 'error' }));
-      }
-    } catch (err) {
-      console.error(err);
+    if (res.ok && (!result.failedList || result.failedList.length === 0)) {
+      setStatusMap(prev => ({ ...prev, [index]: 'success' }));
+      setSentCount(prev => prev + 1);
+    } else {
       setStatusMap(prev => ({ ...prev, [index]: 'error' }));
     }
-  };
+  } catch (err) {
+    console.error(err);
+    setStatusMap(prev => ({ ...prev, [index]: 'error' }));
+  }
+};
+
 
   const handleSendAll = async () => {
     setLoading(true);

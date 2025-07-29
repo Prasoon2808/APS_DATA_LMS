@@ -15,6 +15,7 @@ const EventRegister = () => {
 
   const [event, setEvent] = useState(null);
   const [formData, setFormData] = useState({});
+  const [pdfFile, setPdfFile] = useState(null); // 🔥 new state for PDF
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -22,10 +23,9 @@ const EventRegister = () => {
       try {
         const res = await axios.get(`${url}/api/event-meta/all`);
         if (res.data?.length) {
-          const latest = res.data[0]; // assuming sorted by latest
+          const latest = res.data[0]; // assuming latest first
           setEvent(latest);
 
-          // Init blank form fields
           const fields = {};
           latest.inputFields.forEach(field => {
             if (field === 'country') fields[field] = 'India';
@@ -51,12 +51,28 @@ const EventRegister = () => {
   const handleSubmit = async () => {
     if (!event) return;
 
-    const isEmpty = event.inputFields.some(f => !formData[f]?.trim());
+    // Validate required fields (skip pdf for text validation)
+    const isEmpty = event.inputFields
+      .filter(f => f !== 'pdf')
+      .some(f => !formData[f]?.trim());
+
     if (isEmpty) return toast.error('Please fill all required fields.');
 
+    // Prepare FormData for file upload
+    const formPayload = new FormData();
+    Object.keys(formData).forEach(key => {
+      formPayload.append(key, formData[key]);
+    });
+    formPayload.append('eventId', event.eventId);
+
+    if (event.inputFields.includes('pdf') && pdfFile) {
+      formPayload.append('pdfFile', pdfFile);
+    }
+
     try {
-      const payload = { ...formData, eventId: event.eventId };
-      const res = await axios.post(`${url}/api/event/register`, { user: payload });
+      const res = await axios.post(`${url}/api/event/register`, formPayload, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
       if (res.data.success) setSubmitted(true);
       else toast.error('Registration failed.');
     } catch (err) {
@@ -83,6 +99,7 @@ const EventRegister = () => {
               {!submitted ? (
                 <form className="eventForm">
                   <p>You're invited to <span>{event?.eventName}</span>, an exclusive FREE event by <span>smartLABS</span>.</p>
+                  
                   <div className="horzBlock">
                     {event?.inputFields.includes('name') && (
                       <div className="gender">
@@ -102,17 +119,19 @@ const EventRegister = () => {
                       </div>
                     )}
                   </div>
+
                   {event?.inputFields.includes('email') && (
                     <div className="gender">
                       <label>Email*</label>
                       <input type="email" name="email" value={formData.email || ''} onChange={handleChange} required />
                     </div>
                   )}
+
                   <div className="horzBlock">
                     {event?.inputFields.includes('country') && (
                       <div className="gender">
                         <label>Country*</label>
-                        <input type="text" name="country" value={formData.country || ''} onChange={handleChange} />
+                        <input type="text" readOnly name="country" value={formData.country || ''} onChange={handleChange} />
                       </div>
                     )}
                     {event?.inputFields.includes('phone') && (
@@ -122,6 +141,8 @@ const EventRegister = () => {
                       </div>
                     )}
                   </div>
+                  
+                  <div className="horzBlock">
                   {event?.inputFields.includes('institution') && (
                     <div className="gender">
                       <label>College or Organization*</label>
@@ -129,6 +150,20 @@ const EventRegister = () => {
                     </div>
                   )}
 
+                  {event?.inputFields.includes('refCode') && ( 
+                    <div className="gender">
+                      <label>Referral Code</label>
+                      <input type="text" name="refCode" value={formData.refCode || ''} onChange={handleChange} placeholder='EXCL100IND' />
+                    </div>
+                  )}
+
+                  {event?.inputFields.includes('pdf') && (
+                    <div className="gender">
+                      <label>Upload Portfolio PDF (Upto 500Mb)*</label>
+                      <input type="file" accept="application/pdf" onChange={(e) => setPdfFile(e.target.files[0])} />
+                    </div>
+                  )}
+                  </div>
 
                   <button type="button" className='loginBtn' onClick={handleSubmit}>Register Now</button>
                   <div className="empty" />

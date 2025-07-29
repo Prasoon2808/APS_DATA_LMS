@@ -114,3 +114,14 @@ tr:hover {
   border: 2px solid #a8cd3d;
   box-shadow: 0 0 10px rgba(168, 205, 61, 0.7);
 }
+
+.pdfDownloadBtn {
+  color: #a8cd3d;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+.pdfDownloadBtn:hover {
+  color: black;
+  text-decoration: underline;
+}

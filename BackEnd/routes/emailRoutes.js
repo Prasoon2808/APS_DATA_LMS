@@ -6,7 +6,10 @@ require('dotenv').config();
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Upload template
+// Utility: Sleep for a given time
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// ------------------- Upload Template -------------------
 router.post('/upload-template', async (req, res) => {
   const { name, subject, html } = req.body;
   if (!name || !subject || !html)
@@ -25,7 +28,7 @@ router.post('/upload-template', async (req, res) => {
   }
 });
 
-// Get all templates (only name for list)
+// ------------------- Get All Templates -------------------
 router.get('/templates', async (req, res) => {
   try {
     const templates = await Template.find({}, 'name');
@@ -35,7 +38,7 @@ router.get('/templates', async (req, res) => {
   }
 });
 
-// Get a single template by name
+// ------------------- Get Single Template -------------------
 router.get('/templates/:name', async (req, res) => {
   try {
     const template = await Template.findOne({ name: req.params.name });
@@ -47,7 +50,7 @@ router.get('/templates/:name', async (req, res) => {
   }
 });
 
-// Update a template by name
+// ------------------- Update Template -------------------
 router.put('/templates/:name', async (req, res) => {
   const { name, subject, html } = req.body;
   if (!name || !subject || !html)
@@ -67,7 +70,7 @@ router.put('/templates/:name', async (req, res) => {
   }
 });
 
-// Delete a template by name
+// ------------------- Delete Template -------------------
 router.delete('/templates/:name', async (req, res) => {
   try {
     const deleted = await Template.findOneAndDelete({ name: req.params.name });
@@ -79,34 +82,53 @@ router.delete('/templates/:name', async (req, res) => {
   }
 });
 
-// Send email using a saved template
+// ------------------- Send Bulk Email -------------------
 router.post('/send-bulk-email', async (req, res) => {
   const { emailList, templateName } = req.body;
+
+  if (!emailList || !Array.isArray(emailList) || emailList.length === 0)
+    return res.status(400).json({ message: 'Email list is required.' });
+
   const template = await Template.findOne({ name: templateName });
-
   if (!template)
-    return res.status(400).json({ message: 'Invalid template selected' });
+    return res.status(400).json({ message: 'Invalid template selected.' });
 
-  const { Email, Name } = emailList[0]; // sending to 1 user per call
+  const failedList = [];
+  const successList = [];
 
-  try {
-    const { data, error } = await resend.emails.send({
-      from: 'Team EDU[LAB] <hello@edu-lab.in>', // change after domain verification
-      to: [Email],
-      subject: template.subject,
-      html: template.html.replace(/{{name}}/g, Name || 'there')
-    });
+  for (let i = 0; i < emailList.length; i++) {
+    const { Email, Name } = emailList[i];
 
-    if (error) {
-      console.error(`❌ Failed for ${Email}`, error);
-      return res.status(400).json({ message: `Failed for ${Email}`, error });
+    try {
+      const { data, error } = await resend.emails.send({
+        from: 'Team EDU[LAB] <hello@edu-lab.in>', // Change after domain verification
+        to: [Email],
+        subject: template.subject,
+        html: template.html.replace(/{{name}}/g, Name || 'there')
+      });
+
+      if (error) {
+        console.error(`❌ Failed for ${Email}`, error);
+        failedList.push({ Email, error });
+      } else {
+        console.log(`✅ Sent to ${Email}`);
+        successList.push({ Email });
+      }
+    } catch (err) {
+      console.error(`❌ Unexpected error for ${Email}:`, err);
+      failedList.push({ Email, error: 'Unexpected error' });
     }
 
-    res.json({ message: 'Email sent successfully' });
-  } catch (err) {
-    console.error('Resend error:', err);
-    res.status(500).json({ message: 'Unexpected error occurred' });
+    // 2-second delay between each mail
+    if (i < emailList.length - 1) await sleep(2000);
   }
+
+  res.json({
+    message: 'Bulk email process completed.',
+    successCount: successList.length,
+    failureCount: failedList.length,
+    failedList
+  });
 });
 
 module.exports = router;

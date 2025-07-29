@@ -10,8 +10,10 @@ const fieldOptions = [
   'gender',
   'country',
   'institution',
-  'refCode'
+  'refCode',
+  'pdf' // 🔥 PDF field
 ];
+
 
 const CreateEvent = () => {
   const url = config.backendUrl;

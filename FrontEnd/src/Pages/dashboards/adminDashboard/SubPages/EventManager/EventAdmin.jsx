@@ -23,7 +23,7 @@ const EventAdmin = () => {
     fetchEvents();
   }, []);
 
-  // Fetch registrations of selected event
+  // Fetch registrations
   const fetchRegistrations = async () => {
     if (!selectedEventId) return;
     setLoading(true);
@@ -36,7 +36,7 @@ const EventAdmin = () => {
     setLoading(false);
   };
 
-  // Refresh every 10 seconds
+  // Auto refresh
   useEffect(() => {
     if (!selectedEventId) return;
     fetchRegistrations();
@@ -50,20 +50,11 @@ const EventAdmin = () => {
   const downloadCSV = () => {
     const header = ['Name', 'Gender', 'Email', 'Phone', 'Country', 'Institution', 'Referral Code', 'Registered On'];
     const rows = registrations.map(r => [
-      r.name,
-      r.gender,
-      r.email,
-      r.phone,
-      r.country,
-      r.institution,
-      r.refCode,
-      new Date(r.createdAt).toLocaleString()
+      r.name, r.gender, r.email, r.phone, r.country, r.institution, r.refCode, new Date(r.createdAt).toLocaleString()
     ]);
-
     const csvContent = [header, ...rows]
       .map(e => e.map(v => `"${(v || '').toString().replace(/"/g, '""')}"`).join(','))
       .join('\n');
-
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const downloadLink = document.createElement('a');
     downloadLink.href = URL.createObjectURL(blob);
@@ -117,6 +108,7 @@ const EventAdmin = () => {
                 <th>Institution</th>
                 <th>Referral Code</th>
                 <th>Registered On</th>
+                <th>PDF</th> {/* 🔥 New column */}
               </tr>
             </thead>
             <tbody>
@@ -129,8 +121,17 @@ const EventAdmin = () => {
                   <td>{user.phone}</td>
                   <td>{user.country}</td>
                   <td>{user.institution}</td>
-                  <td>{user.refCode}</td>
+                  <td>{user.refCode ? (user.refCode) : ('—')}</td>
                   <td>{new Date(user.createdAt).toLocaleString()}</td>
+                  <td>
+                    {user.pdfUrl ? (
+                      <a href={user.pdfUrl} target="_blank" rel="noopener noreferrer" className="pdfDownloadBtn">
+                        View PDF
+                      </a>
+                    ) : (
+                      '—'
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

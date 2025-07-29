@@ -1,32 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const EventRegistration = require('../models/EventRegistration');
+const { multerMid, uploadToGCS } = require('../middleware/uploadEvent');
 
 // Register user for event
-router.post('/register', async (req, res) => {
-  const {
-    name,
-    gender,
-    email,
-    country,
-    phone,
-    institution,
-    refCode,
-    eventId
-  } = req.body.user;
-
-  if (!name || !gender || !email || !country || !phone || !institution || !refCode || !eventId) {
-    return res.status(400).json({ message: 'All fields including eventId are required.' });
-  }
-
+router.post('/register', multerMid.single('pdfFile'), uploadToGCS, async (req, res) => {
   try {
-    // Check if email already registered for this event
-    const existing = await EventRegistration.findOne({ email, eventId });
-    if (existing) {
-      return res.status(409).json({ message: 'This email is already registered for this event.' });
-    }
+    const { name, gender, email, country, phone, institution, refCode, eventId } = req.body;
 
-    const newRegistration = new EventRegistration({
+    if (!eventId) return res.status(400).json({ message: 'Event ID is required.' });
+
+    // Check duplicate
+    const existing = await EventRegistration.findOne({ email, eventId });
+    if (existing) return res.status(409).json({ message: 'Already registered for this event.' });
+
+    const pdfUrl = req.file?.cloudStoragePublicUrl || null;
+
+    const newReg = new EventRegistration({
       eventId,
       name,
       gender,
@@ -34,16 +24,18 @@ router.post('/register', async (req, res) => {
       country,
       phone,
       institution,
-      refCode
+      refCode,
+      pdfUrl
     });
 
-    await newRegistration.save();
-    res.json({ success: true });
+    await newReg.save();
+    res.json({ success: true, pdfUrl });
   } catch (err) {
-    console.error('Event registration error:', err);
+    console.error('Error registering:', err);
     res.status(500).json({ message: 'Server error during registration.' });
   }
 });
+
 
 // Get all registrations (not filtered)
 router.get('/all', async (req, res) => {
