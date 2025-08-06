@@ -48,9 +48,9 @@ const EventAdmin = () => {
 
   // CSV Download
   const downloadCSV = () => {
-    const header = ['Name', 'Gender', 'Email', 'Phone', 'Country', 'Institution', 'Referral Code', 'Registered On'];
+    const header = ['Name', 'Gender', 'Email', 'Phone', 'Country', 'Institution', 'Category', 'Referral Code', 'Registered On'];
     const rows = registrations.map(r => [
-      r.name, r.gender, r.email, r.phone, r.country, r.institution, r.refCode, new Date(r.createdAt).toLocaleString()
+      r.name, r.gender, r.email, r.phone, r.country, r.institution, r.category, r.refCode, new Date(r.createdAt).toLocaleString()
     ]);
     const csvContent = [header, ...rows]
       .map(e => e.map(v => `"${(v || '').toString().replace(/"/g, '""')}"`).join(','))
@@ -106,6 +106,7 @@ const EventAdmin = () => {
                 <th>Phone</th>
                 <th>Country</th>
                 <th>Institution</th>
+                <th>Category</th> {/* 🔥 New field */}
                 <th>Referral Code</th>
                 <th>Registered On</th>
                 <th>PDF</th> {/* 🔥 New column */}
@@ -121,6 +122,7 @@ const EventAdmin = () => {
                   <td>{user.phone}</td>
                   <td>{user.country}</td>
                   <td>{user.institution}</td>
+                  <td>{user.category ? user.category : '—'}</td>
                   <td>{user.refCode ? (user.refCode) : ('—')}</td>
                   <td>{new Date(user.createdAt).toLocaleString()}</td>
                   <td>

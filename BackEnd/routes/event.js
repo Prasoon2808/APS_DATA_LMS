@@ -6,7 +6,7 @@ const { multerMid, uploadToGCS } = require('../middleware/uploadEvent');
 // Register user for event
 router.post('/register', multerMid.single('pdfFile'), uploadToGCS, async (req, res) => {
   try {
-    const { name, gender, email, country, phone, institution, refCode, eventId } = req.body;
+    const { name, gender, email, country, phone, institution, refCode, eventId, category } = req.body;
 
     if (!eventId) return res.status(400).json({ message: 'Event ID is required.' });
 
@@ -25,6 +25,7 @@ router.post('/register', multerMid.single('pdfFile'), uploadToGCS, async (req, r
       phone,
       institution,
       refCode,
+      category,
       pdfUrl
     });
 

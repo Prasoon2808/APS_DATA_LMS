@@ -53,6 +53,7 @@ import Schedule from './Pages/dashboards/facultyDashboard/SubPages/Schedule/Sche
 import AdminSummaryForm from './Pages/dashboards/adminDashboard/SubPages/SmartLABSSummary/SmartLABSSummay.jsx';
 import SummaryPage from './Pages/dashboards/facultyDashboard/SubPages/SessionSummary/SessionSummary.jsx';
 import AllSummaries from './Pages/dashboards/facultyDashboard/SubPages/SessionSummary/AllSessionSummary.jsx';
+import EventRegisterSecondLast from './Pages/Events/Event2.jsx';
 
 const App = () => {
   return (
@@ -66,6 +67,7 @@ const App = () => {
         <Route path='/about' element={<About/>} />
         <Route path='/faqs' element={<FAQ />} />
         <Route path='/events' element={<Events />} />
+        <Route path='/event' element={<EventRegisterSecondLast />} />
         <Route path='/blogs' element={<Blogs />} />
         
         

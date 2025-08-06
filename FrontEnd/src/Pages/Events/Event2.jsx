@@ -9,30 +9,32 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-const EventRegister = () => {
+const EventRegisterSecondLast = () => {
   const url = config.backendUrl;
   const navigate = useNavigate();
 
   const [event, setEvent] = useState(null);
   const [formData, setFormData] = useState({});
-  const [pdfFile, setPdfFile] = useState(null); // 🔥 new state for PDF
+  const [pdfFile, setPdfFile] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const fetchEvent = async () => {
       try {
         const res = await axios.get(`${url}/api/event-meta/all`);
-        if (res.data?.length) {
-          const latest = res.data[0]; // assuming latest first
-          setEvent(latest);
+        if (res.data?.length > 1) {
+          const secondLast = res.data[1]; // 🔥 second last event
+          setEvent(secondLast);
 
           const fields = {};
-          latest.inputFields.forEach(field => {
+          secondLast.inputFields.forEach(field => {
             if (field === 'country') fields[field] = 'India';
             else if (field === 'refCode') fields[field] = 'EXCL100IND';
             else fields[field] = '';
           });
           setFormData(fields);
+        } else {
+          toast.error('No second last event found.');
         }
       } catch (err) {
         toast.error('Failed to load event details.');
@@ -48,45 +50,41 @@ const EventRegister = () => {
     }));
   };
 
- const handleSubmit = async () => {
-  if (!event) return;
+  const handleSubmit = async () => {
+    if (!event) return;
 
-  // Validate required fields
-  const isEmpty = event.inputFields
-    .filter(f => f !== 'pdf')
-    .some(f => !formData[f]?.trim());
+    const isEmpty = event.inputFields
+      .filter(f => f !== 'pdf')
+      .some(f => !formData[f]?.trim());
 
-  if (isEmpty) return toast.error('Please fill all required fields.');
+    if (isEmpty) return toast.error('Please fill all required fields.');
 
-  // 🔥 Check PDF size before submit
-  if (event.inputFields.includes('pdf') && pdfFile) {
-    if (pdfFile.size > 15 * 1024 * 1024) { // 15MB in bytes
-      return toast.error('PDF file size must be 15MB or less.');
+    if (event.inputFields.includes('pdf') && pdfFile) {
+      if (pdfFile.size > 15 * 1024 * 1024) {
+        return toast.error('PDF file size must be 15MB or less.');
+      }
     }
-  }
 
-  // Prepare FormData
-  const formPayload = new FormData();
-  Object.keys(formData).forEach(key => {
-    formPayload.append(key, formData[key]);
-  });
-  formPayload.append('eventId', event.eventId);
-
-  if (event.inputFields.includes('pdf') && pdfFile) {
-    formPayload.append('pdfFile', pdfFile);
-  }
-
-  try {
-    const res = await axios.post(`${url}/api/event/register`, formPayload, {
-      headers: { 'Content-Type': 'multipart/form-data' }
+    const formPayload = new FormData();
+    Object.keys(formData).forEach(key => {
+      formPayload.append(key, formData[key]);
     });
-    if (res.data.success) setSubmitted(true);
-    else toast.error('Registration failed.');
-  } catch (err) {
-    toast.error(err.response?.data?.message || 'Something went wrong.');
-  }
-};
+    formPayload.append('eventId', event.eventId);
 
+    if (event.inputFields.includes('pdf') && pdfFile) {
+      formPayload.append('pdfFile', pdfFile);
+    }
+
+    try {
+      const res = await axios.post(`${url}/api/event/register`, formPayload, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+      if (res.data.success) setSubmitted(true);
+      else toast.error('Registration failed.');
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Something went wrong.');
+    }
+  };
 
   return (
     <div className='eventPage'>
@@ -95,12 +93,12 @@ const EventRegister = () => {
       <MiniNavbar />
       <div className='eventWrapper'>
         <img className='coverImg' src={assets.APSbg} alt="bg" />
-        <h1>Register For <span>{event?.eventName || 'Our Latest Event'}</span></h1>
+        <h1>Register For <span>{event?.eventName || 'Our Event'}</span></h1>
 
         <div className="glass-container event-glass">
           <div className="event-layout">
             <div className="event-left">
-              <img src={event?.posterUrl} alt="poster" className='eventPoster' />
+              <img src={event?.posterUrl || assets.event} alt="poster" className='eventPoster' />
             </div>
 
             <div className="event-right">
@@ -158,18 +156,6 @@ const EventRegister = () => {
                     </div>
                   )}
 
-                  {event?.inputFields.includes('category') && (
-                      <div className="gender">
-                        <label>Category*</label>
-                        <select name="category" value={formData.category || ''} onChange={handleChange}>
-                          <option value="">Select Category</option>
-                          <option value="BIM Aspirant">BIM Aspirant (No BIM experience yet—ready to start)</option>
-                          <option value="BIM Enthusiast">BIM Enthusiast (Know the basics—looking to level up)</option>
-                          <option value="BIM Expert">BIM Expert (Seasoned specialist—ready to mentor)</option>
-                        </select>
-                      </div>
-                  )}
-
                   {event?.inputFields.includes('refCode') && ( 
                     <div className="gender">
                       <label>Referral Code</label>
@@ -177,6 +163,17 @@ const EventRegister = () => {
                     </div>
                   )}
 
+                  {event?.inputFields.includes('category') && (
+                      <div className="gender">
+                        <label>Category*</label>
+                        <select name="category" value={formData.category || ''} onChange={handleChange}>
+                          <option value="">Select Category</option>
+                          <option value="BIM Aspirant">BIM Aspirant-<br/>No BIM experience yet—ready to start.</option>
+                          <option value="BIM Enthusiast">BIM Enthusiast-<br/>Know the basics—looking to level up.</option>
+                          <option value="BIM Expert">BIM Expert-<br/>Seasoned specialist—ready to mentor.</option>
+                        </select>
+                      </div>
+                  )}
                   {event?.inputFields.includes('pdf') && (
                     <div className="gender">
                       <label>Upload Portfolio PDF (Upto 15MB)*</label>
@@ -187,8 +184,8 @@ const EventRegister = () => {
                           const file = e.target.files[0];
                           if (file && file.size > 15 * 1024 * 1024) {
                             toast.error('PDF file size must be 15MB or less.');
-                            e.target.value = null; // Clear file input
-                            setPdfFile(null); // Clear from state
+                            e.target.value = null;
+                            setPdfFile(null);
                             return;
                           }
                           setPdfFile(file);
@@ -221,4 +218,4 @@ const EventRegister = () => {
   );
 };
 
-export default EventRegister;
+export default EventRegisterSecondLast;

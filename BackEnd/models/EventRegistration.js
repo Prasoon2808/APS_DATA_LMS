@@ -8,6 +8,7 @@ const EventRegistrationSchema = new mongoose.Schema({
   country: { type: String, required: true },
   phone: { type: String, required: true },
   institution: { type: String, required: true },
+  category: { type: String},
   refCode: { type: String},
   pdfUrl: { type: String }, // store GCS link to uploaded PDF
   createdAt: { type: Date, default: Date.now }

@@ -11,6 +11,7 @@ const fieldOptions = [
   'country',
   'institution',
   'refCode',
+  'category',
   'pdf' // 🔥 PDF field
 ];
 
